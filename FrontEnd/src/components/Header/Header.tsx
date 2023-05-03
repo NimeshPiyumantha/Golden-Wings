@@ -9,9 +9,9 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import { NavLink } from "react-router-dom";
-import CatchingPokemonIcon from '@mui/icons-material/CatchingPokemon';
+import CatchingPokemonIcon from "@mui/icons-material/CatchingPokemon";
 
-const activeLink = "border-b-2 cursor-pointer text-yellow-800";
+const activeLink = "border-b-4 cursor-pointer bg-green-300 text-green-800 font-bold border-green-500";
 const normalLink = "cursor-pointer";
 
 function Header() {
@@ -32,7 +32,14 @@ function Header() {
     >
       <Container maxWidth="md">
         <Toolbar disableGutters>
-          <CatchingPokemonIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 ,color:"#ffa502"}} />
+          <CatchingPokemonIcon
+            sx={{
+              display: { xs: "none", md: "flex" },
+              mr: 1,
+              color: "#16a085",
+              fontSize:40
+            }}
+          />
 
           <Typography
             variant="h6"
@@ -45,7 +52,7 @@ function Header() {
               fontFamily: "Ubuntu",
               fontWeight: 700,
               letterSpacing: ".1rem",
-              color: "#ffa502",
+              color: "#16a085",
               textDecoration: "none",
             }}
           >
@@ -59,7 +66,7 @@ function Header() {
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="error"
+              color="info"
             >
               <MenuIcon />
             </IconButton>
@@ -137,7 +144,13 @@ function Header() {
               </NavLink>
             </Menu>
           </Box>
-          <CatchingPokemonIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1,color:"#ffa502" }} />
+          <CatchingPokemonIcon
+            sx={{
+              display: { xs: "flex", md: "none" },
+              mr: 1,
+              color: "#16a085",
+            }}
+          />
           <Typography
             variant="h6"
             noWrap
@@ -151,14 +164,14 @@ function Header() {
               fontWeight: 700,
               fontSize: "18px",
               letterSpacing: ".1rem",
-              color: "#ffa502",
+              color: "#16a085",
               textDecoration: "none",
             }}
           >
             Golden Wings
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" },height:65 }}>
             <NavLink
               to={"/home"}
               className={({ isActive }) => (isActive ? activeLink : normalLink)}
@@ -167,7 +180,7 @@ function Header() {
                 onClick={handleCloseNavMenu}
                 sx={{
                   my: 2,
-                  color: "#ff6b81",
+                  color: "#16a085",
                   fontWeight: 700,
                   display: "block",
                 }}
@@ -184,7 +197,7 @@ function Header() {
                 onClick={handleCloseNavMenu}
                 sx={{
                   my: 2,
-                  color: "#ff6b81",
+                  color: "#16a085",
                   fontWeight: 700,
                   display: "block",
                 }}
@@ -201,7 +214,7 @@ function Header() {
                 onClick={handleCloseNavMenu}
                 sx={{
                   my: 2,
-                  color: "#ff6b81",
+                  color: "#16a085",
                   fontWeight: 700,
                   display: "block",
                 }}
@@ -218,7 +231,7 @@ function Header() {
                 onClick={handleCloseNavMenu}
                 sx={{
                   my: 2,
-                  color: "#ff6b81",
+                  color: "#16a085",
                   fontWeight: 700,
                   display: "block",
                 }}
@@ -235,7 +248,7 @@ function Header() {
                 onClick={handleCloseNavMenu}
                 sx={{
                   my: 2,
-                  color: "#ff6b81",
+                  color: "#16a085",
                   fontWeight: 700,
                   display: "block",
                 }}
@@ -243,7 +256,9 @@ function Header() {
                 <h4>Contact</h4>
               </Button>
             </NavLink>
+            <Button variant="contained" sx={{m:2,ml:10}} color="secondary">Login</Button>
           </Box>
+         
         </Toolbar>
       </Container>
     </AppBar>
