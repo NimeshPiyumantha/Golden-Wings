@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import "./App.css";
+import Content from "./components/Content/Content";
 
 export default class App extends Component {
   render(): React.ReactNode {
     return (
-      <div>
-        <h1>hi</h1>
+      <div className="bg-accent-white-100 min-h-screen">
+      <Content/>
       </div>
     );
   }
