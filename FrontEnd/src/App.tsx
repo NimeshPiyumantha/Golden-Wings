@@ -6,7 +6,7 @@ import Header from "./components/Header/Header";
 export default class App extends Component {
   render(): React.ReactNode {
     return (
-      <div className="min-h-screen  mr-3 ml-3">
+      <div className="min-h-screen">
       {/* <Content/> */}
       <Header/>
       </div>

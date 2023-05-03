@@ -10,7 +10,7 @@ import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import { NavLink } from "react-router-dom";
 
-const activeLink = "border-b-2 cursor-pointer text-'#ff6b81' ";
+const activeLink = "border-b-2 cursor-pointer text-yellow-800";
 const normalLink = "cursor-pointer";
 
 function Header() {
@@ -25,7 +25,7 @@ function Header() {
   };
 
   return (
-    <AppBar position="static" style={{ background: "#7bed9f",borderRadius: '16px' }}>
+    <AppBar position="static" style={{ background: "#f1f2f6",borderRadius: '16px' }}>
       <Container maxWidth="md">
         <Toolbar>
           <Typography
@@ -36,9 +36,9 @@ function Header() {
             sx={{
               mr: 9,
               display: { xs: "none", md: "flex" },
-              fontFamily: "poppines",
+              fontFamily: "Ubuntu",
               fontWeight: 700,
-              letterSpacing: ".3rem",
+              letterSpacing: ".1rem",
               color: "#ffa502",
               textDecoration: "none",
             }}
@@ -53,7 +53,7 @@ function Header() {
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="inherit"
+              color="error"
             >
               <MenuIcon />
             </IconButton>
@@ -140,10 +140,10 @@ function Header() {
               mr: 2,
               display: { xs: "flex", md: "none" },
               flexGrow: 1,
-              fontFamily: "poppines",
+              fontFamily: "Ubuntu",
               fontWeight: 700,
               fontSize: "18px",
-              letterSpacing: ".3rem",
+              letterSpacing: ".1rem",
               color: "#ffa502",
               textDecoration: "none",
             }}
