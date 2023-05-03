@@ -266,15 +266,17 @@ function Header() {
               </Button>
             </NavLink>
             <Stack direction="row" spacing={2}>
-              <Button
-                variant="contained"
-                sx={{ m: 2, ml: 10 }}
-                color="info"
-                size="medium"
-                endIcon={<LoginIcon />}
-              >
-                Login
-              </Button>
+              <NavLink to={"/login"}>
+                <Button
+                  variant="contained"
+                  sx={{ m: 1.7, ml: 10 }}
+                  color="info"
+                  size="medium"
+                  endIcon={<LoginIcon />}
+                >
+                  Login
+                </Button>
+              </NavLink>
             </Stack>
           </Box>
         </Toolbar>
