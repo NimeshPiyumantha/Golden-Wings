@@ -1,8 +1,8 @@
 import React from 'react'
-import Contact from './pages/Contact'
+import Content from './components/Content'
 
 export default function App() {
   return (
-    <Contact/>
+    <Content/>
   )
 }
