@@ -7,12 +7,15 @@ import Places from '../../pages/Places'
 
 export default function Content() {
   return (
-    <Routes>
+    <div className="mt-4 text-center">
+      <Routes>
       <Route path="/home" element={<Home/>}></Route>
+      <Route path="/" element={<Home />}></Route>
       <Route path="/places" element={<Places/>}></Route>
       <Route path="/gallery" element={<Gallery/>}></Route>
       <Route path="/blog" element={<Blog/>}></Route>
       <Route path="/contact" element={<Contact/>}></Route>
     </Routes>
+    </div>
   );
 }
