@@ -30,7 +30,7 @@ module.exports = {
       fontFamily: {
         Poppins: ["Poppins", "sans-serif"],
         OpenSans: ["Open Sans", "sans-serif"],
-        
+        Ubuntu: ["Ubuntu", "sans-serif"],
       },
     },
   },
