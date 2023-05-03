@@ -4,6 +4,7 @@ import Gallery from "../../pages/Gallery";
 import Blog from "../../pages/Blog";
 import Contact from "../../pages/Contact";
 import Places from "../../pages/Places";
+import Login from "../../pages/Login";
 
 export default function Content() {
   return (
@@ -14,6 +15,7 @@ export default function Content() {
       <Route path="/gallery" element={<Gallery />}></Route>
       <Route path="/blog" element={<Blog />}></Route>
       <Route path="/contact" element={<Contact />}></Route>
+      <Route path="/login" element={<Login />}></Route>
     </Routes>
   );
 }
