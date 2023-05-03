@@ -1,13 +1,8 @@
-import React, { Component } from "react";
-import "./App.css";
-import Content from "./components/Content/Content";
+import React from 'react'
+import Contact from './pages/Contact'
 
-export default class App extends Component {
-  render(): React.ReactNode {
-    return (
-      <div className="min-h-screen">
-      <Content/>
-      </div>
-    );
-  }
+export default function App() {
+  return (
+    <Contact/>
+  )
 }
