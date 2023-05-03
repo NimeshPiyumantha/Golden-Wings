@@ -10,8 +10,11 @@ import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import { NavLink } from "react-router-dom";
 import CatchingPokemonIcon from "@mui/icons-material/CatchingPokemon";
+import LoginIcon from "@mui/icons-material/Login";
+import { Stack } from "@mui/material";
 
-const activeLink = "border-b-4 cursor-pointer bg-green-300 text-green-800 font-bold border-green-500";
+const activeLink =
+  "border-b-4 cursor-pointer bg-green-300 text-green-800 font-bold border-green-500";
 const normalLink = "cursor-pointer";
 
 function Header() {
@@ -37,7 +40,7 @@ function Header() {
               display: { xs: "none", md: "flex" },
               mr: 1,
               color: "#16a085",
-              fontSize:40
+              fontSize: 40,
             }}
           />
 
@@ -171,7 +174,13 @@ function Header() {
             Golden Wings
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" },height:65 }}>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: "none", md: "flex" },
+              height: 65,
+            }}
+          >
             <NavLink
               to={"/home"}
               className={({ isActive }) => (isActive ? activeLink : normalLink)}
@@ -256,9 +265,18 @@ function Header() {
                 <h4>Contact</h4>
               </Button>
             </NavLink>
-            <Button variant="contained" sx={{m:2,ml:10}} color="secondary">Login</Button>
+            <Stack direction="row" spacing={2}>
+              <Button
+                variant="contained"
+                sx={{ m: 2, ml: 10 }}
+                color="info"
+                size="medium"
+                endIcon={<LoginIcon />}
+              >
+                Login
+              </Button>
+            </Stack>
           </Box>
-         
         </Toolbar>
       </Container>
     </AppBar>
