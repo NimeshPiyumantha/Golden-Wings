@@ -6,7 +6,7 @@ import Header from "./components/Header/Header";
 export default class App extends Component {
   render(): React.ReactNode {
     return (
-      <div className="bg-accent-white-100 min-h-screen">
+      <div className="min-h-screen  mr-3 ml-3">
       {/* <Content/> */}
       <Header/>
       </div>
