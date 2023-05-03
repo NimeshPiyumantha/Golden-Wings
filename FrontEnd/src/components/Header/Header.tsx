@@ -9,6 +9,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import { NavLink } from "react-router-dom";
+import CatchingPokemonIcon from '@mui/icons-material/CatchingPokemon';
 
 const activeLink = "border-b-2 cursor-pointer text-yellow-800";
 const normalLink = "cursor-pointer";
@@ -25,9 +26,14 @@ function Header() {
   };
 
   return (
-    <AppBar position="static" style={{ background: "#f1f2f6",borderRadius: '16px' }}>
+    <AppBar
+      position="static"
+      style={{ background: "#f1f2f6", borderRadius: "16px" }}
+    >
       <Container maxWidth="md">
-        <Toolbar>
+        <Toolbar disableGutters>
+          <CatchingPokemonIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 ,color:"#ffa502"}} />
+
           <Typography
             variant="h6"
             noWrap
@@ -131,6 +137,7 @@ function Header() {
               </NavLink>
             </Menu>
           </Box>
+          <CatchingPokemonIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1,color:"#ffa502" }} />
           <Typography
             variant="h6"
             noWrap
