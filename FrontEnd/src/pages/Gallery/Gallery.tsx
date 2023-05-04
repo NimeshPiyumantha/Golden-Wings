@@ -1,4 +1,6 @@
 import Header from "../../components/Header";
+import image1 from "../../assets/img/1.jpg";
+import image2 from "../../assets/img/2.jpg";
 import image3 from "../../assets/img/3.jpg";
 import image4 from "../../assets/img/4.jpg";
 import image5 from "../../assets/img/5.jpg";
@@ -14,6 +16,9 @@ import image14 from "../../assets/img/14.jpg";
 import image15 from "../../assets/img/15.jpg";
 import image16 from "../../assets/img/16.jpg";
 import image17 from "../../assets/img/17.jpg";
+import image18 from "../../assets/img/18.jpg";
+import image19 from "../../assets/img/19.jpg";
+import image20 from "../../assets/img/20.jpg";
 
 export default function Gallery() {
   return (
@@ -87,18 +92,18 @@ export default function Gallery() {
         </div>
         <div className="grid gap-4">
           <div>
-            <img className="h-auto max-w-full rounded-lg" src={image5} alt="" />
+            <img className="h-auto max-w-full rounded-lg" src={image1} alt="" />
           </div>
           <div>
-            <img className="h-auto max-w-full rounded-lg" src={image3} alt="" />
+            <img className="h-auto max-w-full rounded-lg" src={image2} alt="" />
           </div>
           <div>
-            <img className="h-auto max-w-full rounded-lg" src={image4} alt="" />
+            <img className="h-auto max-w-full rounded-lg" src={image15} alt="" />
           </div>
         </div>
         <div className="grid gap-4">
           <div>
-            <img className="h-auto max-w-full rounded-lg" src={image7} alt="" />
+            <img className="h-auto max-w-full rounded-lg" src={image11} alt="" />
           </div>
           <div>
             <img
@@ -108,21 +113,21 @@ export default function Gallery() {
             />
           </div>
           <div>
-            <img className="h-auto max-w-full rounded-lg" src={image8} alt="" />
+            <img className="h-auto max-w-full rounded-lg" src={image14} alt="" />
           </div>
         </div>
         <div className="grid gap-4">
           <div>
             <img
               className="h-auto max-w-full rounded-lg"
-              src={image12}
+              src={image18}
               alt=""
             />
           </div>
           <div>
             <img
               className="h-auto max-w-full rounded-lg"
-              src={image13}
+              src={image20}
               alt=""
             />
           </div>
@@ -132,7 +137,7 @@ export default function Gallery() {
         </div>
         <div className="grid gap-4">
           <div>
-            <img className="h-auto max-w-full rounded-lg" src={image9} alt="" />
+            <img className="h-auto max-w-full rounded-lg" src={image19} alt="" />
           </div>
           <div>
             <img
