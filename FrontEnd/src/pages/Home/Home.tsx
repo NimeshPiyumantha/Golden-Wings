@@ -1,3 +1,4 @@
+import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import Gallery from "../Gallery/Gallery";
 import Hero from "./Hero/Hero";
@@ -8,6 +9,7 @@ export default function Home() {
       <Header />
       <Hero />
       <Gallery/>
+      <Footer/>
     </>
   );
 }
