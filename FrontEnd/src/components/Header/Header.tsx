@@ -30,7 +30,7 @@ function Header() {
 
   return (
     <AppBar
-      position="static"
+      position="fixed"
       style={{ background: "#f1f2f6", borderRadius: "16px" }}
     >
       <Container maxWidth="md">
