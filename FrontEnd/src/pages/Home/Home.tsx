@@ -1,6 +1,6 @@
 import Header from "../../components/Header";
-import { Card, CardMedia } from "@mui/material";
-import background1Image from "../../assets/img/1.jpg";
+import lotuesTower from "../../assets/img/1.jpg";
+import beachTree from "../../assets/img/2.jpg";
 
 export default function Home() {
   return (
@@ -22,24 +22,24 @@ export default function Home() {
               everything you need to make your dream trip a reality. Whether
               you're planning a romantic getaway, a family vacation, or a solo
               adventure, our site offers a wide range of options to suit your
-              unique travel style and budget. 
+              unique travel style and budget.
             </p>
             <p>
-            So, sit back, relax, and let us
-              help you plan the trip of a lifetime. Start exploring our site now
-              and get ready to embark on your next great adventure!
+              So, sit back, relax, and let us help you plan the trip of a
+              lifetime. Start exploring our site now and get ready to embark on
+              your next great adventure!
             </p>
           </div>
           <div className="grid grid-cols-2 gap-4 mt-8">
             <img
               className="w-full rounded-lg"
-              src={background1Image}
+              src={lotuesTower}
               alt="office content 1"
             />
-            
+
             <img
               className="mt-4 w-full lg:mt-10 rounded-lg"
-              src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/office-long-1.png"
+              src={beachTree}
               alt="office content 2"
             />
           </div>
