@@ -269,8 +269,15 @@ function Header() {
               <NavLink to={"/login"}>
                 <Button
                   variant="contained"
-                  sx={{ m: 1.7, ml: 10 }}
-                  color="info"
+                  sx={{
+                    m: 1.7,
+                    ml: 10,
+                    fontFamily: "Ubuntu",
+                    border: 1,
+                    bgcolor: "gray",
+                    fontWeight: 600,
+                    borderRadius: 3,
+                  }}
                   size="medium"
                   endIcon={<LoginIcon />}
                 >
