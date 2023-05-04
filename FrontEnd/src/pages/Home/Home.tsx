@@ -1,6 +1,11 @@
 import Header from "../../components/Header";
 import lotuesTower from "../../assets/img/1.jpg";
 import beachTree from "../../assets/img/2.jpg";
+import { Stack } from "@mui/material";
+import Button from "@mui/material/Button";
+import { NavLink } from "react-router-dom";
+import LoginIcon from "@mui/icons-material/Login";
+import { green } from "@mui/material/colors";
 
 export default function Home() {
   return (
@@ -29,6 +34,45 @@ export default function Home() {
               lifetime. Start exploring our site now and get ready to embark on
               your next great adventure!
             </p>
+
+            <Stack direction="row" sx={{ mt: 2 }}>
+              <NavLink to={"/login"}>
+                <Button
+                  variant="contained"
+                  sx={{
+                    m: 1.7,
+                    ml: 10,
+                    fontFamily: "Ubuntu",
+                    border: 1,
+                    bgcolor: "#1abc9c",
+                    fontWeight: 600,
+                    borderRadius: 3,
+                  }}
+                  size="medium"
+                  endIcon={<LoginIcon />}
+                  color="success"
+                >
+                  Login
+                </Button>
+              </NavLink>
+              <NavLink to={"/register"}>
+                <Button
+                  variant="contained"
+                  sx={{
+                    m: 1.7,
+                    fontFamily: "Ubuntu",
+                    border: 1,
+                    bgcolor: "gray",
+                    fontWeight: 600,
+                    borderRadius: 3,
+                  }}
+                  size="medium"
+                  endIcon={<LoginIcon />}
+                >
+                  Register
+                </Button>
+              </NavLink>
+            </Stack>
           </div>
           <div className="grid grid-cols-2 gap-4 mt-8">
             <img
