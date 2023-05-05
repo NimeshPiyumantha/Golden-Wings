@@ -8,8 +8,16 @@ import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import { Container } from "@mui/material";
+import { Container, styled } from "@mui/material";
+import ButtonBase from "@mui/material/ButtonBase";
 import sigIn_bg from "../../assets/img/signIn-bg.jpg";
+
+const Img = styled("img")({
+  margin: "auto",
+  display: "block",
+  maxWidth: "100%",
+  maxHeight: "100%",
+});
 
 export default function Login() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -26,27 +34,16 @@ export default function Login() {
       <Box
         sx={{
           marginTop: 8,
+          justifyContent: "center",
         }}
       >
         <Grid container>
           <CssBaseline />
-          <Grid
-            item
-            xs={false}
-            sm={4}
-            md={7}
-            sx={{
-              backgroundImage:
-                "url(https://vscode.dev/github/NimeshPiyumantha/Golden-Wings/blob/master/FrontEnd/src/assets/img/signIn-bg.jpg)",
-              backgroundRepeat: "no-repeat",
-              backgroundColor: (t) =>
-                t.palette.mode === "light"
-                  ? t.palette.grey[50]
-                  : t.palette.grey[900],
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-          />
+          <Grid item sx={{ display: { xs: "none", sm: "none", md: "block" } }}>
+            <ButtonBase sx={{ width: 550, height: 560 }}>
+              <Img alt="complex" src={sigIn_bg} />
+            </ButtonBase>
+          </Grid>
           <Grid
             item
             xs={12}
@@ -113,8 +110,8 @@ export default function Login() {
                     </Link>
                   </Grid>
                   <Grid item>
-                    <Link href="#" variant="body2">
-                      {"Don't have an account? Sign Up"}
+                    <Link href="/register" variant="body2">
+                      {"Don't have an account ? Sign Up"}
                     </Link>
                   </Grid>
                 </Grid>
