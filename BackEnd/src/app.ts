@@ -10,6 +10,23 @@ import cors from "cors";
 
 
 
+// allow CORS
+// app.use(cors());
+
+// Here you can add more origins to allow CORS
+const allowedOrigins = ["http://localhost:3000"];
+
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (allowedOrigins.indexOf(origin!) !== -1 || !origin) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+  })
+);
 
 // if you are receiving JSON data in request-body
 app.use(json());
