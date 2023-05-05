@@ -2,13 +2,14 @@ import { config } from "dotenv";
 // dotenv configuration
 config();
 
-
+import express, { Request, Response } from "express";
 import db from "mongoose";
 import routes from "./Routes";
 import { json, urlencoded } from "body-parser";
 import cors from "cors";
 
-
+// Create the express app
+const app = express();
 
 // allow CORS
 // app.use(cors());
