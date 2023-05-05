@@ -8,14 +8,14 @@ export default class UserController {
     return res;
   };
 
-  UpdateUser: RequestHandler = async (
+  updateUser: RequestHandler = async (
     req: Request,
     res: Response
   ): Promise<Response> => {
     return res;
   };
 
-  DeleteUser: RequestHandler = async (
+  deleteUser: RequestHandler = async (
     req: Request,
     res: Response
   ): Promise<Response> => {
