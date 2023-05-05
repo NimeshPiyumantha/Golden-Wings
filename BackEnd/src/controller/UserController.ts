@@ -7,4 +7,11 @@ export default class UserController {
   ): Promise<Response> => {
     return res;
   };
+
+  UpdateUser: RequestHandler = async (
+    req: Request,
+    res: Response
+  ): Promise<Response> => {
+    return res;
+  };
 }
