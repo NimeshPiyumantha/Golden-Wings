@@ -17,7 +17,8 @@ app.use(json());
 // if you are receiving url-encoded data in request-body
 app.use(urlencoded({ extended: true }));
 
-
+// Mount the routes at /resourse URL path
+app.use("/", routes);
 
 
 // connect to the database
