@@ -76,7 +76,16 @@ export default function Login() {
                 autoComplete="email"
                 autoFocus
               />
-              
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+              />
              
               </Grid>
             </Box>
