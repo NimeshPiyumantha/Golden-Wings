@@ -20,6 +20,10 @@ app.use(urlencoded({ extended: true }));
 // Mount the routes at /resourse URL path
 app.use("/", routes);
 
+// error handling middleware
+app.use((error: Error, req: Request, res: Response) => {
+  res.status(500).json({ message: error.message });
+});
 
 // connect to the database
 db.connect(process.env.MONGO_DB_URL!)
