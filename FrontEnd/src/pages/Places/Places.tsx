@@ -35,7 +35,7 @@ export default function Places() {
         <div className="bg-accent-white-50 flex-wrap rounded-lg shadow-lg">
           <div className="justify-center p-4 flex gap-3 flex-wrap">
             <Autocomplete
-              id="country-select-demo"
+              id="LocationID"
               sx={{ width: 250 }}
               options={location}
               autoHighlight
@@ -43,7 +43,7 @@ export default function Places() {
               renderInput={(params) => (
                 <TextField
                   {...params}
-                  label="Choose a Payement"
+                  label="Choose a Location"
                   inputProps={{
                     ...params.inputProps,
                     autoComplete: "new-password", // disable autocomplete and autofill
@@ -53,7 +53,7 @@ export default function Places() {
             />
 
             <Autocomplete
-              id="country-select-demo"
+              id="typeID"
               sx={{ width: 250 }}
               options={type}
               autoHighlight
