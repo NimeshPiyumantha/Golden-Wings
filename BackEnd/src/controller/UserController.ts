@@ -21,4 +21,11 @@ export default class UserController {
   ): Promise<Response> => {
     return res;
   };
+
+  retrieveAllUser: RequestHandler = async (
+    req: Request,
+    res: Response
+  ): Promise<Response> => {
+    return res;
+  };
 }
