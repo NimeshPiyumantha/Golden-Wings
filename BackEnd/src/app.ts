@@ -14,6 +14,10 @@ import cors from "cors";
 // if you are receiving JSON data in request-body
 app.use(json());
 
+// if you are receiving url-encoded data in request-body
+app.use(urlencoded({ extended: true }));
+
+
 
 
 // connect to the database
