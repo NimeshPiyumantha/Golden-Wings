@@ -1,6 +1,6 @@
 import signUp_bg from "../../assets/img/signUp-bg.jpg";
 import api from "../../axios";
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useState } from "react";
 
 type UserDetails = {
   _id: string;
@@ -15,8 +15,8 @@ type UserDetails = {
 export default function Register() {
   const [userList, setUserList] = useState<UserDetails[]>([]);
   const [roleType, setRoleType] = useState<string>("");
-  const [fristName, setFristName] = useState<string>("");
-  const [lastName, seLastName] = useState<string>("");
+  const [fristName, setFirstName] = useState<string>("");
+  const [lastName, setLastName] = useState<string>("");
   const [address, setAddress] = useState<string>("");
   const [contactNo, setContactNo] = useState<string>("");
   const [email, setEmail] = useState<string>("");
@@ -24,27 +24,19 @@ export default function Register() {
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
-    if (name === "roleType") {
-      setRoleType("USER");
-    }
-    if (name === "fristName") {
-      setFristName(value);
-    }
-    if (name === "lastName") {
-      seLastName(value);
-    }
-    if (name === "address") {
-      setAddress(value);
-    }
-    if (name === "contactNo") {
-      setContactNo(value);
-    }
-    if (name === "email") {
-      setEmail(value);
-    }
-    if (name === "password") {
-      setPassword(value);
-    }
+    name === "roleType"
+      ? setRoleType(value)
+      : name === "fristName"
+      ? setFirstName(value)
+      : name === "lastName"
+      ? setLastName(value)
+      : name === "address"
+      ? setAddress(value)
+      : name === "contactNo"
+      ? setContactNo(value)
+      : name === "email"
+      ? setEmail(value)
+      : name === "password" && setPassword(value);
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -60,20 +52,18 @@ export default function Register() {
       password: password,
     };
 
-
-  
     api
-    .post("user", newUser)
-    .then((res) => {
-      console.log(res);
-      let user: UserDetails[] = [...userList];
-      user.push(res.data.responseData);
-      setUserList(user);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-};
+      .post("user", newUser)
+      .then((res) => {
+        console.log(res);
+        let user: UserDetails[] = [...userList];
+        user.push(res.data.responseData);
+        setUserList(user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <div className="min-w-screen min-h-screen bg-accent-white-200 flex items-center justify-center px-5 py-5">
