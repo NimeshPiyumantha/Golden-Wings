@@ -9,7 +9,10 @@ export default function Register() {
             <img src={signUp_bg} className="w-full h-full"></img>
           </div>
           <div className="w-full md:w-1/2 py-10 px-5 md:px-10">
-          
+            <div className="text-center mb-10">
+              <h1 className="font-bold text-3xl text-gray-900">REGISTER</h1>
+              <p className="mt-1">Enter your information to register</p>
+            </div>
            
           </div>
         </div>
