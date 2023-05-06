@@ -33,7 +33,7 @@ function UsersHeader() {
       position="fixed"
       style={{ background: "#f1f2f6", borderRadius: "16px" }}
     >
-      <Container maxWidth="md">
+      <Container maxWidth="lg">
         <Toolbar disableGutters>
           <CatchingPokemonIcon
             sx={{
