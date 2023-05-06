@@ -125,17 +125,6 @@ function Header() {
               </NavLink>
 
               <NavLink
-                to={"/blog"}
-                className={({ isActive }) =>
-                  isActive ? activeLink : normalLink
-                }
-              >
-                <Typography textAlign="center" pt={1} pr={2} pl={2}>
-                  Blog
-                </Typography>
-              </NavLink>
-
-              <NavLink
                 to={"/contact"}
                 className={({ isActive }) =>
                   isActive ? activeLink : normalLink
@@ -229,23 +218,6 @@ function Header() {
                 }}
               >
                 <h4>Gallery</h4>
-              </Button>
-            </NavLink>
-
-            <NavLink
-              to={"/blog"}
-              className={({ isActive }) => (isActive ? activeLink : normalLink)}
-            >
-              <Button
-                onClick={handleCloseNavMenu}
-                sx={{
-                  my: 2,
-                  color: "#16a085",
-                  fontWeight: 700,
-                  display: "block",
-                }}
-              >
-                <h4>Blog</h4>
               </Button>
             </NavLink>
 
