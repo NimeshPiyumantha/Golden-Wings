@@ -1,5 +1,15 @@
 import signUp_bg from "../../assets/img/signUp-bg.jpg";
 
+type UserProps = {};
+type UserState = {
+  roleType: string;
+  fristName: string;
+  lastName: string;
+  address: string;
+  contactNo: number;
+  email: string;
+  password: string;
+};
 export default function Register() {
   return (
     <div className="min-w-screen min-h-screen bg-accent-white-200 flex items-center justify-center px-5 py-5">
