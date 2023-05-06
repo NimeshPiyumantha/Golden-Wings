@@ -15,6 +15,9 @@ export default class RoleRoutes {
 
      // GET /api/v1/role
      this.router.get("/", this.routerController.retrieveAllRole);
+
+     // PUT /api/v1/role/:id
+    this.router.put("/:id", this.routerController.updateRole);
   };
 
   public getRouter = (): Router => {
