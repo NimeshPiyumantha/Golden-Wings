@@ -59,7 +59,26 @@ export default class RoleController {
     req: Request,
     res: Response
   ): Promise<Response> => {
-    return res;
+    try {
+      // destructuring assignment
+      const { id } = req.params;
+
+      let deletedRole = await Role.findByIdAndDelete(id);
+
+      if (!deletedRole) {
+        throw new Error("Failed to delete role.");
+      }
+
+      return res
+        .status(200)
+        .json({ message: "Role deleted.", responseData: deletedRole });
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        return res.status(500).json({ message: error.message });
+      } else {
+        return res.status(500).json({ message: "Unknown error occured." });
+      }
+    }
   };
 
   retrieveAllRole: RequestHandler = async (
