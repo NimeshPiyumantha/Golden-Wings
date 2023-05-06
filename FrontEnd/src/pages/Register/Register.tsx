@@ -1,4 +1,6 @@
 import signUp_bg from "../../assets/img/signUp-bg.jpg";
+import api from "../../axios";
+import { ChangeEvent, useEffect, useState } from "react";
 
 type UserDetails = {
   _id: string;
@@ -11,6 +13,66 @@ type UserDetails = {
   password: string;
 };
 export default function Register() {
+  const [userList, setUserList] = useState<UserDetails[]>([]);
+  const [roleType, setRoleType] = useState<string>("");
+  const [fristName, setFristName] = useState<string>("");
+  const [lastName, seLastName] = useState<string>("");
+  const [address, setAddress] = useState<string>("");
+  const [contactNo, setContactNo] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    if (name == "roleType") {
+      setRoleType("USER");
+    }
+    if (name == "fristName") {
+      setFristName(value);
+    }
+    if (name == "lastName") {
+      seLastName(value);
+    }
+    if (name == "address") {
+      setAddress(value);
+    }
+    if (name == "contactNo") {
+      setContactNo(value);
+    }
+    if (name == "email") {
+      setEmail(value);
+    }
+    if (name == "password") {
+      setPassword(value);
+    }
+  };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    let newUser = {
+      roleType: "USER",
+      fristName: fristName,
+      lastName: lastName,
+      address: address,
+      contactNo: contactNo,
+      email: email,
+      password: password,
+    };
+
+    api
+    .post("user", newUser)
+    .then((res) => {
+      console.log(res);
+      let user: UserDetails[] = [...userList];
+      user.push(res.data.responseData);
+      setUserList(user);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
   return (
     <div className="min-w-screen min-h-screen bg-accent-white-200 flex items-center justify-center px-5 py-5">
       <div className="bg-gray-100 text-gray-500 rounded-3xl shadow-xl w-4/5 overflow-hidden max-width:1000px">
@@ -23,7 +85,7 @@ export default function Register() {
               <h1 className="font-bold text-3xl text-gray-900">REGISTER</h1>
               <p className="mt-1">Enter your information to register</p>
             </div>
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="flex -mx-3 ">
                 <div className="w-1/2 px-3 mb-5">
                   <label form="" className="text-xs font-semibold px-1">
@@ -38,7 +100,8 @@ export default function Register() {
                       className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                       placeholder="John"
                       required
-                      id="fristName"
+                      name="fristName"
+                      onChange={handleInputChange}
                     />
                   </div>
                 </div>
@@ -55,7 +118,8 @@ export default function Register() {
                       className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                       placeholder="Smith"
                       required
-                      id="lastName"
+                      name="lastName"
+                      onChange={handleInputChange}
                     />
                   </div>
                 </div>
@@ -74,7 +138,8 @@ export default function Register() {
                       className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                       placeholder="Colombo"
                       required
-                      id="address"
+                      name="address"
+                      onChange={handleInputChange}
                     />
                   </div>
                 </div>
@@ -90,7 +155,8 @@ export default function Register() {
                       type="tel"
                       className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                       placeholder="0777123456"
-                      id="contactNo"
+                      name="contactNo"
+                      onChange={handleInputChange}
                     />
                   </div>
                 </div>
@@ -108,7 +174,8 @@ export default function Register() {
                       type="email"
                       className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                       placeholder="yourmail@gmail.com"
-                      id="email"
+                      name="email"
+                      onChange={handleInputChange}
                     />
                   </div>
                 </div>
@@ -124,7 +191,8 @@ export default function Register() {
                       type="password"
                       className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                       placeholder="**********"
-                      id="password"
+                      name="password"
+                      onChange={handleInputChange}
                     />
                   </div>
                 </div>
