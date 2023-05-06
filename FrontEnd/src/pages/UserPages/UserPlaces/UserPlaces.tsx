@@ -1,7 +1,13 @@
-import React from 'react'
+import UsersHeader from "../../../components/UsersHeader";
+import PlacesCard from '../../../components/PlacesCard'
+import Footer from '../../../components/Footer'
 
 export default function UserPlaces() {
   return (
-    <div>UserPlaces</div>
+    <>
+    <UsersHeader />
+    <PlacesCard/>
+    <Footer />
+  </>
   )
 }
