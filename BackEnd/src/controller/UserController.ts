@@ -75,7 +75,16 @@ export default class UserController {
     req: Request,
     res: Response
   ): Promise<Response> => {
-    return res;
+    try {
+      const users = await User.find();
+      return res.status(200).json({ responseData: users });
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        return res.status(500).json({ message: error.message });
+      } else {
+        return res.status(500).json({ message: "Unknown error occured." });
+      }
+    }
   };
 
   signInUser: RequestHandler = async (
