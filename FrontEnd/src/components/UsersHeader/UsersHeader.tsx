@@ -17,7 +17,7 @@ const activeLink =
   "border-b-4 cursor-pointer bg-green-300 text-green-800 font-bold border-green-500";
 const normalLink = "cursor-pointer";
 
-function Header() {
+function UsersHeader() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -302,4 +302,4 @@ function Header() {
     </AppBar>
   );
 }
-export default Header;
+export default UsersHeader;
