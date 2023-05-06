@@ -11,6 +11,7 @@ import Typography from "@mui/material/Typography";
 import { Container, styled } from "@mui/material";
 import ButtonBase from "@mui/material/ButtonBase";
 import sigIn_bg from "../../assets/img/signIn-bg.jpg";
+import "./Login.css";
 
 const Img = styled("img")({
   margin: "auto",
