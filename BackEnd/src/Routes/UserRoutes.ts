@@ -16,6 +16,9 @@ export default class UserRoutes {
     // GET /api/v1/user
     this.router.get("/", this.routerController.retrieveAllUser);
 
+    // PUT /api/v1/user/:id
+    this.router.put("/:id", this.routerController.updateUser);
+
   };
 
   public getRouter = (): Router => {
