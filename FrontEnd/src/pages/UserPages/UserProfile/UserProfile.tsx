@@ -1,4 +1,3 @@
-import React from 'react'
 import UsersHeader from '../../../components/UsersHeader'
 import Footer from '../../../components/Footer'
 
