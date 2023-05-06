@@ -16,6 +16,13 @@ export default function Content() {
       <Route path="/contact" element={<Contact />}></Route>
       <Route path="/login" element={<Login />}></Route>
       <Route path="/register" element={<Register />}></Route>
+
+      <Route path="/uprofile" element={<UserProfile />}></Route>
+      <Route path="/ublog" element={<UserBlog />}></Route>
+      <Route path="/u" element={<UserHome />}></Route>
+      <Route path="/uplaces" element={<UserPlaces />}></Route>
+      <Route path="/ugallery" element={<UserGallery />}></Route>
+      <Route path="/ucontact" element={<UserContact />}></Route>
     </Routes>
   );
 }
