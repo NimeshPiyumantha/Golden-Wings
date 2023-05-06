@@ -22,11 +22,11 @@ export default class UserRoutes {
     // DELETE /api/v1/user/:id
     this.router.delete("/:id", this.routerController.deleteUser);
 
-    // GET /api/v1/user?email=uEmail&password=uPassword
-    this.router.get(
-      "?email=uEmail&password=uPassword",
-      this.routerController.signInUser
-    );
+    // // GET /api/v1/user?email=uEmail&password=uPassword
+    // this.router.get(
+    //   "?email=uEmail&password=uPassword",
+    //   this.routerController.signInUser
+    // );
   };
 
   public getRouter = (): Router => {
