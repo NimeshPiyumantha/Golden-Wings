@@ -1,7 +1,15 @@
-import React from 'react'
+import UsersHeader from "../../../components/UsersHeader";
+import Hero from "../../Home/Hero";
+import Collection from "../../Gallery/Collection";
+import Footer from "../../../components/Footer";
 
 export default function UserHome() {
   return (
-    <div>UserHome</div>
-  )
+    <>
+      <UsersHeader />
+      <Hero />
+      <Collection />
+      <Footer />
+    </>
+  );
 }
