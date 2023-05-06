@@ -10,6 +10,7 @@ import UserContact from "../../pages/UserPages/UserContact";
 import UserProfile from "../../pages/UserPages/UserProfile";
 import UserHome from "../../pages/UserPages/UserHome";
 import UserPlaces from "../../pages/UserPages/UserPlaces";
+import UserGallery from "../../pages/UserPages/UserGallery";
 
 export default function Content() {
   return (
