@@ -38,7 +38,7 @@ export default function Register() {
                       className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                       placeholder="John"
                       required
-                      value="fristName"
+                      id="fristName"
                     />
                   </div>
                 </div>
@@ -55,7 +55,7 @@ export default function Register() {
                       className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                       placeholder="Smith"
                       required
-                      value="lastName"
+                      id="lastName"
                     />
                   </div>
                 </div>
@@ -74,7 +74,7 @@ export default function Register() {
                       className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                       placeholder="Colombo"
                       required
-                      value="address"
+                      id="address"
                     />
                   </div>
                 </div>
@@ -87,10 +87,10 @@ export default function Register() {
                       <i className="mdi mdi-account-outline text-gray-400 text-lg"></i>
                     </div>
                     <input
-                      type="number"
+                      type="tel"
                       className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                       placeholder="0777123456"
-                      value="contactNo"
+                      id="contactNo"
                     />
                   </div>
                 </div>
@@ -108,7 +108,7 @@ export default function Register() {
                       type="email"
                       className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                       placeholder="yourmail@gmail.com"
-                      value="email"
+                      id="email"
                     />
                   </div>
                 </div>
@@ -124,7 +124,7 @@ export default function Register() {
                       type="password"
                       className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                       placeholder="**********"
-                      value="password"
+                      id="password"
                     />
                   </div>
                 </div>
