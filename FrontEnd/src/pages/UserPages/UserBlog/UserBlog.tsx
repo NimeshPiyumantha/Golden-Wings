@@ -1,7 +1,13 @@
-import React from 'react'
+import React from "react";
+import UsersHeader from "../../../components/UsersHeader";
+import Footer from "../../../components/Footer";
 
 export default function UserBlog() {
   return (
-    <div>UserBlog</div>
-  )
+    <>
+      <UsersHeader />
+      <h1 className="mt-20">Hi</h1>
+      <Footer />
+    </>
+  );
 }
