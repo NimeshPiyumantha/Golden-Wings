@@ -5,6 +5,7 @@ import Contact from "../../pages/Contact";
 import Places from "../../pages/Places";
 import Login from "../../pages/Login";
 import Register from "../../pages/Register";
+import UserBlog from "../../pages/UserPages/UserBlog";
 
 export default function Content() {
   return (
