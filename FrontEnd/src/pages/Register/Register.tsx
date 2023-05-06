@@ -1,8 +1,8 @@
 import signUp_bg from "../../assets/img/signUp-bg.jpg";
 
-type UserProps = {};
-type UserState = {
-  roleType: string;
+type UserDetails = {
+  _id: string;
+  roleId: string;
   fristName: string;
   lastName: string;
   address: string;
