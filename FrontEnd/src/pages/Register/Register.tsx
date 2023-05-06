@@ -23,7 +23,7 @@ export default function Register() {
               <h1 className="font-bold text-3xl text-gray-900">REGISTER</h1>
               <p className="mt-1">Enter your information to register</p>
             </div>
-            <div>
+            <form>
               <div className="flex -mx-3 ">
                 <div className="w-1/2 px-3 mb-5">
                   <label form="" className="text-xs font-semibold px-1">
@@ -38,6 +38,7 @@ export default function Register() {
                       className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                       placeholder="John"
                       required
+                      value="fristName"
                     />
                   </div>
                 </div>
@@ -54,6 +55,7 @@ export default function Register() {
                       className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                       placeholder="Smith"
                       required
+                      value="lastName"
                     />
                   </div>
                 </div>
@@ -72,6 +74,7 @@ export default function Register() {
                       className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                       placeholder="Colombo"
                       required
+                      value="address"
                     />
                   </div>
                 </div>
@@ -87,6 +90,7 @@ export default function Register() {
                       type="number"
                       className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                       placeholder="0777123456"
+                      value="contactNo"
                     />
                   </div>
                 </div>
@@ -104,6 +108,7 @@ export default function Register() {
                       type="email"
                       className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                       placeholder="yourmail@gmail.com"
+                      value="email"
                     />
                   </div>
                 </div>
@@ -119,18 +124,22 @@ export default function Register() {
                       type="password"
                       className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                       placeholder="**********"
+                      value="password"
                     />
                   </div>
                 </div>
               </div>
               <div className="flex -mx-3 mt-2">
                 <div className="w-full px-5 mb-5">
-                  <button className="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold">
+                  <button
+                    className="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold"
+                    type="submit"
+                  >
                     REGISTER NOW
                   </button>
                 </div>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>
