@@ -36,7 +36,23 @@ export default class RoleController {
     req: Request,
     res: Response
   ): Promise<Response> => {
-    return res;
+    try {
+      // destructuring assignment
+      const { id } = req.params;
+
+      let updatedRole = await Role.findByIdAndUpdate(id, req.body, {
+        new: true,
+      });
+      return res
+        .status(200)
+        .json({ message: "Role updated.", responseData: updatedRole });
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        return res.status(500).json({ message: error.message });
+      } else {
+        return res.status(500).json({ message: "Unknown error occured." });
+      }
+    }
   };
 
   deleteRole: RequestHandler = async (
