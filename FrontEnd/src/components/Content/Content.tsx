@@ -8,6 +8,7 @@ import Register from "../../pages/Register";
 import UserBlog from "../../pages/UserPages/UserBlog";
 import UserContact from "../../pages/UserPages/UserContact";
 import UserProfile from "../../pages/UserPages/UserProfile";
+import UserHome from "../../pages/UserPages/UserHome";
 
 export default function Content() {
   return (
