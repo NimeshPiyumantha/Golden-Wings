@@ -13,11 +13,14 @@ export default class RoleRoutes {
     // POST /api/v1/role
     this.router.post("/", this.routerController.addNewRole);
 
-     // GET /api/v1/role
-     this.router.get("/", this.routerController.retrieveAllRole);
+    // GET /api/v1/role
+    this.router.get("/", this.routerController.retrieveAllRole);
 
-     // PUT /api/v1/role/:id
+    // PUT /api/v1/role/:id
     this.router.put("/:id", this.routerController.updateRole);
+
+    // DELETE /api/v1/role/:id
+    this.router.delete("/:id", this.routerController.deleteRole);
   };
 
   public getRouter = (): Router => {
