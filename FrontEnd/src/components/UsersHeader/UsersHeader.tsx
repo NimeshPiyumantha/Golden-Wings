@@ -48,7 +48,7 @@ function UsersHeader() {
             variant="h6"
             noWrap
             component="a"
-            href="/"
+            href="/u"
             sx={{
               mr: 9,
               display: { xs: "none", md: "flex" },
@@ -92,7 +92,7 @@ function UsersHeader() {
               }}
             >
               <NavLink
-                to={"/home"}
+                to={"/u"}
                 className={({ isActive }) =>
                   isActive ? activeLink : normalLink
                 }
@@ -103,7 +103,7 @@ function UsersHeader() {
               </NavLink>
 
               <NavLink
-                to={"/places"}
+                to={"/uplaces"}
                 className={({ isActive }) =>
                   isActive ? activeLink : normalLink
                 }
@@ -114,7 +114,7 @@ function UsersHeader() {
               </NavLink>
 
               <NavLink
-                to={"/gallery"}
+                to={"/ugallery"}
                 className={({ isActive }) =>
                   isActive ? activeLink : normalLink
                 }
@@ -125,7 +125,7 @@ function UsersHeader() {
               </NavLink>
 
               <NavLink
-                to={"/blog"}
+                to={"/ublog"}
                 className={({ isActive }) =>
                   isActive ? activeLink : normalLink
                 }
@@ -136,13 +136,24 @@ function UsersHeader() {
               </NavLink>
 
               <NavLink
-                to={"/contact"}
+                to={"/ucontact"}
                 className={({ isActive }) =>
                   isActive ? activeLink : normalLink
                 }
               >
                 <Typography textAlign="center" pt={1} pr={2} pl={2}>
                   Contact
+                </Typography>
+              </NavLink>
+
+              <NavLink
+                to={"/uprofile"}
+                className={({ isActive }) =>
+                  isActive ? activeLink : normalLink
+                }
+              >
+                <Typography textAlign="center" pt={1} pr={2} pl={2}>
+                  Profile
                 </Typography>
               </NavLink>
 
@@ -193,7 +204,7 @@ function UsersHeader() {
             }}
           >
             <NavLink
-              to={"/home"}
+              to={"/u"}
               className={({ isActive }) => (isActive ? activeLink : normalLink)}
             >
               <Button
@@ -210,7 +221,7 @@ function UsersHeader() {
             </NavLink>
 
             <NavLink
-              to={"/places"}
+              to={"/uplaces"}
               className={({ isActive }) => (isActive ? activeLink : normalLink)}
             >
               <Button
@@ -227,7 +238,7 @@ function UsersHeader() {
             </NavLink>
 
             <NavLink
-              to={"/gallery"}
+              to={"/ugallery"}
               className={({ isActive }) => (isActive ? activeLink : normalLink)}
             >
               <Button
@@ -244,7 +255,7 @@ function UsersHeader() {
             </NavLink>
 
             <NavLink
-              to={"/blog"}
+              to={"/ublog"}
               className={({ isActive }) => (isActive ? activeLink : normalLink)}
             >
               <Button
@@ -261,7 +272,7 @@ function UsersHeader() {
             </NavLink>
 
             <NavLink
-              to={"/contact"}
+              to={"/ucontact"}
               className={({ isActive }) => (isActive ? activeLink : normalLink)}
             >
               <Button
@@ -276,6 +287,24 @@ function UsersHeader() {
                 <h4>Contact</h4>
               </Button>
             </NavLink>
+
+            <NavLink
+              to={"/uprofile"}
+              className={({ isActive }) => (isActive ? activeLink : normalLink)}
+            >
+              <Button
+                onClick={handleCloseNavMenu}
+                sx={{
+                  my: 2,
+                  color: "#16a085",
+                  fontWeight: 700,
+                  display: "block",
+                }}
+              >
+                <h4>Profile</h4>
+              </Button>
+            </NavLink>
+            
             <Stack direction="row" spacing={2}>
               <NavLink to={"/"}>
                 <Button
