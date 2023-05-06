@@ -19,6 +19,9 @@ export default class UserRoutes {
     // PUT /api/v1/user/:id
     this.router.put("/:id", this.routerController.updateUser);
 
+    // DELETE /api/v1/user/:id
+    this.router.delete("/:id", this.routerController.deleteUser);
+
   };
 
   public getRouter = (): Router => {
