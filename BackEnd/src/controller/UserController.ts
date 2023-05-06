@@ -82,7 +82,24 @@ export default class UserController {
     req: Request,
     res: Response
   ): Promise<Response> => {
-    return res;
+    try {
+      const { id } = req.params;
+      let deletedUser = await User.findByIdAndDelete(id);
+
+      if (!deletedUser) {
+        throw new Error("Failed to delete User.");
+      }
+
+      return res
+        .status(200)
+        .json({ message: "User deleted.", responseData: deletedUser });
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        return res.status(500).json({ message: error.message });
+      } else {
+        return res.status(500).json({ message: "Unknown error occured." });
+      }
+    }
   };
 
   retrieveAllUser: RequestHandler = async (
