@@ -1,24 +1,12 @@
 import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import Link from "@mui/material/Link";
-import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import Typography from "@mui/material/Typography";
-import { Container, styled } from "@mui/material";
-import ButtonBase from "@mui/material/ButtonBase";
 import sigIn_bg from "../../assets/img/signIn-bg.jpg";
 import "./Login.css";
-
-const Img = styled("img")({
-  margin: "auto",
-  display: "block",
-  maxWidth: "100%",
-  maxHeight: "100%",
-});
 
 export default function Login() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -31,41 +19,18 @@ export default function Login() {
   };
 
   return (
-    <Container component="main" maxWidth="lg">
-      <Box
-        sx={{
-          marginTop: 8,
-          justifyContent: "center",
-        }}
-      >
-        <Grid container>
-          <CssBaseline />
-          <Grid item sx={{ display: { xs: "none", sm: "none", md: "block" } }}>
-            <ButtonBase sx={{ width: 550, height: 560 }}>
-              <Img alt="complex" src={sigIn_bg} />
-            </ButtonBase>
-          </Grid>
-          <Grid
-            item
-            xs={12}
-            sm={8}
-            md={5}
-            component={Paper}
-            elevation={6}
-            square
-          >
-            <Box
-              sx={{
-                my: 8,
-                mx: 4,
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-            >
-              <Typography component="h1" variant="h5">
-                Sign in
-              </Typography>
+    <div className="min-w-screen min-h-screen bg-accent-white-200 flex items-center justify-center px-5 py-5">
+      <div className="bg-gray-100 text-gray-500 rounded-3xl shadow-xl w-4/5 overflow-hidden max-width:1000px">
+        <div className="md:flex w-full">
+          <div className="hidden md:block w-1/2 bg-indigo-500 shadow-lg">
+            <img src={sigIn_bg} className="w-full h-full"></img>
+          </div>
+          <div className="w-full md:w-1/2 py-10 px-5 md:px-10">
+            <div className="text-center mb-10">
+              <h1 className="font-bold text-3xl text-gray-900">LOGIN</h1>
+              <p className="mt-2">Enter your information to login.</p>
+            </div>
+            <div className="px-8">
               <Box
                 component="form"
                 noValidate
@@ -117,10 +82,10 @@ export default function Login() {
                   </Grid>
                 </Grid>
               </Box>
-            </Box>
-          </Grid>
-        </Grid>
-      </Box>
-    </Container>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
