@@ -9,7 +9,10 @@ export default class RoleRoutes {
     this.configRoutes();
   }
 
-  private configRoutes = (): void => {};
+  private configRoutes = (): void => {
+    // POST /api/v1/role
+    this.router.post("/", this.routerController.addNewRole);
+  };
 
   public getRouter = (): Router => {
     return this.router;
