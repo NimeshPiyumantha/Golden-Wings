@@ -24,25 +24,25 @@ export default function Register() {
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
-    if (name == "roleType") {
+    if (name === "roleType") {
       setRoleType("USER");
     }
-    if (name == "fristName") {
+    if (name === "fristName") {
       setFristName(value);
     }
-    if (name == "lastName") {
+    if (name === "lastName") {
       seLastName(value);
     }
-    if (name == "address") {
+    if (name === "address") {
       setAddress(value);
     }
-    if (name == "contactNo") {
+    if (name === "contactNo") {
       setContactNo(value);
     }
-    if (name == "email") {
+    if (name === "email") {
       setEmail(value);
     }
-    if (name == "password") {
+    if (name === "password") {
       setPassword(value);
     }
   };
@@ -60,6 +60,8 @@ export default function Register() {
       password: password,
     };
 
+
+  
     api
     .post("user", newUser)
     .then((res) => {
