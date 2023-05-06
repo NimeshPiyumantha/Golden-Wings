@@ -1,7 +1,13 @@
-import React from 'react'
+import UsersHeader from '../../../components/UsersHeader'
+import Collection from '../../Gallery/Collection'
+import Footer from '../../../components/Footer'
 
 export default function UserGallery() {
   return (
-    <div>UserGallery</div>
+    <>
+    <UsersHeader />
+    <Collection/>
+    <Footer/>
+  </>
   )
 }
