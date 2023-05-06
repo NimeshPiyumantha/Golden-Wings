@@ -8,7 +8,10 @@ export default function Register() {
           <div className="hidden md:block w-1/2 bg-indigo-500 shadow-lg">
             <img src={signUp_bg} className="w-full h-full"></img>
           </div>
-        
+          <div className="w-full md:w-1/2 py-10 px-5 md:px-10">
+          
+           
+          </div>
         </div>
       </div>
     </div>
