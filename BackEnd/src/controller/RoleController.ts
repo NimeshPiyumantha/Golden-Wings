@@ -8,7 +8,7 @@ export default class RoleController{
         return res;
       };
 
-      UpdateRole: RequestHandler = async (
+      updateRole: RequestHandler = async (
         req: Request,
         res: Response
       ): Promise<Response> => {
