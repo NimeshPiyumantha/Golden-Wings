@@ -30,7 +30,7 @@ export default class UserController {
 
       const user = new User(req.body);
       // set the role id here
-      user.roleId = user._id.toString();
+      user.roleId = role._id.toString();
       // save role details
       let newUser = await user.save();
 
