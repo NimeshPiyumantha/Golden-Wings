@@ -16,7 +16,8 @@ export default class PlaceRoutes {
     // GET /api/v1/place
     this.router.get("/", this.placeController.retrieveAllPlace);
 
-
+    // PUT /api/v1/place/:id
+    this.router.put("/:id", this.placeController.updatePlace);
 
 
   };
