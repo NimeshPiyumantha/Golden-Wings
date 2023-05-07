@@ -23,7 +23,7 @@ export default function UserBlog() {
   const [date, setDate] = useState<Date>(new Date("2023-05-07T12:00:00"));
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
-  const [tagString, setTagString] = useState<string>("");
+  const [tagString, setTagString] = useState<string[]>([]);
   const [categoryName, setCategoryName] = useState<string>("");
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -39,13 +39,13 @@ export default function UserBlog() {
       : name === "description"
       ? setDescription(value)
       : name === "tagString"
-      ? setTagString(value)
+      ? setTagString([...tagString, value])
       : name === "categoryName" && setCategoryName(value);
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
+    
     let tagsArray = convertTagStringToArray(tagString);
     let newPost = {
       userId: "64560da147a6ec3aea427d68",
