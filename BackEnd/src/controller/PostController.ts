@@ -20,7 +20,20 @@ export default class PostController {
     req: Request,
     res: Response
   ): Promise<Response> => {
-    return res;
+    try {
+      const { id } = req.params;
+      let deletedPost = await Post.findByIdAndDelete(id);
+
+      return res
+        .status(200)
+        .json({ message: "Post deleted.", responseData: deletedPost });
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        return res.status(500).json({ message: error.message });
+      } else {
+        return res.status(500).json({ message: "Unknown error occured." });
+      }
+    }
   };
 
   retrieveAllPost: RequestHandler = async (
