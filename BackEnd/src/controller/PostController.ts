@@ -1,4 +1,5 @@
 import { RequestHandler, Request, Response } from "express";
+import { Post } from "../modules/Post";
 
 export default class PostController {
   addNewPost: RequestHandler = async (
@@ -33,6 +34,16 @@ export default class PostController {
     req: Request,
     res: Response
   ): Promise<Response> => {
-    return res;
+    try {
+      const { id } = req.params;
+      let posts = await Post.find({ categoryId: id });
+      return res.status(200).json({ responseData: posts });
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        return res.status(500).json({ message: error.message });
+      } else {
+        return res.status(500).json({ message: "Unknown error occured." });
+      }
+    }
   };
 }
