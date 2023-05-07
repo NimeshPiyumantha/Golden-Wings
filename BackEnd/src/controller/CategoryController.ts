@@ -50,6 +50,15 @@ export default class CategoryController {
     req: Request,
     res: Response
   ): Promise<Response> => {
-    return res;
+    try {
+      let categories = await Category.find();
+      return res.status(200).json({ responseData: categories });
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        return res.status(500).json({ message: error.message });
+      } else {
+        return res.status(500).json({ message: "Unknown error occured." });
+      }
+    }
   };
 }
