@@ -13,6 +13,11 @@ export default class PlaceRoutes {
     // POST /api/v1/place
     this.router.post("/", this.placeController.addNewPlace);
 
+    // GET /api/v1/place
+    this.router.get("/", this.placeController.retrieveAllPlace);
+
+
+
 
   };
 
