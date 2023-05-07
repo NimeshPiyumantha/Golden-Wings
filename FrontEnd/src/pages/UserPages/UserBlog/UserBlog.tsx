@@ -1,6 +1,7 @@
 import UsersHeader from "../../../components/UsersHeader";
 import Footer from "../../../components/Footer";
 import { TextField } from "@mui/material";
+import { useState } from "react";
 
 type PostDetails = {
   _id: string;
@@ -15,6 +16,16 @@ type PostDetails = {
 };
 
 export default function UserBlog() {
+
+  const [postList, setPostList] = useState<PostDetails[]>([]);
+  const [userId, setUserId] = useState<string>("");
+  const [imageUrl, setImageUrl] = useState<string>("");
+  const [date, setDate] = useState<Date>(new Date("2023-05-07T12:00:00"));
+  const [title, setTitle] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
+  const [tags, setTags] = useState<string[]>([]);
+  const [categoryName, setCategoryName] = useState<string>("");
+
   return (
     <>
       <UsersHeader />
