@@ -14,6 +14,9 @@ export default class CategoryRoutes {
     // POST /api/v1/category
     this.router.post("/", this.categoryController.addNewCategory);
 
+    // GET /api/v1/category
+    this.router.get("/", this.categoryController.retrieveAllCategory);
+
   };
 
   public getRouter = (): Router => {
