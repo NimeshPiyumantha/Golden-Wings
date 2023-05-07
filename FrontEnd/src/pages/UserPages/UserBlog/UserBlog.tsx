@@ -13,98 +13,101 @@ export default function UserBlog() {
             <h1 className="text-center pb-6 font-Ubuntu font-bold text-lg">
               Create New Post
             </h1>
-            <div className="-mx-3 md:flex mb-4">
-              <div className="md:w-1/2 px-3 mb-6 md:mb-0">
-                <TextField
-                  type="file"
-                  variant="outlined"
-                  name="imageUrl"
-                  // onChange={this.handleInputChange}
-                  // value={this.state.imageUrl}
-                  fullWidth={true}
-                  required
-                />
+            <form>
+              {/* onSubmit={this.handleSubmit} */}
+              <div className="-mx-3 md:flex mb-4">
+                <div className="md:w-1/2 px-3 mb-6 md:mb-0">
+                  <TextField
+                    type="file"
+                    variant="outlined"
+                    name="imageUrl"
+                    // onChange={this.handleInputChange}
+                    // value={this.state.imageUrl}
+                    fullWidth={true}
+                    required
+                  />
+                </div>
+                <div className="md:w-1/2 px-3">
+                  <TextField
+                    type="date"
+                    variant="outlined"
+                    name="date"
+                    // onChange={this.handleInputChange}
+                    // value={this.state.date}
+                    fullWidth={true}
+                    required
+                  />
+                </div>
               </div>
-              <div className="md:w-1/2 px-3">
-                <TextField
-                  type="date"
-                  variant="outlined"
-                  name="date"
-                  // onChange={this.handleInputChange}
-                  // value={this.state.date}
-                  fullWidth={true}
-                  required
-                />
+              <div className="-mx-3 md:flex mb-4">
+                <div className="md:w-1/2 px-3 mb-6 md:mb-0">
+                  <TextField
+                    label="Post Title"
+                    type="text"
+                    variant="outlined"
+                    name="title"
+                    placeholder="Enter post title"
+                    // onChange={this.handleInputChange}
+                    // value={this.state.title}
+                    fullWidth={true}
+                    required
+                  />
+                </div>
+                <div className="md:w-1/2 px-3">
+                  <TextField
+                    label="Category"
+                    type="text"
+                    variant="outlined"
+                    name="categoryName"
+                    placeholder="Enter Category Name"
+                    // onChange={this.handleInputChange}
+                    // value={this.state.categoryName}
+                    fullWidth={true}
+                    required
+                  />
+                </div>
               </div>
-            </div>
-            <div className="-mx-3 md:flex mb-4">
-              <div className="md:w-1/2 px-3 mb-6 md:mb-0">
-                <TextField
-                  label="Post Title"
-                  type="text"
-                  variant="outlined"
-                  name="title"
-                  placeholder="Enter post title"
-                  // onChange={this.handleInputChange}
-                  // value={this.state.title}
-                  fullWidth={true}
-                  required
-                />
+              <div className="-mx-3 md:flex mb-4">
+                <div className="md:w-full px-3 mb-6 md:mb-0">
+                  <TextField
+                    label="Post Description"
+                    type="text"
+                    variant="outlined"
+                    name="description"
+                    placeholder="Enter post description"
+                    // value={this.state.description}
+                    // onChange={this.handleInputChange}
+                    fullWidth={true}
+                    multiline
+                    minRows={5}
+                    maxRows={Infinity}
+                    required
+                  />
+                </div>
               </div>
-              <div className="md:w-1/2 px-3">
-                <TextField
-                  label="Category"
-                  type="text"
-                  variant="outlined"
-                  name="categoryName"
-                  placeholder="Enter Category Name"
-                  // onChange={this.handleInputChange}
-                  // value={this.state.categoryName}
-                  fullWidth={true}
-                  required
-                />
+              <div className="-mx-3 md:flex mb-4">
+                <div className="md:w-full px-3 mb-6 md:mb-0">
+                  <TextField
+                    label="Tags (Comma separated tags)"
+                    type="text"
+                    variant="outlined"
+                    name="tags"
+                    placeholder="Enter comma separated tags"
+                    // onChange={this.handleInputChange}
+                    // value={this.state.tagString}
+                    fullWidth={true}
+                    required
+                  />
+                </div>
               </div>
-            </div>
-            <div className="-mx-3 md:flex mb-4">
-              <div className="md:w-full px-3 mb-6 md:mb-0">
-                <TextField
-                  label="Post Description"
-                  type="text"
-                  variant="outlined"
-                  name="description"
-                  placeholder="Enter post description"
-                  // value={this.state.description}
-                  // onChange={this.handleInputChange}
-                  fullWidth={true}
-                  multiline
-                  minRows={5}
-                  maxRows={Infinity}
-                  required
-                />
+              <div className="-mx-3 md:flex mb-4">
+                <div className="md:w-full px-3 mb-6 md:mb-0">
+                  <button className="p-2 pr-3 pl-3 bg-accent-green-200 text-white rounded">
+                    <h6>Publish Post</h6>
+                  </button>
+                </div>
               </div>
-            </div>
-            <div className="-mx-3 md:flex mb-4">
-              <div className="md:w-full px-3 mb-6 md:mb-0">
-                <TextField
-                  label="Tags (Comma separated tags)"
-                  type="text"
-                  variant="outlined"
-                  name="tags"
-                  placeholder="Enter comma separated tags"
-                  // onChange={this.handleInputChange}
-                  // value={this.state.tagString}
-                  fullWidth={true}
-                  required
-                />
-              </div>
-            </div>
-            <div className="-mx-3 md:flex mb-4">
-              <div className="md:w-full px-3 mb-6 md:mb-0">
-                <button className="p-2 pr-3 pl-3 bg-accent-green-200 text-white rounded">
-                  <h6>Publish Post</h6>
-                </button>
-              </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>
