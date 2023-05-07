@@ -11,6 +11,8 @@ export default class CategoryRoutes {
   }
 
   private configRoutes = (): void => {
+    // POST /api/v1/category
+    this.router.post("/", this.categoryController.addNewCategory);
 
   };
 
