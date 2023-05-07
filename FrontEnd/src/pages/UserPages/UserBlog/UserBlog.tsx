@@ -10,7 +10,9 @@ export default function UserBlog() {
       <div className="mt-24">
         <div className="flex justify-center">
           <div className="bg-accent-white-50 shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4">
-          <h1 className="text-center pb-6 font-Ubuntu font-bold text-lg">Create New Post</h1>
+            <h1 className="text-center pb-6 font-Ubuntu font-bold text-lg">
+              Create New Post
+            </h1>
             <div className="-mx-3 md:flex mb-4">
               <div className="md:w-1/2 px-3 mb-6 md:mb-0">
                 <TextField
@@ -94,6 +96,13 @@ export default function UserBlog() {
                   fullWidth={true}
                   required
                 />
+              </div>
+            </div>
+            <div className="-mx-3 md:flex mb-4">
+              <div className="md:w-full px-3 mb-6 md:mb-0">
+                <button className="p-2 pr-3 pl-3 bg-accent-green-200 text-white rounded">
+                  <h6>Publish Post</h6>
+                </button>
               </div>
             </div>
           </div>
