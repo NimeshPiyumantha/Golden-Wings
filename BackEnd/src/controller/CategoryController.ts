@@ -8,5 +8,14 @@ export default class CategoryController {
     return res;
   };
 
+  updateCategory: RequestHandler = async (
+    req: Request,
+    res: Response
+  ): Promise<Response> => {
+    return res;
+  };
+
+
+
 
 }
