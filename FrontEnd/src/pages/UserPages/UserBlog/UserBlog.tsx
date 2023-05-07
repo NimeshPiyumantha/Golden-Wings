@@ -2,6 +2,18 @@ import UsersHeader from "../../../components/UsersHeader";
 import Footer from "../../../components/Footer";
 import { TextField } from "@mui/material";
 
+type PostDetails = {
+  _id: string;
+  isClickedCreateNewPost: boolean;
+  userId: string;
+  imageUrl: string;
+  date: Date;
+  title: string;
+  description: string;
+  tags: string[];
+  categoryName: string;
+};
+
 export default function UserBlog() {
   return (
     <>
