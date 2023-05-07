@@ -35,7 +35,35 @@ export default function UserBlog() {
                 />
               </div>
             </div>
-           
+            <div className="-mx-3 md:flex mb-4">
+              <div className="md:w-1/2 px-3 mb-6 md:mb-0">
+                <TextField
+                  label="Post Title"
+                  type="text"
+                  variant="outlined"
+                  name="title"
+                  placeholder="Enter post title"
+                  // onChange={this.handleInputChange}
+                  // value={this.state.title}
+                  fullWidth={true}
+                  required
+                />
+              </div>
+              <div className="md:w-1/2 px-3">
+                <TextField
+                  label="Category"
+                  type="text"
+                  variant="outlined"
+                  name="categoryName"
+                  placeholder="Enter Category Name"
+                  // onChange={this.handleInputChange}
+                  // value={this.state.categoryName}
+                  fullWidth={true}
+                  required
+                />
+              </div>
+            </div>
+            
           </div>
         </div>
       </div>
