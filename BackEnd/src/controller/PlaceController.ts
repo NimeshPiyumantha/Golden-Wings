@@ -20,7 +20,20 @@ export default class PlaceController {
     req: Request,
     res: Response
   ): Promise<Response> => {
-    return res;
+    try {
+      const { id } = req.params;
+      let deletedPlace = await Place.findByIdAndDelete(id);
+
+      return res
+        .status(200)
+        .json({ message: "Place deleted.", responseData: deletedPlace });
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        return res.status(500).json({ message: error.message });
+      } else {
+        return res.status(500).json({ message: "Unknown error occured." });
+      }
+    }
   };
 
   retrieveAllPlace: RequestHandler = async (
