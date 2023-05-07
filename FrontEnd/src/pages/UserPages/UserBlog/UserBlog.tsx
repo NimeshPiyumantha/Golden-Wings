@@ -63,6 +63,24 @@ export default function UserBlog() {
                 />
               </div>
             </div>
+            <div className="-mx-3 md:flex mb-4">
+              <div className="md:w-full px-3 mb-6 md:mb-0">
+                <TextField
+                  label="Post Description"
+                  type="text"
+                  variant="outlined"
+                  name="description"
+                  placeholder="Enter post description"
+                  // value={this.state.description}
+                  // onChange={this.handleInputChange}
+                  fullWidth={true}
+                  multiline
+                  minRows={5}
+                  maxRows={Infinity}
+                  required
+                />
+              </div>
+            </div>
             
           </div>
         </div>
