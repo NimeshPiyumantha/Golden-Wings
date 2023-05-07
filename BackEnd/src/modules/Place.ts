@@ -31,7 +31,7 @@ const PlaceSchema = new Schema(
       type: Date,
       required: true,
     },
-    time: {
+    timeId: {
       type: String,
       required: true,
     },
