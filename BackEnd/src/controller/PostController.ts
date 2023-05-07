@@ -8,4 +8,12 @@ export default class PostController {
     return res;
   };
 
+  updatePost: RequestHandler = async (
+    req: Request,
+    res: Response
+  ): Promise<Response> => {
+    return res;
+  };
+
+
 }
