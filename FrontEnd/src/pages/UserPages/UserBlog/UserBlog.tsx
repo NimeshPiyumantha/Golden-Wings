@@ -1,7 +1,7 @@
 import UsersHeader from "../../../components/UsersHeader";
 import Footer from "../../../components/Footer";
 import { TextField } from "@mui/material";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 
 type PostDetails = {
   _id: string;
@@ -16,7 +16,6 @@ type PostDetails = {
 };
 
 export default function UserBlog() {
-
   const [postList, setPostList] = useState<PostDetails[]>([]);
   const [userId, setUserId] = useState<string>("");
   const [imageUrl, setImageUrl] = useState<string>("");
@@ -25,6 +24,23 @@ export default function UserBlog() {
   const [description, setDescription] = useState<string>("");
   const [tags, setTags] = useState<string[]>([]);
   const [categoryName, setCategoryName] = useState<string>("");
+
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    name === "userId"
+      ? setUserId(value)
+      : name === "imageUrl"
+      ? setImageUrl(value)
+      : name === "date"
+      ? setDate(new Date(value))
+      : name === "title"
+      ? setTitle(value)
+      : name === "description"
+      ? setDescription(value)
+      : name === "tags"
+      ? setTags([...tags, value])
+      : name === "categoryName" && setCategoryName(value);
+  };
 
   return (
     <>
@@ -44,7 +60,7 @@ export default function UserBlog() {
                     type="file"
                     variant="outlined"
                     name="imageUrl"
-                    // onChange={this.handleInputChange}
+                    onChange={handleInputChange}
                     // value={this.state.imageUrl}
                     fullWidth={true}
                     required
@@ -55,7 +71,7 @@ export default function UserBlog() {
                     type="date"
                     variant="outlined"
                     name="date"
-                    // onChange={this.handleInputChange}
+                    onChange={handleInputChange}
                     // value={this.state.date}
                     fullWidth={true}
                     required
@@ -70,7 +86,7 @@ export default function UserBlog() {
                     variant="outlined"
                     name="title"
                     placeholder="Enter post title"
-                    // onChange={this.handleInputChange}
+                    onChange={handleInputChange}
                     // value={this.state.title}
                     fullWidth={true}
                     required
@@ -83,7 +99,7 @@ export default function UserBlog() {
                     variant="outlined"
                     name="categoryName"
                     placeholder="Enter Category Name"
-                    // onChange={this.handleInputChange}
+                    onChange={handleInputChange}
                     // value={this.state.categoryName}
                     fullWidth={true}
                     required
@@ -99,7 +115,7 @@ export default function UserBlog() {
                     name="description"
                     placeholder="Enter post description"
                     // value={this.state.description}
-                    // onChange={this.handleInputChange}
+                    onChange={handleInputChange}
                     fullWidth={true}
                     multiline
                     minRows={5}
@@ -116,7 +132,7 @@ export default function UserBlog() {
                     variant="outlined"
                     name="tags"
                     placeholder="Enter comma separated tags"
-                    // onChange={this.handleInputChange}
+                    onChange={handleInputChange}
                     // value={this.state.tagString}
                     fullWidth={true}
                     required
