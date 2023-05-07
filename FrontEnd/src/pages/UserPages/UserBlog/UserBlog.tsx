@@ -2,6 +2,7 @@ import UsersHeader from "../../../components/UsersHeader";
 import Footer from "../../../components/Footer";
 import { TextField } from "@mui/material";
 import { ChangeEvent, useState } from "react";
+import api from "../../../axios";
 
 type PostDetails = {
   _id: string;
@@ -11,7 +12,7 @@ type PostDetails = {
   date: Date;
   title: string;
   description: string;
-  tags: string[];
+  tagString: string[];
   categoryName: string;
 };
 
@@ -22,7 +23,7 @@ export default function UserBlog() {
   const [date, setDate] = useState<Date>(new Date("2023-05-07T12:00:00"));
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
-  const [tags, setTags] = useState<string[]>([]);
+  const [tagString, setTagString] = useState<string>("");
   const [categoryName, setCategoryName] = useState<string>("");
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -37,9 +38,42 @@ export default function UserBlog() {
       ? setTitle(value)
       : name === "description"
       ? setDescription(value)
-      : name === "tags"
-      ? setTags([...tags, value])
+      : name === "tagString"
+      ? setTagString(value)
       : name === "categoryName" && setCategoryName(value);
+  };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    let tagsArray = convertTagStringToArray(tagString);
+    let newPost = {
+      userId: "64560da147a6ec3aea427d68",
+      imageUrl: imageUrl,
+      date: date,
+      title: title,
+      description: description,
+      tags: tagsArray,
+      categoryName: categoryName,
+    };
+
+    api
+      .post("post", newPost)
+      .then((res) => {
+        console.log(res);
+        let post: PostDetails[] = [...postList, res.data.responseData];
+        setPostList(post);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const convertTagStringToArray = (tagString: string): string[] => {
+    if (tagString !== "") {
+      return tagString.split(",").map((tag) => tag.trim());
+    }
+    return [];
   };
 
   return (
@@ -52,12 +86,11 @@ export default function UserBlog() {
             <h1 className="text-center pb-6 font-Ubuntu font-bold text-lg">
               Create New Post
             </h1>
-            <form>
-              {/* onSubmit={this.handleSubmit} */}
+            <form onSubmit={handleSubmit}>
               <div className="-mx-3 md:flex mb-4">
                 <div className="md:w-1/2 px-3 mb-6 md:mb-0">
                   <TextField
-                    type="file"
+                    type="text"
                     variant="outlined"
                     name="imageUrl"
                     onChange={handleInputChange}
