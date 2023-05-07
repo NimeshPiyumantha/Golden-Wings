@@ -1,13 +1,13 @@
 import { Document, Schema, model } from "mongoose";
 
 export interface IImage extends Document {
-  image: string;
+  text: string;
 }
 
 // creating schema
 const ImageSchema = new Schema(
   {
-    image: {
+    text: {
       type: String,
       required: true,
     },
