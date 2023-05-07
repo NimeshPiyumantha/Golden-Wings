@@ -1,4 +1,4 @@
-import { Document, Schema } from "mongoose";
+import { Document, Schema, model } from "mongoose";
 
 export interface IPost extends Document {
   userId: string;
@@ -10,33 +10,38 @@ export interface IPost extends Document {
   categoryId: string;
 }
 
-const PostSchema = new Schema({
-  userId: {
-    type: String,
-    required: true,
+// creating schema
+const PostSchema = new Schema(
+  {
+    userId: {
+      type: String,
+      required: true,
+    },
+    images: {
+      type: Array,
+      required: true,
+    },
+    date: {
+      type: Date,
+      required: true,
+    },
+    title: {
+      type: String,
+      required: true,
+    },
+    description: {
+      type: String,
+      required: true,
+    },
+    tags: {
+      type: Array,
+      required: true,
+    },
+    categoryId: {
+      type: String,
+      required: true,
+    },
   },
-  images: {
-    type: Array,
-    required: true,
-  },
-  date: {
-    type: Date,
-    required: true,
-  },
-  title: {
-    type: String,
-    required: true,
-  },
-  description: {
-    type: String,
-    required: true,
-  },
-  tags: {
-    type: Array,
-    required: true,
-  },
-  categoryId: {
-    type: String,
-    required: true,
-  },
-});
+  { timestamps: true }
+);
+export const Post = model<IPost>("Post", PostSchema);
