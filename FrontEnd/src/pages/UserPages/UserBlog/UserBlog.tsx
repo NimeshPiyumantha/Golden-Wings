@@ -81,7 +81,21 @@ export default function UserBlog() {
                 />
               </div>
             </div>
-            
+            <div className="-mx-3 md:flex mb-4">
+              <div className="md:w-full px-3 mb-6 md:mb-0">
+                <TextField
+                  label="Tags (Comma separated tags)"
+                  type="text"
+                  variant="outlined"
+                  name="tags"
+                  placeholder="Enter comma separated tags"
+                  // onChange={this.handleInputChange}
+                  // value={this.state.tagString}
+                  fullWidth={true}
+                  required
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>
