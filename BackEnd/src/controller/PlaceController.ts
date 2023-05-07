@@ -8,7 +8,12 @@ export default class PlaceController {
     return res;
   };
 
-
+  updatePlace: RequestHandler = async (
+    req: Request,
+    res: Response
+  ): Promise<Response> => {
+    return res;
+  };
 
 
 
