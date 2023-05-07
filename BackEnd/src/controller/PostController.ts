@@ -14,6 +14,7 @@ export default class PostController {
 
     try {
       const { categoryName } = req.body;
+      const { imageUrl } = req.body;
 
       // start the session and transaction
       session = await mongoose.startSession();
@@ -30,9 +31,23 @@ export default class PostController {
         category = await category.save();
       }
 
+      // check whether the relevant images already exists or not
+      let images = await Image.findOne({
+        imageUrl: imageUrl,
+      }).session(session);
+
+      if (!images) {
+        // save image only if not exists
+        images = new Image({ imageUrl: imageUrl });
+        images = await images.save();
+      }
+
       const post = new Post(req.body);
+
       // set the category id here
       post.categoryId = category._id.toString();
+      // set the image id here
+      post.imageId = images._id.toString();
 
       // save Post details
       let newPost = await post.save();
@@ -48,21 +63,6 @@ export default class PostController {
           if (!tag) {
             tag = new Tag({ text: tags[i] });
             await tag.save();
-          }
-        }
-      }
-
-      // getting the images array from request body
-      const images = req.body.images;
-
-      // save images
-      if (images.length > 0) {
-        for (let i = 0; i < images.length; i++) {
-          // check whether the relevant images already exists or not
-          let image = await Image.findOne({ text: images[i] }).session(session);
-          if (!image) {
-            image = new Image({ text: images[i] });
-            await image.save();
           }
         }
       }

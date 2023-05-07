@@ -20,7 +20,7 @@ export default class PostRoutes {
     this.router.put("/:id", this.postController.updatePost);
 
     // DELETE /api/v1/post/:id
-    this.router.delete("/:id", this.postController.updatePost);
+    this.router.delete("/:id", this.postController.deletePost);
 
     // GET /api/v1/post/category/:id
     this.router.get("/category/:id", this.postController.searchPostByCategory);

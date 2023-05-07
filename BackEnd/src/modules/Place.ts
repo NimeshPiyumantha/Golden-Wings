@@ -3,7 +3,7 @@ import { Document, Schema, model } from "mongoose";
 export interface IPlace extends Document {
   title: string;
   description: string;
-  images: string;
+  imageId: string;
   date: Date;
   time: string;
   cost: number;
@@ -23,7 +23,7 @@ const PlaceSchema = new Schema(
       type: String,
       required: true,
     },
-    images: {
+    imageId: {
       type: String,
       required: true,
     },
