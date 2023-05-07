@@ -13,7 +13,21 @@ export default class PostController {
     req: Request,
     res: Response
   ): Promise<Response> => {
-    return res;
+    try {
+      const { id } = req.params;
+      let updatedPost = await Post.findByIdAndUpdate(id, req.body, {
+        new: true,
+      });
+      return res
+        .status(200)
+        .json({ message: "Post updated.", responseData: updatedPost });
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        return res.status(500).json({ message: error.message });
+      } else {
+        return res.status(500).json({ message: "Unknown error occured." });
+      }
+    }
   };
 
   deletePost: RequestHandler = async (
