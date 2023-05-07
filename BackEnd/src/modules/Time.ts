@@ -1,13 +1,13 @@
 import { Document, Schema, model } from "mongoose";
 
 export interface ITime extends Document {
-  timeId: string;
+  timeRange: string;
 }
 
 // creating schema
 const TimeSchema = new Schema(
   {
-    timeId: {
+    timeRange: {
       type: String,
       required: true,
     },
