@@ -19,7 +19,8 @@ export default class PlaceRoutes {
     // PUT /api/v1/place/:id
     this.router.put("/:id", this.placeController.updatePlace);
 
-
+    // DELETE /api/v1/place/:id
+    this.router.delete("/:id", this.placeController.deletePlace);
   };
 
   public getRouter = (): Router => {
