@@ -5,7 +5,7 @@ export interface IPlace extends Document {
   description: string;
   imageId: string;
   date: Date;
-  time: string;
+  timeId: string;
   cost: number;
   contact: number;
   tags: string[];
