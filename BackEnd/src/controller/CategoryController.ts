@@ -59,7 +59,26 @@ export default class CategoryController {
     req: Request,
     res: Response
   ): Promise<Response> => {
-    return res;
+    try {
+      // destructuring assignment
+      const { id } = req.params;
+
+      let deletedCategory = await Category.findByIdAndDelete(id);
+
+      if (!deletedCategory) {
+        throw new Error("Failed to delete post.");
+      }
+
+      return res
+        .status(200)
+        .json({ message: "Category deleted.", responseData: deletedCategory });
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        return res.status(500).json({ message: error.message });
+      } else {
+        return res.status(500).json({ message: "Unknown error occured." });
+      }
+    }
   };
 
   retrieveAllCategory: RequestHandler = async (
