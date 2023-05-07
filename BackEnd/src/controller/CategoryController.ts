@@ -15,7 +15,12 @@ export default class CategoryController {
     return res;
   };
 
-
+  deleteCategory: RequestHandler = async (
+    req: Request,
+    res: Response
+  ): Promise<Response> => {
+    return res;
+  };
 
 
 }
