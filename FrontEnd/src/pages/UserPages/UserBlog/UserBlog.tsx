@@ -1,11 +1,12 @@
 import UsersHeader from "../../../components/UsersHeader";
 import Footer from "../../../components/Footer";
 import { Divider, TextField } from "@mui/material";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import api from "../../../axios";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import PostAddIcon from "@mui/icons-material/PostAdd";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
+import Post from "../../../components/Post/Post";
 
 type State = {
   isClickedCreateNewPost: boolean;
@@ -90,6 +91,21 @@ export default function UserBlog() {
     }));
   };
 
+  useEffect(() => {
+    getAllPost();
+  }, []);
+
+  const getAllPost = () => {
+    api
+      .get("post")
+      .then((res) => {
+        setPostList(res.data.responseData);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <>
       <UsersHeader />
@@ -133,7 +149,7 @@ export default function UserBlog() {
                   <div className="-mx-3 md:flex mb-4">
                     <div className="md:w-1/2 px-2 mb-6 md:mb-0">
                       <TextField
-                        type="text"
+                        type="file"
                         variant="outlined"
                         name="imageUrl"
                         onChange={handleInputChange}
@@ -222,9 +238,21 @@ export default function UserBlog() {
           )}
         </div>
         <Divider className="!my-5" />
-        
-      </div>
 
+        {postList.map((post) => (
+          <Post
+            key={post._id}
+            _id={post._id}
+            userId={post._id}
+            imageUrl={post.imageUrl}
+            date={post.date}
+            title={post.title}
+            description={post.description}
+            tags={["Crazy", "Amazing"]}
+            categoryName={post.categoryName}
+          />
+        ))}
+      </div>
       <Footer />
     </>
   );
