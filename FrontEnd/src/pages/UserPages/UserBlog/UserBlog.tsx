@@ -94,7 +94,7 @@ export default function UserBlog() {
     <>
       <UsersHeader />
 
-      <div className="py-6 lg:px-60 md:px-32 xl:px-96 px-8 mt-24">
+      <div className="py-6 lg:px-60 md:px-32 xl:px-96 px-8 mt-20">
         <div className="w-full flex flex-col space-y-1">
           {!state.isClickedCreateNewPost ? (
             <>
@@ -133,7 +133,7 @@ export default function UserBlog() {
                   <div className="-mx-3 md:flex mb-4">
                     <div className="md:w-1/2 px-2 mb-6 md:mb-0">
                       <TextField
-                        type="file"
+                        type="text"
                         variant="outlined"
                         name="imageUrl"
                         onChange={handleInputChange}
@@ -222,6 +222,7 @@ export default function UserBlog() {
           )}
         </div>
         <Divider className="!my-5" />
+        
       </div>
 
       <Footer />
