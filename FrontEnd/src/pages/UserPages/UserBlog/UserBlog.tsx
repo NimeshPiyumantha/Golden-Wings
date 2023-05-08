@@ -29,6 +29,8 @@ export default function UserBlog() {
   const [tagString, setTagString] = useState<string>("");
   const [categoryName, setCategoryName] = useState<string>("");
 
+
+
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     name === "userId"
@@ -80,7 +82,7 @@ export default function UserBlog() {
   };
 
   const handleClickCreateNewPost = () => {
-    // setState((prevState) => ({
+    // setState((prevState: State) => ({
     //   ...prevState,
     //   isClickedCreateNewPost: !prevState.isClickedCreateNewPost,
     // }));
@@ -91,119 +93,146 @@ export default function UserBlog() {
       <UsersHeader />
 
       <div className="mt-20">
-        <div className="flex justify-center">
-          <div className="w-5/12">
-            <div className="mx-12 m-2">
-              <div
-                className="cursor-pointer w-full  p-4 bg-accent-green-50 text-white rounded flex justify-between items-center"
-                onClick={handleClickCreateNewPost}
-              >
-                <h6 className="text-center font-Ubuntu font-bold text-lg">
-                  Discard Post
-                </h6>
-                <RemoveCircleIcon />
+        {!true ? (
+          <>
+            <div className="flex justify-center">
+              <div className="w-5/12">
+                <div className="mx-12 m-2">
+                  <div
+                    className="cursor-pointer w-full p-4 bg-accent-red-50 text-white rounded flex justify-between items-center"
+                    onClick={handleClickCreateNewPost}
+                  >
+                    <h6>Create New Post</h6>
+                    <AddCircleIcon />
+                  </div>
+                  <div
+                    className="cursor-pointer p-8 bg-white rounded text-slate-400 flex justify-center items-center space-x-3 border border-slate-400"
+                    onClick={handleClickCreateNewPost}
+                  >
+                    <PostAddIcon />
+                    <h6>Your New Post</h6>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div className="flex justify-center">
-          <div className="bg-accent-white-50 shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4">
-            <form onSubmit={handleSubmit}>
-              <div className="-mx-3 md:flex mb-4">
-                <div className="md:w-1/2 px-3 mb-6 md:mb-0">
-                  <TextField
-                    type="text"
-                    variant="outlined"
-                    name="imageUrl"
-                    onChange={handleInputChange}
-                    // value={this.state.imageUrl}
-                    fullWidth={true}
-                    required
-                  />
-                </div>
-                <div className="md:w-1/2 px-3">
-                  <TextField
-                    type="date"
-                    variant="outlined"
-                    name="date"
-                    onChange={handleInputChange}
-                    // value={this.state.date}
-                    fullWidth={true}
-                    required
-                  />
+          </>
+        ) : (
+          <>
+            <div className="flex justify-center">
+              <div className="w-5/12">
+                <div className="mx-12 m-2">
+                  <div
+                    className="cursor-pointer w-full  p-4 bg-accent-green-50 text-white rounded flex justify-between items-center"
+                    onClick={handleClickCreateNewPost}
+                  >
+                    <h6 className="text-center font-Ubuntu font-bold text-lg">
+                      Discard Post
+                    </h6>
+                    <RemoveCircleIcon />
+                  </div>
                 </div>
               </div>
-              <div className="-mx-3 md:flex mb-4">
-                <div className="md:w-1/2 px-3 mb-6 md:mb-0">
-                  <TextField
-                    label="Post Title"
-                    type="text"
-                    variant="outlined"
-                    name="title"
-                    placeholder="Enter post title"
-                    onChange={handleInputChange}
-                    // value={this.state.title}
-                    fullWidth={true}
-                    required
-                  />
-                </div>
-                <div className="md:w-1/2 px-3">
-                  <TextField
-                    label="Category"
-                    type="text"
-                    variant="outlined"
-                    name="categoryName"
-                    placeholder="Enter Category Name"
-                    onChange={handleInputChange}
-                    // value={this.state.categoryName}
-                    fullWidth={true}
-                    required
-                  />
-                </div>
+            </div>
+            <div className="flex justify-center">
+              <div className="bg-accent-white-50 shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4">
+                <form onSubmit={handleSubmit}>
+                  <div className="-mx-3 md:flex mb-4">
+                    <div className="md:w-1/2 px-3 mb-6 md:mb-0">
+                      <TextField
+                        type="text"
+                        variant="outlined"
+                        name="imageUrl"
+                        onChange={handleInputChange}
+                        // value={this.state.imageUrl}
+                        fullWidth={true}
+                        required
+                      />
+                    </div>
+                    <div className="md:w-1/2 px-3">
+                      <TextField
+                        type="date"
+                        variant="outlined"
+                        name="date"
+                        onChange={handleInputChange}
+                        // value={this.state.date}
+                        fullWidth={true}
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div className="-mx-3 md:flex mb-4">
+                    <div className="md:w-1/2 px-3 mb-6 md:mb-0">
+                      <TextField
+                        label="Post Title"
+                        type="text"
+                        variant="outlined"
+                        name="title"
+                        placeholder="Enter post title"
+                        onChange={handleInputChange}
+                        // value={this.state.title}
+                        fullWidth={true}
+                        required
+                      />
+                    </div>
+                    <div className="md:w-1/2 px-3">
+                      <TextField
+                        label="Category"
+                        type="text"
+                        variant="outlined"
+                        name="categoryName"
+                        placeholder="Enter Category Name"
+                        onChange={handleInputChange}
+                        // value={this.state.categoryName}
+                        fullWidth={true}
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div className="-mx-3 md:flex mb-4">
+                    <div className="md:w-full px-3 mb-6 md:mb-0">
+                      <TextField
+                        label="Post Description"
+                        type="text"
+                        variant="outlined"
+                        name="description"
+                        placeholder="Enter post description"
+                        // value={this.state.description}
+                        onChange={handleInputChange}
+                        fullWidth={true}
+                        multiline
+                        minRows={5}
+                        maxRows={Infinity}
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div className="-mx-3 md:flex mb-4">
+                    <div className="md:w-full px-3 mb-6 md:mb-0">
+                      <TextField
+                        label="Tags (Comma separated tags)"
+                        type="text"
+                        variant="outlined"
+                        name="tagString"
+                        placeholder="Enter comma separated tags"
+                        onChange={handleInputChange}
+                        // value={this.state.tagString}
+                        fullWidth={true}
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div className="-mx-3 md:flex mb-4">
+                    <div className="md:w-full px-3 mb-6 md:mb-0">
+                      <button className="p-2 pr-3 pl-3 bg-accent-green-200 text-white rounded">
+                        <h6>Publish Post</h6>
+                      </button>
+                    </div>
+                  </div>
+                </form>
               </div>
-              <div className="-mx-3 md:flex mb-4">
-                <div className="md:w-full px-3 mb-6 md:mb-0">
-                  <TextField
-                    label="Post Description"
-                    type="text"
-                    variant="outlined"
-                    name="description"
-                    placeholder="Enter post description"
-                    // value={this.state.description}
-                    onChange={handleInputChange}
-                    fullWidth={true}
-                    multiline
-                    minRows={5}
-                    maxRows={Infinity}
-                    required
-                  />
-                </div>
-              </div>
-              <div className="-mx-3 md:flex mb-4">
-                <div className="md:w-full px-3 mb-6 md:mb-0">
-                  <TextField
-                    label="Tags (Comma separated tags)"
-                    type="text"
-                    variant="outlined"
-                    name="tagString"
-                    placeholder="Enter comma separated tags"
-                    onChange={handleInputChange}
-                    // value={this.state.tagString}
-                    fullWidth={true}
-                    required
-                  />
-                </div>
-              </div>
-              <div className="-mx-3 md:flex mb-4">
-                <div className="md:w-full px-3 mb-6 md:mb-0">
-                  <button className="p-2 pr-3 pl-3 bg-accent-green-200 text-white rounded">
-                    <h6>Publish Post</h6>
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
+            </div>
+          </>
+        )}
       </div>
 
       <Footer />
