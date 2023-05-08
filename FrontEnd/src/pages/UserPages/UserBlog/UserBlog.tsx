@@ -1,6 +1,6 @@
 import UsersHeader from "../../../components/UsersHeader";
 import Footer from "../../../components/Footer";
-import { TextField } from "@mui/material";
+import { Divider, TextField } from "@mui/material";
 import { ChangeEvent, useState } from "react";
 import api from "../../../axios";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
@@ -94,62 +94,49 @@ export default function UserBlog() {
     <>
       <UsersHeader />
 
-      <div className="mt-20">
-        {!state.isClickedCreateNewPost ? (
-          <>
-            <div className="flex justify-center">
-              <div className="w-5/12">
-                <div className="mx-12 m-2">
-                  <div
-                    className="cursor-pointer w-full p-4 bg-accent-green-50 text-white rounded flex justify-between items-center"
-                    onClick={handleClickCreateNewPost}
-                  >
-                    <h6 className="text-center font-Ubuntu font-bold text-lg">
-                      Create New Post
-                    </h6>
-                    <AddCircleIcon />
-                  </div>
-                  <div
-                    className="cursor-pointer mt-2 p-8 bg-accent-white-50 rounded text-slate-400 flex justify-center items-center space-x-3 border border-slate-400"
-                    onClick={handleClickCreateNewPost}
-                  >
-                    <PostAddIcon />
-                    <h6 className="text-center font-Ubuntu font-bold text-lg">
-                      Your New Post
-                    </h6>
-                  </div>
-                </div>
+      <div className="py-6 sm:px-96 lg:px-60 md:px-32 xl:px-96 px-10 mt-24">
+        <div className="w-full flex flex-col space-y-1">
+          {!state.isClickedCreateNewPost ? (
+            <>
+              <div
+                className="cursor-pointer w-full p-4 bg-accent-green-50 text-white rounded flex justify-between items-center"
+                onClick={handleClickCreateNewPost}
+              >
+                <h6 className="text-center font-Ubuntu font-bold text-lg">
+                  Create New Post
+                </h6>
+                <AddCircleIcon />
               </div>
-            </div>
-          </>
-        ) : (
-          <>
-            <div className="flex justify-center">
-              <div className="w-5/12">
-                <div className="mx-12 m-2">
-                  <div
-                    className="cursor-pointer w-full  p-4  bg-accent-red-50 text-white rounded flex justify-between items-center"
-                    onClick={handleClickCreateNewPost}
-                  >
-                    <h6 className="text-center font-Ubuntu font-bold text-lg">
-                      Discard Post
-                    </h6>
-                    <RemoveCircleIcon />
-                  </div>
-                </div>
+              <div
+                className="cursor-pointer p-8 bg-white rounded text-slate-400 flex justify-center items-center space-x-3 border border-slate-400"
+                onClick={handleClickCreateNewPost}
+              >
+                <PostAddIcon />
+                <h6 className="text-center font-Ubuntu font-bold text-lg">
+                  Your New Post
+                </h6>
               </div>
-            </div>
-            <div className="flex justify-center">
-              <div className="bg-accent-white-50 shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4 border border-slate-400">
+            </>
+          ) : (
+            <>
+              <div
+                className="cursor-pointer w-full p-4 bg-accent-red-50 text-white rounded flex justify-between items-center"
+                onClick={handleClickCreateNewPost}
+              >
+                <h6 className="text-center font-Ubuntu font-bold text-lg">
+                  Discard Post
+                </h6>
+                <RemoveCircleIcon />
+              </div>
+              <div className="w-full cursor-pointer p-8 bg-accent-white-50 rounded text-slate-400 flex justify-center items-center space-x-3 border border-slate-400">
                 <form onSubmit={handleSubmit}>
                   <div className="-mx-3 md:flex mb-4">
-                    <div className="md:w-1/2 px-3 mb-6 md:mb-0">
+                    <div className="md:w-1/2 px-2 mb-6 md:mb-0">
                       <TextField
-                        type="text"
+                        type="file"
                         variant="outlined"
                         name="imageUrl"
                         onChange={handleInputChange}
-                        // value={this.state.imageUrl}
                         fullWidth={true}
                         required
                       />
@@ -160,7 +147,6 @@ export default function UserBlog() {
                         variant="outlined"
                         name="date"
                         onChange={handleInputChange}
-                        // value={this.state.date}
                         fullWidth={true}
                         required
                       />
@@ -175,7 +161,6 @@ export default function UserBlog() {
                         name="title"
                         placeholder="Enter post title"
                         onChange={handleInputChange}
-                        // value={this.state.title}
                         fullWidth={true}
                         required
                       />
@@ -188,7 +173,6 @@ export default function UserBlog() {
                         name="categoryName"
                         placeholder="Enter Category Name"
                         onChange={handleInputChange}
-                        // value={this.state.categoryName}
                         fullWidth={true}
                         required
                       />
@@ -202,7 +186,6 @@ export default function UserBlog() {
                         variant="outlined"
                         name="description"
                         placeholder="Enter post description"
-                        // value={this.state.description}
                         onChange={handleInputChange}
                         fullWidth={true}
                         multiline
@@ -221,7 +204,6 @@ export default function UserBlog() {
                         name="tagString"
                         placeholder="Enter comma separated tags"
                         onChange={handleInputChange}
-                        // value={this.state.tagString}
                         fullWidth={true}
                         required
                       />
@@ -236,9 +218,10 @@ export default function UserBlog() {
                   </div>
                 </form>
               </div>
-            </div>
-          </>
-        )}
+            </>
+          )}
+        </div>
+        <Divider className="!my-5" />
       </div>
 
       <Footer />
