@@ -94,7 +94,7 @@ export default function UserBlog() {
     <>
       <UsersHeader />
 
-      <div className="py-6 sm:px-96 lg:px-60 md:px-32 xl:px-96 px-10 mt-24">
+      <div className="py-6 lg:px-60 md:px-32 xl:px-96 px-8 mt-24">
         <div className="w-full flex flex-col space-y-1">
           {!state.isClickedCreateNewPost ? (
             <>
