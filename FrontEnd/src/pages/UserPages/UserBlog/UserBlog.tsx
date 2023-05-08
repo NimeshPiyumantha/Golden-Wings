@@ -7,9 +7,12 @@ import AddCircleIcon from "@mui/icons-material/AddCircle";
 import PostAddIcon from "@mui/icons-material/PostAdd";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 
+type State = {
+  isClickedCreateNewPost: boolean;
+};
+
 type PostDetails = {
   _id: string;
-  isClickedCreateNewPost: boolean;
   userId: string;
   imageUrl: string;
   date: Date;
@@ -28,8 +31,7 @@ export default function UserBlog() {
   const [description, setDescription] = useState<string>("");
   const [tagString, setTagString] = useState<string>("");
   const [categoryName, setCategoryName] = useState<string>("");
-
-
+  const [state, setState] = useState<State>({ isClickedCreateNewPost: false });
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -82,10 +84,10 @@ export default function UserBlog() {
   };
 
   const handleClickCreateNewPost = () => {
-    // setState((prevState: State) => ({
-    //   ...prevState,
-    //   isClickedCreateNewPost: !prevState.isClickedCreateNewPost,
-    // }));
+    setState((prevState) => ({
+      ...state,
+      isClickedCreateNewPost: !state.isClickedCreateNewPost,
+    }));
   };
 
   return (
@@ -93,24 +95,28 @@ export default function UserBlog() {
       <UsersHeader />
 
       <div className="mt-20">
-        {!true ? (
+        {!state.isClickedCreateNewPost ? (
           <>
             <div className="flex justify-center">
               <div className="w-5/12">
                 <div className="mx-12 m-2">
                   <div
-                    className="cursor-pointer w-full p-4 bg-accent-red-50 text-white rounded flex justify-between items-center"
+                    className="cursor-pointer w-full p-4 bg-accent-green-50 text-white rounded flex justify-between items-center"
                     onClick={handleClickCreateNewPost}
                   >
-                    <h6>Create New Post</h6>
+                    <h6 className="text-center font-Ubuntu font-bold text-lg">
+                      Create New Post
+                    </h6>
                     <AddCircleIcon />
                   </div>
                   <div
-                    className="cursor-pointer p-8 bg-white rounded text-slate-400 flex justify-center items-center space-x-3 border border-slate-400"
+                    className="cursor-pointer mt-2 p-8 bg-accent-white-50 rounded text-slate-400 flex justify-center items-center space-x-3 border border-slate-400"
                     onClick={handleClickCreateNewPost}
                   >
                     <PostAddIcon />
-                    <h6>Your New Post</h6>
+                    <h6 className="text-center font-Ubuntu font-bold text-lg">
+                      Your New Post
+                    </h6>
                   </div>
                 </div>
               </div>
@@ -122,7 +128,7 @@ export default function UserBlog() {
               <div className="w-5/12">
                 <div className="mx-12 m-2">
                   <div
-                    className="cursor-pointer w-full  p-4 bg-accent-green-50 text-white rounded flex justify-between items-center"
+                    className="cursor-pointer w-full  p-4  bg-accent-red-50 text-white rounded flex justify-between items-center"
                     onClick={handleClickCreateNewPost}
                   >
                     <h6 className="text-center font-Ubuntu font-bold text-lg">
@@ -134,7 +140,7 @@ export default function UserBlog() {
               </div>
             </div>
             <div className="flex justify-center">
-              <div className="bg-accent-white-50 shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4">
+              <div className="bg-accent-white-50 shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4 border border-slate-400">
                 <form onSubmit={handleSubmit}>
                   <div className="-mx-3 md:flex mb-4">
                     <div className="md:w-1/2 px-3 mb-6 md:mb-0">
@@ -223,7 +229,7 @@ export default function UserBlog() {
                   </div>
                   <div className="-mx-3 md:flex mb-4">
                     <div className="md:w-full px-3 mb-6 md:mb-0">
-                      <button className="p-2 pr-3 pl-3 bg-accent-green-200 text-white rounded">
+                      <button className="p-2 mt-2 pr-3 pl-3 bg-accent-green-200 text-white rounded">
                         <h6>Publish Post</h6>
                       </button>
                     </div>
