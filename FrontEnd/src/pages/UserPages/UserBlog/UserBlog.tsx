@@ -3,6 +3,9 @@ import Footer from "../../../components/Footer";
 import { TextField } from "@mui/material";
 import { ChangeEvent, useState } from "react";
 import api from "../../../axios";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
+import PostAddIcon from "@mui/icons-material/PostAdd";
+import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 
 type PostDetails = {
   _id: string;
@@ -76,16 +79,35 @@ export default function UserBlog() {
     return [];
   };
 
+  const handleClickCreateNewPost = () => {
+    // setState((prevState) => ({
+    //   ...prevState,
+    //   isClickedCreateNewPost: !prevState.isClickedCreateNewPost,
+    // }));
+  };
+
   return (
     <>
       <UsersHeader />
 
-      <div className="mt-24">
+      <div className="mt-20">
+        <div className="flex justify-center">
+          <div className="w-5/12">
+            <div className="mx-12 m-2">
+              <div
+                className="cursor-pointer w-full  p-4 bg-accent-green-50 text-white rounded flex justify-between items-center"
+                onClick={handleClickCreateNewPost}
+              >
+                <h6 className="text-center font-Ubuntu font-bold text-lg">
+                  Discard Post
+                </h6>
+                <RemoveCircleIcon />
+              </div>
+            </div>
+          </div>
+        </div>
         <div className="flex justify-center">
           <div className="bg-accent-white-50 shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4">
-            <h1 className="text-center pb-6 font-Ubuntu font-bold text-lg">
-              Create New Post
-            </h1>
             <form onSubmit={handleSubmit}>
               <div className="-mx-3 md:flex mb-4">
                 <div className="md:w-1/2 px-3 mb-6 md:mb-0">
