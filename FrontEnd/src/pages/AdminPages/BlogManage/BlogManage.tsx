@@ -1,7 +1,12 @@
-import React from 'react'
+import AdminHeader from "../../../components/AdminHeader";
+import Footer from "../../../components/Footer";
 
 export default function BlogManage() {
   return (
-    <div>BlogManage</div>
-  )
+    <>
+      <AdminHeader />
+      <div className="mt-22">Blog Manage</div>
+      <Footer />
+    </>
+  );
 }
