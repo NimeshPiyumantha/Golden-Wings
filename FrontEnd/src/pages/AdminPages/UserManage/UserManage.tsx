@@ -11,6 +11,7 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  TextField,
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 
@@ -27,6 +28,7 @@ type UserDetails = {
 
 export default function UserManage() {
   const [userList, setUserList] = useState<UserDetails[]>([]);
+  const [name, setName] = useState("");
 
   useEffect(() => {
     getAllUsers();
@@ -47,9 +49,9 @@ export default function UserManage() {
     (role) => role.roleId === "6455cd8b0a57e1ba94c0eba2"
   );
 
-  const handleDeleteSelectedRows = (postId: string) => {
+  const handleDeleteSelectedRows = (userId: string) => {
     api
-      .delete(`user/${postId}`)
+      .delete(`user/${userId}`)
       .then((res) => {
         getAllUsers();
         alert("Delete Successfully.");
@@ -60,11 +62,29 @@ export default function UserManage() {
       });
   };
 
+  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target;
+    setName(value);
+  };
+
+  const onSearchName = userList.filter(
+    (onSearch) => onSearch.fristName === name    
+  );
+
+
+
   return (
     <>
       <AdminHeader />
       <div className="mt-24 px-1 m-3 md:px-2 sm:px-1 lg:px-32">
         <div className="px-12">
+          <TextField
+            label="Search"
+            value={name}
+            onChange={handleSearch}
+            variant="outlined"
+            fullWidth
+          />
           <TableContainer component={Paper}>
             <Table style={{ backgroundColor: "#f5f5f5", borderRadius: "20px" }}>
               <TableHead style={{ backgroundColor: "#bdc3c7" }}>
@@ -134,7 +154,7 @@ export default function UserManage() {
               </TableHead>
               <TableBody>
                 {filteredData.map((row, index) => (
-                  <TableRow key={index}>
+                  <TableRow key={row._id}>
                     <TableCell align="center">{row.fristName}</TableCell>
                     <TableCell align="center">{row.lastName}</TableCell>
                     <TableCell align="center">{row.address}</TableCell>
