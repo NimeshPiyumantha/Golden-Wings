@@ -69,12 +69,66 @@ export default function UserManage() {
             <Table style={{ backgroundColor: "#f5f5f5", borderRadius: "20px" }}>
               <TableHead style={{ backgroundColor: "#bdc3c7" }}>
                 <TableRow>
-                  <TableCell align="center">First Name</TableCell>
-                  <TableCell align="center">Last Name</TableCell>
-                  <TableCell align="center">Address</TableCell>
-                  <TableCell align="center">Contact No</TableCell>
-                  <TableCell align="center">Email</TableCell>
-                  <TableCell align="center">Password</TableCell>
+                  <TableCell
+                    align="center"
+                    style={{
+                      fontWeight: "bolder",
+                      fontFamily: "Poppins",
+                      fontSize: "16px",
+                    }}
+                  >
+                    First Name
+                  </TableCell>
+                  <TableCell
+                    align="center"
+                    style={{
+                      fontWeight: "bolder",
+                      fontFamily: "Poppins",
+                      fontSize: "16px",
+                    }}
+                  >
+                    Last Name
+                  </TableCell>
+                  <TableCell
+                    align="center"
+                    style={{
+                      fontWeight: "bolder",
+                      fontFamily: "Poppins",
+                      fontSize: "16px",
+                    }}
+                  >
+                    Address
+                  </TableCell>
+                  <TableCell
+                    align="center"
+                    style={{
+                      fontWeight: "bolder",
+                      fontFamily: "Poppins",
+                      fontSize: "16px",
+                    }}
+                  >
+                    Contact No
+                  </TableCell>
+                  <TableCell
+                    align="center"
+                    style={{
+                      fontWeight: "bolder",
+                      fontFamily: "Poppins",
+                      fontSize: "16px",
+                    }}
+                  >
+                    Email
+                  </TableCell>
+                  <TableCell
+                    align="center"
+                    style={{
+                      fontWeight: "bolder",
+                      fontFamily: "Poppins",
+                      fontSize: "16px",
+                    }}
+                  >
+                    Password
+                  </TableCell>
                   <TableCell align="center"></TableCell>
                 </TableRow>
               </TableHead>
@@ -91,7 +145,7 @@ export default function UserManage() {
                       <IconButton
                         onClick={() => handleDeleteSelectedRows(row._id)}
                       >
-                        <DeleteIcon />
+                        <DeleteIcon sx={{ color: "red" }} />
                       </IconButton>
                     </TableCell>
                   </TableRow>
