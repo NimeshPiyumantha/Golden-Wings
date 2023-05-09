@@ -43,7 +43,6 @@ export default function Profile() {
     event.preventDefault();
 
     let newUser = {
-      roleType: "USER",
       fristName: fristName,
       lastName: lastName,
       address: address,
@@ -184,16 +183,16 @@ export default function Profile() {
                   </div>
                 </div>
               </div>
-              <div className="flex -mx-3 mt-2">
-                <div className="w-1/2 px-3 mb-2">
+              <div className="flex mx-4">
+                <div className="flex justify-between gap-2">
                   <button
-                    className="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold"
+                    className="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-8  m-3 py-3  font-semibold"
                     type="submit"
                   >
                     Update
                   </button>
                   <button
-                    className="block w-full max-w-xs mx-auto bg-accent-red-50 hover:bg-accent-red-100 focus:bg-accent-red-200 text-white rounded-lg px-3 py-3 m-3 font-semibold"
+                    className="block w-full max-w-xs mx-auto bg-accent-red-50 hover:bg-accent-red-100 focus:bg-accent-red-200 text-white rounded-lg px-8 py-3 m-3 font-semibold"
                     type="submit"
                   >
                     Delete
