@@ -62,16 +62,18 @@ export default function UserManage() {
       });
   };
 
-  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSearch = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     setName(value);
+     api
+      .get(`user/search/${userId}`)
+      .then((res) => {
+        setUserList(res.data.responseData);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
-
-  const onSearchName = userList.filter(
-    (onSearch) => onSearch.fristName === name    
-  );
-
-
 
   return (
     <>

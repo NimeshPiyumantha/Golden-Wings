@@ -137,4 +137,21 @@ export default class UserController {
       }
     }
   };
+
+  searchUser: RequestHandler = async (
+    req: Request,
+    res: Response
+  ): Promise<Response> => {
+    try {
+      const { id } = req.params;
+      const users = await User.findById(id);
+      return res.status(200).json({ responseData: users });
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        return res.status(500).json({ message: error.message });
+      } else {
+        return res.status(500).json({ message: "Unknown error occured." });
+      }
+    }
+  };
 }
