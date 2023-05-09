@@ -6,7 +6,7 @@ export default function AdminHome() {
   return (
     <>
       <AdminHeader />
-      <div className="mt-22">AdminHome</div>
+      <div className="mt-24">AdminHome</div>
       <Footer />
     </>
   );

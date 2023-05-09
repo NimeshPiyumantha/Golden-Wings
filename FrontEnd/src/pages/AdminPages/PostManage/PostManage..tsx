@@ -6,7 +6,7 @@ export default function PostManage() {
   return (
     <>
       <AdminHeader />
-      <div className="mt-22">Post Mange</div>
+      <div className="mt-24">Post Mange</div>
       <Footer />
     </>
   );

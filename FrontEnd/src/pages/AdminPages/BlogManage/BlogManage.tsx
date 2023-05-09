@@ -5,7 +5,7 @@ export default function BlogManage() {
   return (
     <>
       <AdminHeader />
-      <div className="mt-22">Blog Manage</div>
+      <div className="mt-24">Blog Manage</div>
       <Footer />
     </>
   );
