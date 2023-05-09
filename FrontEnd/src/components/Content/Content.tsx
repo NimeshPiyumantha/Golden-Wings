@@ -11,6 +11,9 @@ import UserProfile from "../../pages/UserPages/UserProfile";
 import UserHome from "../../pages/UserPages/UserHome";
 import UserPlaces from "../../pages/UserPages/UserPlaces";
 import UserGallery from "../../pages/UserPages/UserGallery";
+import PostManage from "../../pages/AdminPages/PostManage";
+import UserManage from "../../pages/AdminPages/UserManage";
+import AdminHome from "../../pages/AdminPages/AdminHome";
 
 export default function Content() {
   return (
@@ -29,6 +32,11 @@ export default function Content() {
       <Route path="/uplaces" element={<UserPlaces />}></Route>
       <Route path="/ugallery" element={<UserGallery />}></Route>
       <Route path="/ucontact" element={<UserContact />}></Route>
+
+      <Route path="/aprofile" element={<UserProfile />}></Route>
+      <Route path="/apost" element={<PostManage />}></Route>
+      <Route path="/auserMange" element={<UserManage />}></Route>
+      <Route path="/a" element={<AdminHome />}></Route>
     </Routes>
   );
 }
