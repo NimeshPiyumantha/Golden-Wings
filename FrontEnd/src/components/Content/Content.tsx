@@ -14,6 +14,7 @@ import UserGallery from "../../pages/UserPages/UserGallery";
 import PostManage from "../../pages/AdminPages/PostManage";
 import UserManage from "../../pages/AdminPages/UserManage";
 import AdminHome from "../../pages/AdminPages/AdminHome";
+import BlogManage from "../../pages/AdminPages/BlogManage";
 
 export default function Content() {
   return (
@@ -36,6 +37,7 @@ export default function Content() {
       <Route path="/aprofile" element={<UserProfile />}></Route>
       <Route path="/apost" element={<PostManage />}></Route>
       <Route path="/auserMange" element={<UserManage />}></Route>
+      <Route path="/ablogMange" element={<BlogManage />}></Route>
       <Route path="/a" element={<AdminHome />}></Route>
     </Routes>
   );
