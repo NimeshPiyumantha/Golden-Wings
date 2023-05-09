@@ -7,15 +7,31 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import sigIn_bg from "../../assets/img/signIn-bg.jpg";
 import "./Login.css";
+import api from "../../axios";
+import { useState } from "react";
+import { MenuItem, Select } from "@mui/material";
 
 export default function Login() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    const [roletype, setroletype] = useState<string>("");
+    const [email, setuseremail] = useState<string>("");
+    const [password, setPassword] = useState<string>("");
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+    let newUser = {
+      roletype: roletype,
+      email: email,
+      password: password,
+    };
+    api
+      .post("login", newUser)
+      .then((res) => {
+        localStorage.setItem("id", res.data.responseData._id);
+        alert(localStorage.getItem("id"));
+        console.log(newUser);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -37,6 +53,17 @@ export default function Login() {
                 onSubmit={handleSubmit}
                 sx={{ mt: 1 }}
               >
+                <Select
+                  required
+                  fullWidth
+                  id="roletype"
+                  label="Role Type"
+                  name="roletype"
+                >
+                  <MenuItem value={"6455cd8b0a57e1ba94c0eba2"}>USER</MenuItem>
+                  <MenuItem value={"6455d4640a57e1ba94c0eba7"}>ADMIN</MenuItem>
+                </Select>
+
                 <TextField
                   margin="normal"
                   required
