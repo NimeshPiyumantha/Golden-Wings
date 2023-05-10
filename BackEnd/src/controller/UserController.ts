@@ -124,9 +124,9 @@ export default class UserController {
   ): Promise<Response> => {
     try {
       const users = await User.findOne({
-        roleId: req.params.roleId,
-        email: req.params.email,
-        password: req.params.password,
+        roleId: req.body.roleId,
+        email: req.body.email,
+        password: req.body.password,
       });
       return res.status(200).json({ responseData: users });
     } catch (error: unknown) {
