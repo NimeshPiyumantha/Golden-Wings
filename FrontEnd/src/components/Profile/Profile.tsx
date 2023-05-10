@@ -1,5 +1,5 @@
 import api from "../../axios";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 
 type UserDetails = {
   _id: string;
@@ -21,6 +21,22 @@ export default function Profile() {
   const [contactNo, setContactNo] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const id = "645b735b0c6099f0aa845c2f";
+
+  useEffect(() => {
+    getAllUsers();
+  }, []);
+
+  const getAllUsers = () => {
+    api
+      .get("user")
+      .then((res) => {
+        setUserList(res.data.responseData);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -48,21 +64,23 @@ export default function Profile() {
     };
 
     api
-      .put(`user/${userId}`, newUser)
+      .put(`user/${id}`, newUser)
       .then((res) => {
         console.log(res);
         let user: UserDetails[] = [...userList];
         user.push(res.data.responseData);
         setUserList(user);
+        alert("Update Successfully.");
       })
       .catch((error) => {
         console.log(error);
+        alert("Update Unsuccessfully.");
       });
   };
 
   function handleDelete(): void {
     api
-      .delete(`post/${userId}`)
+      .delete(`user/${id}`)
       .then((res) => {
         alert("Delete Successfully.");
       })
