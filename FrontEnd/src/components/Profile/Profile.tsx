@@ -12,26 +12,47 @@ type UserDetails = {
   password: string;
 };
 
-export default function Profile() {
+export const Profile = () => {
   const [userList, setUserList] = useState<UserDetails[]>([]);
   const [userId, setUserId] = useState<string>("");
   const [fristName, setFirstName] = useState<string>("");
   const [lastName, setLastName] = useState<string>("");
   const [address, setAddress] = useState<string>("");
-  const [contactNo, setContactNo] = useState<string>("");
+  const [contactNo, setContactNo] = useState<number>();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const id = "645b735b0c6099f0aa845c2f";
+  const id = "645b81770c6099f0aa845f5a";
 
   useEffect(() => {
-    getAllUsers();
+    if (userList.length > 0) {
+      const user = userList[0];
+      setFirstName(user.fristName);
+      setLastName(user.lastName);
+      setAddress(user.address);
+      setContactNo(user.contactNo);
+      setEmail(user.email);
+      setPassword(user.password);
+    }
+  }, [userList]);
+
+  useEffect(() => {
+    getUsers();
   }, []);
 
-  const getAllUsers = () => {
+  const getUsers = () => {
     api
-      .get("user")
+      .get(`user/${id}`)
       .then((res) => {
-        setUserList(res.data.responseData);
+        const userData = res.data.responseData;
+        setUserList(userData);
+        console.log(userList);
+
+        setFirstName(userData.fristName);
+        setLastName(userData.lastName);
+        setAddress(userData.address);
+        setContactNo(userData.contactNo);
+        setEmail(userData.email);
+        setPassword(userData.password);
       })
       .catch((error) => {
         console.log(error);
@@ -47,7 +68,7 @@ export default function Profile() {
       : name === "address"
       ? setAddress(value)
       : name === "contactNo"
-      ? setContactNo(value)
+      ? setContactNo(parseInt(value))
       : name === "email"
       ? setEmail(value)
       : name === "password" && setPassword(value);
@@ -69,7 +90,6 @@ export default function Profile() {
         console.log(res);
         let user: UserDetails[] = [...userList];
         user.push(res.data.responseData);
-        setUserList(user);
         alert("Update Successfully.");
       })
       .catch((error) => {
@@ -114,6 +134,7 @@ export default function Profile() {
                       placeholder="John"
                       required
                       name="fristName"
+                      value={fristName}
                       onChange={handleInputChange}
                     />
                   </div>
@@ -132,6 +153,7 @@ export default function Profile() {
                       placeholder="Smith"
                       required
                       name="lastName"
+                      value={lastName}
                       onChange={handleInputChange}
                     />
                   </div>
@@ -152,6 +174,7 @@ export default function Profile() {
                       placeholder="Colombo"
                       required
                       name="address"
+                      value={address}
                       onChange={handleInputChange}
                     />
                   </div>
@@ -169,6 +192,7 @@ export default function Profile() {
                       className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                       placeholder="0777123456"
                       name="contactNo"
+                      value={contactNo}
                       onChange={handleInputChange}
                     />
                   </div>
@@ -188,6 +212,7 @@ export default function Profile() {
                       className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                       placeholder="yourmail@gmail.com"
                       name="email"
+                      value={email}
                       onChange={handleInputChange}
                     />
                   </div>
@@ -205,6 +230,7 @@ export default function Profile() {
                       className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                       placeholder="**********"
                       name="password"
+                      value={password}
                       onChange={handleInputChange}
                     />
                   </div>
@@ -235,4 +261,4 @@ export default function Profile() {
       </div>
     </div>
   );
-}
+};
