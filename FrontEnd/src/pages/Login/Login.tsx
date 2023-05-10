@@ -3,13 +3,13 @@ import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import Link from "@mui/material/Link";
-import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import sigIn_bg from "../../assets/img/signIn-bg.jpg";
 import "./Login.css";
 import api from "../../axios";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { MenuItem, Select } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 type UserDetails = {
   _id: string;
@@ -26,6 +26,7 @@ export default function Login() {
   const [roleId, setroleId] = useState<string>("");
   const [email, setuseremail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const navigate = useNavigate();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -39,12 +40,20 @@ export default function Login() {
       .then((res) => {
         localStorage.setItem("id", res.data.responseData._id);
         alert(localStorage.getItem("id"));
-        setUserList(res.data.responseData);
-        console.log(userList);
+       
       })
       .catch((error) => {
         console.log(error);
       });
+  };
+
+  const handleInputChange = (event: any) => {
+    const { name, value } = event.target;
+    name === "roleId"
+      ? setroleId(value)
+      : name === "email"
+      ? setuseremail(value)
+      : name === "password" && setPassword(value);
   };
 
   return (
@@ -61,65 +70,66 @@ export default function Login() {
             </div>
             <div className="px-8">
               <form onSubmit={handleSubmit}>
-                <Box component="form" noValidate sx={{ mt: 1 }}>
-                  <Select
-                    required
-                    fullWidth
-                    id="roleId"
-                    label="Role Type"
-                    name="roleId"
-                  >
-                    <MenuItem value={"6455cd8b0a57e1ba94c0eba2"}>USER</MenuItem>
-                    <MenuItem value={"6455d4640a57e1ba94c0eba7"}>
-                      ADMIN
-                    </MenuItem>
-                  </Select>
+                {/* <Box component="form" noValidate sx={{ mt: 1 }}> */}
+                <Select
+                  required
+                  fullWidth
+                  id="roleId"
+                  label="Role Type"
+                  name="roleId"
+                  onChange={handleInputChange}
+                >
+                  <MenuItem value={"6455cd8b0a57e1ba94c0eba2"}>USER</MenuItem>
+                  <MenuItem value={"6455d4640a57e1ba94c0eba7"}>ADMIN</MenuItem>
+                </Select>
 
-                  <TextField
-                    margin="normal"
-                    required
-                    fullWidth
-                    id="email"
-                    label="Email Address"
-                    name="email"
-                    autoComplete="email"
-                    autoFocus
-                  />
-                  <TextField
-                    margin="normal"
-                    required
-                    fullWidth
-                    name="password"
-                    label="Password"
-                    type="password"
-                    id="password"
-                    autoComplete="current-password"
-                  />
-                  <FormControlLabel
-                    control={<Checkbox value="remember" color="primary" />}
-                    label="Remember me"
-                  />
-                  <Button
-                    type="submit"
-                    fullWidth
-                    variant="contained"
-                    sx={{ mt: 3, mb: 2 }}
-                  >
-                    Sign In
-                  </Button>
-                  <Grid container>
-                    <Grid item xs>
-                      <Link href="/home" variant="body2">
-                        Back
-                      </Link>
-                    </Grid>
-                    <Grid item>
-                      <Link href="/register" variant="body2">
-                        {"Don't have an account ? Sign Up"}
-                      </Link>
-                    </Grid>
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="email"
+                  label="Email Address"
+                  name="email"
+                  autoComplete="email"
+                  autoFocus
+                  onChange={handleInputChange}
+                />
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  type="password"
+                  id="password"
+                  autoComplete="current-password"
+                  onChange={handleInputChange}
+                />
+                <FormControlLabel
+                  control={<Checkbox value="remember" color="primary" />}
+                  label="Remember me"
+                />
+
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  sx={{ mt: 3, mb: 2 }}
+                >
+                  Sign In
+                </Button>
+                <Grid container>
+                  <Grid item xs>
+                    <Link href="/home" variant="body2">
+                      Back
+                    </Link>
                   </Grid>
-                </Box>
+                  <Grid item>
+                    <Link href="/register" variant="body2">
+                      {"Don't have an account ? Sign Up"}
+                    </Link>
+                  </Grid>
+                </Grid>
               </form>
             </div>
           </div>
