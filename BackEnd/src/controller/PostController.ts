@@ -171,7 +171,7 @@ export default class PostController {
     try {
       const { id } = req.params;
       const posts = await Post.find({
-        $or: [{ _id: id }, { userId: id }, { title: id }, { categoryId: id }],
+        $or: [{ _id: id }, { userId: id }, { categoryId: id }],
       });
       return res.status(200).json({ responseData: posts });
     } catch (error: unknown) {
