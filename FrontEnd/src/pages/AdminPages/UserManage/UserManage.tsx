@@ -86,8 +86,8 @@ export default function UserManage() {
     <>
       <AdminHeader />
       <div className="mt-24 px-1 m-3 md:px-2 sm:px-1 lg:px-32">
-        <div className="px-12 ">
-          <div className="w-2/5">
+        <div>
+          <div className="lg:w-2/5 sm:w-1/2 md:w-4/5">
             <div className="my-5 mx-2">
               <div className="m-4">
                 <TextField
@@ -98,7 +98,7 @@ export default function UserManage() {
                   value={searchKey}
                   onChange={(e) => setSearchKey(e.currentTarget.value)}
                   onKeyDown={handleKeyDown}
-                  sx={{ width: 400, mx: 2, borderRadius: "15px" }}
+                  sx={{mx: 2, borderRadius: "15px" }}
                   InputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
