@@ -60,9 +60,11 @@ export default function Register() {
         let user: UserDetails[] = [...userList];
         user.push(res.data.responseData);
         setUserList(user);
+        alert("Register Successfully.");
       })
       .catch((error) => {
         console.log(error);
+        alert("Register Unsuccessfully.");
       });
   };
 
