@@ -4,9 +4,9 @@ config();
 
 import express, { Request, Response } from "express";
 import db from "mongoose";
-import routes from "./routes";
 import { json, urlencoded } from "body-parser";
 import cors from "cors";
+import routes from "./Routes";
 
 // Create the express app
 const app = express();
