@@ -19,7 +19,7 @@ type PostDetails = {
   date: Date;
   title: string;
   description: string;
-  tagString: string[];
+  tags: string[];
   categoryName: string;
 };
 
@@ -248,7 +248,7 @@ export default function UserBlog() {
             date={post.date}
             title={post.title}
             description={post.description}
-            tags={["Crazy", "Amazing"]}
+            tags={post.tags}
             categoryName={post.categoryName}
           />
         ))}
