@@ -25,8 +25,8 @@ export default class PostRoutes {
     // GET /api/v1/post/category/:id
     this.router.get("/category/:id", this.postController.searchPostByCategory);
 
-      // GET /api/v1/post/search/:id
-      this.router.get("/search/:id", this.postController.searchUserFirstName);
+    // GET /api/v1/post/search/:id
+    this.router.get("/search/:id", this.postController.searchByValue);
   };
 
   public getRouter = (): Router => {
