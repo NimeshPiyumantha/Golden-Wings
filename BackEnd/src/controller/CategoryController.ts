@@ -1,5 +1,6 @@
 import { RequestHandler, Request, Response } from "express";
 import { Category } from "../modules/Category ";
+import { Post } from "../modules/Post";
 
 export default class CategoryController {
   addNewCategory: RequestHandler = async (
@@ -88,6 +89,25 @@ export default class CategoryController {
     try {
       let categories = await Category.find();
       return res.status(200).json({ responseData: categories });
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        return res.status(500).json({ message: error.message });
+      } else {
+        return res.status(500).json({ message: "Unknown error occured." });
+      }
+    }
+  };
+
+  searchUserId: RequestHandler = async (
+    req: Request,
+    res: Response
+  ): Promise<Response> => {
+    try {
+      const { id } = req.params;
+      const posts = await Post.find({
+        $or: [{ _id: id }, { userId: id }, { title: id }, { categoryId: id }],
+      });
+      return res.status(200).json({ responseData: posts });
     } catch (error: unknown) {
       if (error instanceof Error) {
         return res.status(500).json({ message: error.message });
