@@ -1,9 +1,11 @@
 import AdminHeader from "../../../components/AdminHeader";
 import Footer from "../../../components/Footer";
 import api from "../../../axios";
+import SearchIcon from "@mui/icons-material/Search";
 import { ChangeEvent, useEffect, useState } from "react";
 import {
   IconButton,
+  InputAdornment,
   Paper,
   Table,
   TableBody,
@@ -84,16 +86,31 @@ export default function UserManage() {
     <>
       <AdminHeader />
       <div className="mt-24 px-1 m-3 md:px-2 sm:px-1 lg:px-32">
-        <div className="px-12">
-          <TextField
-            label="Search"
-            name="searchKey"
-            variant="outlined"
-            fullWidth
-            value={searchKey}
-            onChange={(e) => setSearchKey(e.currentTarget.value)}
-            onKeyDown={handleKeyDown}
-          />
+        <div className="px-12 ">
+          <div className="w-2/5">
+            <div className="my-5 mx-2">
+              <div className="m-4">
+                <TextField
+                  label="Search"
+                  name="searchKey"
+                  variant="filled"
+                  fullWidth
+                  value={searchKey}
+                  onChange={(e) => setSearchKey(e.currentTarget.value)}
+                  onKeyDown={handleKeyDown}
+                  sx={{ width: 400, mx: 2, borderRadius: "15px" }}
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <SearchIcon />
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+
           <TableContainer component={Paper}>
             <Table style={{ backgroundColor: "#f5f5f5", borderRadius: "20px" }}>
               <TableHead style={{ backgroundColor: "#bdc3c7" }}>
