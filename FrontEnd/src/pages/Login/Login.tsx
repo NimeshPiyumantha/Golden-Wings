@@ -39,8 +39,9 @@ export default function Login() {
       .post("user/login", newUser)
       .then((res) => {
         localStorage.setItem("id", res.data.responseData._id);
-        alert(localStorage.getItem("id"));
-       
+        // alert(localStorage.getItem("id"));
+        
+        navigate("/u", { replace: false });
       })
       .catch((error) => {
         console.log(error);

@@ -21,7 +21,7 @@ export const Profile = () => {
   const [contactNo, setContactNo] = useState<number>();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const id = "645b81770c6099f0aa845f5a";
+  const id = localStorage.getItem("id");
 
   useEffect(() => {
     if (userList.length > 0) {
