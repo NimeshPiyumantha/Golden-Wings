@@ -40,8 +40,14 @@ export default function Login() {
       .then((res) => {
         localStorage.setItem("id", res.data.responseData._id);
         // alert(localStorage.getItem("id"));
-        
-        navigate("/u", { replace: false });
+        if (res.data.responseData.roleId === "6455cd8b0a57e1ba94c0eba2") {
+          navigate("/u", { replace: false });
+          alert("User Login Successfully..");
+        }
+        if (res.data.responseData.roleId === "6455d4640a57e1ba94c0eba7") {
+          navigate("/a", { replace: false });
+          alert("Admin Login Successfully..");
+        }
       })
       .catch((error) => {
         console.log(error);
