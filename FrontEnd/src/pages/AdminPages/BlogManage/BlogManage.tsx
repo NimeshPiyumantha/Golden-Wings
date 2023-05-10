@@ -17,7 +17,66 @@ import {
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 
+type PostDetails = {
+  _id: string;
+  userId: string;
+  imageId: string;
+  date: Date;
+  title: string;
+  description: string;
+  tags: string[];
+  categoryId: string;
+};
 export default function BlogManage() {
+  const [postList, setPostList] = useState<PostDetails[]>([]);
+  const [searchKey, setSearchKey] = useState<string>("");
+
+  useEffect(() => {
+    getAllPost();
+  }, []);
+
+  const getAllPost = () => {
+    api
+      .get("post")
+      .then((res) => {
+        setPostList(res.data.responseData);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const handleDeleteSelectedRows = (postId: string) => {
+    api
+      .delete(`post/${postId}`)
+      .then((res) => {
+        getAllPost();
+        alert("Delete Successfully.");
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("Delete Unsuccessfully.");
+      });
+  };
+
+  const handleSearch = () => {
+    api
+      .get(`post/search/${searchKey}`)
+      .then((res) => {
+        setPostList(res.data.responseData);
+      })
+      .catch((error) => {
+        console.log(error);
+        getAllPost();
+      });
+  };
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      handleSearch();
+    }
+  };
+
   return (
     <>
       <AdminHeader />
@@ -34,7 +93,7 @@ export default function BlogManage() {
                   value={searchKey}
                   onChange={(e) => setSearchKey(e.currentTarget.value)}
                   onKeyDown={handleKeyDown}
-                  sx={{mx: 2, borderRadius: "15px" }}
+                  sx={{ mx: 2, borderRadius: "15px" }}
                   InputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
@@ -115,14 +174,16 @@ export default function BlogManage() {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {filteredData.map((row, index) => (
+                {postList.map((row, index) => (
                   <TableRow key={row._id}>
-                    <TableCell align="center">{row.fristName}</TableCell>
-                    <TableCell align="center">{row.lastName}</TableCell>
-                    <TableCell align="center">{row.address}</TableCell>
-                    <TableCell align="center">{row.contactNo}</TableCell>
-                    <TableCell align="center">{row.email}</TableCell>
-                    <TableCell align="center">{row.password}</TableCell>
+                    <TableCell align="center">{row.userId}</TableCell>
+                    <TableCell align="center">
+                      {row.date.toLocaleString()}
+                    </TableCell>
+                    <TableCell align="center">{row.title}</TableCell>
+                    <TableCell align="center">{row.description}</TableCell>
+                    <TableCell align="center">{row.categoryId}</TableCell>
+                    <TableCell align="center">{row.imageId}</TableCell>
                     <TableCell align="center">
                       <IconButton
                         onClick={() => handleDeleteSelectedRows(row._id)}
