@@ -14,7 +14,7 @@ type UserDetails = {
 
 export default function Profile() {
   const [userList, setUserList] = useState<UserDetails[]>([]);
-  const [roleType, setRoleType] = useState<string>("");
+  const [userId, setUserId] = useState<string>("");
   const [fristName, setFirstName] = useState<string>("");
   const [lastName, setLastName] = useState<string>("");
   const [address, setAddress] = useState<string>("");
@@ -24,9 +24,7 @@ export default function Profile() {
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
-    name === "roleType"
-      ? setRoleType(value)
-      : name === "fristName"
+    name === "fristName"
       ? setFirstName(value)
       : name === "lastName"
       ? setLastName(value)
@@ -39,9 +37,7 @@ export default function Profile() {
       : name === "password" && setPassword(value);
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
+  const handleUpdate = () => {
     let newUser = {
       fristName: fristName,
       lastName: lastName,
@@ -52,7 +48,7 @@ export default function Profile() {
     };
 
     api
-      .post("user", newUser)
+      .put(`user/${userId}`, newUser)
       .then((res) => {
         console.log(res);
         let user: UserDetails[] = [...userList];
@@ -63,6 +59,19 @@ export default function Profile() {
         console.log(error);
       });
   };
+
+  function handleDelete(): void {
+    api
+      .delete(`post/${userId}`)
+      .then((res) => {
+        alert("Delete Successfully.");
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("Delete Unsuccessfully.");
+      });
+  }
+
   return (
     <div className="min-w-screen min-h-screen bg-accent-white-200 flex items-center justify-center px-5 py-5 mt-3">
       <div className="bg-gray-100 text-gray-500 rounded-3xl shadow-xl w-3/5 md:2/4 sm:1/2 xl:1/2 overflow-hidden">
@@ -71,7 +80,7 @@ export default function Profile() {
             <div className="text-center mb-10">
               <h1 className="font-bold text-3xl text-gray-900">Profile</h1>
             </div>
-            <form onSubmit={handleSubmit}>
+            <form>
               <div className="flex -mx-3 ">
                 <div className="w-1/2 px-3 mb-5">
                   <label form="" className="text-xs font-semibold px-1">
@@ -188,12 +197,15 @@ export default function Profile() {
                   <button
                     className="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-8  m-3 py-3  font-semibold"
                     type="submit"
+                    onClick={handleUpdate}
                   >
                     Update
                   </button>
+
                   <button
                     className="block w-full max-w-xs mx-auto bg-accent-red-50 hover:bg-accent-red-100 focus:bg-accent-red-200 text-white rounded-lg px-8 py-3 m-3 font-semibold"
-                    type="submit"
+                    type="button"
+                    onClick={handleDelete}
                   >
                     Delete
                   </button>
