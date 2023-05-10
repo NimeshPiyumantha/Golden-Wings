@@ -39,7 +39,8 @@ export default function Login() {
       .then((res) => {
         localStorage.setItem("id", res.data.responseData._id);
         alert(localStorage.getItem("id"));
-        console.log(newUser);
+        setUserList(res.data.responseData);
+        console.log(userList);
       })
       .catch((error) => {
         console.log(error);
