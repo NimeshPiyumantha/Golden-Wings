@@ -11,19 +11,31 @@ import api from "../../axios";
 import { useState } from "react";
 import { MenuItem, Select } from "@mui/material";
 
+type UserDetails = {
+  _id: string;
+  roleId: string;
+  fristName: string;
+  lastName: string;
+  address: string;
+  contactNo: number;
+  email: string;
+  password: string;
+};
 export default function Login() {
+  const [userList, setUserList] = useState<UserDetails[]>([]);
+  const [roleId, setroleId] = useState<string>("");
+  const [email, setuseremail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    const [roletype, setroletype] = useState<string>("");
-    const [email, setuseremail] = useState<string>("");
-    const [password, setPassword] = useState<string>("");
     event.preventDefault();
     let newUser = {
-      roletype: roletype,
+      roleId: roleId,
       email: email,
       password: password,
     };
     api
-      .post("login", newUser)
+      .post("user/login", newUser)
       .then((res) => {
         localStorage.setItem("id", res.data.responseData._id);
         alert(localStorage.getItem("id"));
@@ -47,68 +59,67 @@ export default function Login() {
               <p className="mt-2">Enter your information to login.</p>
             </div>
             <div className="px-8">
-              <Box
-                component="form"
-                noValidate
-                onSubmit={handleSubmit}
-                sx={{ mt: 1 }}
-              >
-                <Select
-                  required
-                  fullWidth
-                  id="roletype"
-                  label="Role Type"
-                  name="roletype"
-                >
-                  <MenuItem value={"6455cd8b0a57e1ba94c0eba2"}>USER</MenuItem>
-                  <MenuItem value={"6455d4640a57e1ba94c0eba7"}>ADMIN</MenuItem>
-                </Select>
+              <form onSubmit={handleSubmit}>
+                <Box component="form" noValidate sx={{ mt: 1 }}>
+                  <Select
+                    required
+                    fullWidth
+                    id="roleId"
+                    label="Role Type"
+                    name="roleId"
+                  >
+                    <MenuItem value={"6455cd8b0a57e1ba94c0eba2"}>USER</MenuItem>
+                    <MenuItem value={"6455d4640a57e1ba94c0eba7"}>
+                      ADMIN
+                    </MenuItem>
+                  </Select>
 
-                <TextField
-                  margin="normal"
-                  required
-                  fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
-                  autoFocus
-                />
-                <TextField
-                  margin="normal"
-                  required
-                  fullWidth
-                  name="password"
-                  label="Password"
-                  type="password"
-                  id="password"
-                  autoComplete="current-password"
-                />
-                <FormControlLabel
-                  control={<Checkbox value="remember" color="primary" />}
-                  label="Remember me"
-                />
-                <Button
-                  type="submit"
-                  fullWidth
-                  variant="contained"
-                  sx={{ mt: 3, mb: 2 }}
-                >
-                  Sign In
-                </Button>
-                <Grid container>
-                  <Grid item xs>
-                    <Link href="/home" variant="body2">
-                      Back
-                    </Link>
+                  <TextField
+                    margin="normal"
+                    required
+                    fullWidth
+                    id="email"
+                    label="Email Address"
+                    name="email"
+                    autoComplete="email"
+                    autoFocus
+                  />
+                  <TextField
+                    margin="normal"
+                    required
+                    fullWidth
+                    name="password"
+                    label="Password"
+                    type="password"
+                    id="password"
+                    autoComplete="current-password"
+                  />
+                  <FormControlLabel
+                    control={<Checkbox value="remember" color="primary" />}
+                    label="Remember me"
+                  />
+                  <Button
+                    type="submit"
+                    fullWidth
+                    variant="contained"
+                    sx={{ mt: 3, mb: 2 }}
+                  >
+                    Sign In
+                  </Button>
+                  <Grid container>
+                    <Grid item xs>
+                      <Link href="/home" variant="body2">
+                        Back
+                      </Link>
+                    </Grid>
+                    <Grid item>
+                      <Link href="/register" variant="body2">
+                        {"Don't have an account ? Sign Up"}
+                      </Link>
+                    </Grid>
                   </Grid>
-                  <Grid item>
-                    <Link href="/register" variant="body2">
-                      {"Don't have an account ? Sign Up"}
-                    </Link>
-                  </Grid>
-                </Grid>
-              </Box>
+                </Box>
+              </form>
             </div>
           </div>
         </div>
