@@ -17,6 +17,7 @@ This is a RAD Course Work.(`MERN Stack Application`)
 - React
 - Tailwind CSS
 - Material-UI
+- TypeScript
 
 ##
 
