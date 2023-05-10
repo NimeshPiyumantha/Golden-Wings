@@ -28,7 +28,7 @@ type UserDetails = {
 
 export default function UserManage() {
   const [userList, setUserList] = useState<UserDetails[]>([]);
-  const [name, setName] = useState("");
+  const [searchKey, setSearchKey] = useState<string>("");
 
   useEffect(() => {
     getAllUsers();
@@ -62,17 +62,22 @@ export default function UserManage() {
       });
   };
 
-  const handleSearch = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = event.target;
-    setName(value);
-     api
-      .get(`user/search/${userId}`)
+  const handleSearch = () => {
+    api
+      .get(`user/search/${searchKey}`)
       .then((res) => {
         setUserList(res.data.responseData);
       })
       .catch((error) => {
         console.log(error);
+        getAllUsers();
       });
+  };
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      handleSearch();
+    }
   };
 
   return (
@@ -82,10 +87,12 @@ export default function UserManage() {
         <div className="px-12">
           <TextField
             label="Search"
-            value={name}
-            onChange={handleSearch}
+            name="searchKey"
             variant="outlined"
             fullWidth
+            value={searchKey}
+            onChange={(e) => setSearchKey(e.currentTarget.value)}
+            onKeyDown={handleKeyDown}
           />
           <TableContainer component={Paper}>
             <Table style={{ backgroundColor: "#f5f5f5", borderRadius: "20px" }}>

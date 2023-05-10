@@ -24,6 +24,9 @@ export default class UserRoutes {
 
     // GET /api/v1/user/login
     this.router.post("/login", this.routerController.signInUser);
+
+    // GET /api/v1/user/search/:id
+    this.router.get("/search/:id", this.routerController.searchUserFirstName);
   };
 
   public getRouter = (): Router => {

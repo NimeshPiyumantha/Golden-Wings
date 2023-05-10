@@ -138,13 +138,15 @@ export default class UserController {
     }
   };
 
-  searchUser: RequestHandler = async (
+  searchUserFirstName: RequestHandler = async (
     req: Request,
     res: Response
   ): Promise<Response> => {
     try {
       const { id } = req.params;
-      const users = await User.findById(id);
+      const users = await User.find({
+        $or: [{ fristName: id }, { lastName: id }, { address: id }],
+      });
       return res.status(200).json({ responseData: users });
     } catch (error: unknown) {
       if (error instanceof Error) {
