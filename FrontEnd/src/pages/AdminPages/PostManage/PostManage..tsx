@@ -41,7 +41,11 @@ export default function PostManage() {
   const [categoryName, setCategoryName] = useState<string>("");
   const [searchKey, setSearchKey] = useState<string>("");
 
+  const handleInputChange = (event: any) => {
+    const { name, value } = event.target;
+  };
 
+ 
   return (
     <>
       <AdminHeader />
