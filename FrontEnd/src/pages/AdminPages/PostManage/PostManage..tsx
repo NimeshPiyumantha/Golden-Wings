@@ -21,6 +21,7 @@ type PlaceDetails = {
   _id: string;
   title: string;
   description: string;
+  location: string;
   imageId: string;
   date: Date;
   timeId: string;
@@ -33,6 +34,7 @@ export default function PostManage() {
   const [placesList, setPlacesList] = useState<PlaceDetails[]>([]);
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
+  const [location, setLocation] = useState<string>("");
   const [imageId, setImageId] = useState<string>("");
   const [date, setDate] = useState<string>("");
   const [timeId, setTimeId] = useState<string>("");
@@ -48,6 +50,8 @@ export default function PostManage() {
       ? setTitle(value)
       : name === "description"
       ? setDescription(value)
+      : name === "location"
+      ? setLocation(value)
       : name === "imageId"
       ? setImageId(value)
       : name === "date"
@@ -68,6 +72,7 @@ export default function PostManage() {
     let newPlace = {
       title: title,
       description: description,
+      location: location,
       imageUrl: imageId,
       date: date,
       timeRange: timeId,
@@ -105,196 +110,212 @@ export default function PostManage() {
         <div className="bg-gray-100  text-gray-500 rounded-3xl shadow-xl w-4/5 md:3/4 sm:1/2 xl:1/2 overflow-hidden">
           <div className="md:flex w-full">
             <div className="w-full  py-8 px-5 md:px-10">
-              
-                <div className="flex -mx-3 ">
-                  <div className="w-1/3 px-3 mb-5">
-                    <label form="" className="text-xs font-semibold px-1">
-                      Title <span className="text-accent-red-100">*</span>
-                    </label>
-                    <div className="flex">
-                      <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
-                        <i className="mdi mdi-account-outline text-gray-400 text-lg"></i>
-                      </div>
-                      <input
-                        type="text"
-                        className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 font-bold"
-                        placeholder="Adventure of Hill"
-                        name="title"
-                        value={title}
-                        onChange={handleInputChange}
-                      />
+              <div className="flex -mx-3 ">
+                <div className="w-1/3 px-3 mb-5">
+                  <label form="" className="text-xs font-semibold px-1">
+                    Title <span className="text-accent-red-100">*</span>
+                  </label>
+                  <div className="flex">
+                    <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                      <i className="mdi mdi-account-outline text-gray-400 text-lg"></i>
                     </div>
-                  </div>
-                  <div className="w-1/3 px-3 mb-5">
-                    <label form="" className="text-xs font-semibold px-1">
-                      Cost <span className="text-accent-red-100">*</span>
-                    </label>
-                    <div className="flex">
-                      <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
-                        <i className="mdi mdi-account-outline text-gray-400 text-lg"></i>
-                      </div>
-                      <input
-                        type="number"
-                        className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 font-bold"
-                        placeholder="2500"
-                        name="cost"
-                        value={cost}
-                        onChange={handleInputChange}
-                      />
-                    </div>
-                  </div>
-                  <div className="w-1/3 px-3 mb-5">
-                    <label form="" className="text-xs font-semibold px-1">
-                      Date <span className="text-accent-red-100">*</span>
-                    </label>
-                    <div className="flex">
-                      <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
-                        <i className="mdi mdi-account-outline text-gray-400 text-lg"></i>
-                      </div>
-                      <input
-                        type="date"
-                        className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 font-bold"
-                        placeholder="Colombo"
-                        name="date"
-                        value={date}
-                        onChange={handleInputChange}
-                      />
-                    </div>
-                  </div>
-                  <div className="w-1/3 px-3 mb-5">
-                    <label form="" className="text-xs font-semibold px-1">
-                      Category <span className="text-accent-red-100">*</span>
-                    </label>
-                    <div className="flex">
-                      <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
-                        <i className="mdi mdi-account-outline text-gray-400 text-lg"></i>
-                      </div>
-                      <input
-                        type="text"
-                        className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 font-bold"
-                        placeholder="Adventures"
-                        name="categoryName"
-                        value={categoryName}
-                        onChange={handleInputChange}
-                      />
-                    </div>
+                    <input
+                      type="text"
+                      className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 font-bold"
+                      placeholder="Adventure of Hill"
+                      name="title"
+                      value={title}
+                      onChange={handleInputChange}
+                    />
                   </div>
                 </div>
-                <div className="flex -mx-3">
-                  <div className="w-1/3 px-3 mb-5">
-                    <label form="" className="text-xs font-semibold px-1">
-                      Contact No <span className="text-accent-red-100">*</span>
-                    </label>
-                    <div className="flex">
-                      <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
-                        <i className="mdi mdi-account-outline text-gray-400 text-lg"></i>
-                      </div>
-                      <input
-                        type="tel"
-                        className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 font-bold"
-                        placeholder="07771123456"
-                        name="contact"
-                        value={contact}
-                        onChange={handleInputChange}
-                      />
+                <div className="w-1/3 px-3 mb-5">
+                  <label form="" className="text-xs font-semibold px-1">
+                    Cost <span className="text-accent-red-100">*</span>
+                  </label>
+                  <div className="flex">
+                    <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                      <i className="mdi mdi-account-outline text-gray-400 text-lg"></i>
                     </div>
-                  </div>
-                  <div className="w-1/2 px-3 mb-5">
-                    <label form="" className="text-xs font-semibold px-1">
-                      Duration <span className="text-accent-red-100">*</span>
-                    </label>
-                    <div className="flex">
-                      <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
-                        <i className="mdi mdi-account-outline text-gray-400 text-lg"></i>
-                      </div>
-                      <input
-                        type="text"
-                        className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 font-bold"
-                        placeholder="8:00 A.M - 4.00 P.M"
-                        name="timeId"
-                        value={timeId}
-                        onChange={handleInputChange}
-                      />
-                    </div>
-                  </div>
-                  <div className="w-1/2 px-3 mb-5">
-                    <label form="" className="text-xs font-semibold px-1">
-                      Image <span className="text-accent-red-100">*</span>
-                    </label>
-                    <div className="flex">
-                      <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
-                        <i className="mdi mdi-account-outline text-gray-400 text-lg"></i>
-                      </div>
-                      <input
-                        type="file"
-                        className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 font-bold"
-                        placeholder="file"
-                        name="imageId"
-                        value={imageId}
-                        onChange={handleInputChange}
-                      />
-                    </div>
+                    <input
+                      type="number"
+                      className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 font-bold"
+                      placeholder="2500"
+                      name="cost"
+                      value={cost}
+                      onChange={handleInputChange}
+                    />
                   </div>
                 </div>
-                <div className="flex -mx-3">
-                  <div className="w-1/2 px-3 mb-5">
-                    <label form="" className="text-xs font-semibold px-1">
-                      Description <span className="text-accent-red-100">*</span>
-                    </label>
-                    <div className="flex">
-                      <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
-                        <i className="mdi mdi-account-outline text-gray-400 text-lg"></i>
-                      </div>
-                      <input
-                        type="text"
-                        className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 font-bold"
-                        placeholder="Smith"
-                        name="description"
-                        value={description}
-                        onChange={handleInputChange}
-                      />
+                <div className="w-1/3 px-3 mb-5">
+                  <label form="" className="text-xs font-semibold px-1">
+                    Date <span className="text-accent-red-100">*</span>
+                  </label>
+                  <div className="flex">
+                    <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                      <i className="mdi mdi-account-outline text-gray-400 text-lg"></i>
                     </div>
+                    <input
+                      type="date"
+                      className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 font-bold"
+                      placeholder="Colombo"
+                      name="date"
+                      value={date}
+                      onChange={handleInputChange}
+                    />
                   </div>
+                </div>
+                <div className="w-1/3 px-3 mb-5">
+                  <label form="" className="text-xs font-semibold px-1">
+                    Category <span className="text-accent-red-100">*</span>
+                  </label>
+                  <div className="flex">
+                    <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                      <i className="mdi mdi-account-outline text-gray-400 text-lg"></i>
+                    </div>
+                    <input
+                      type="text"
+                      className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 font-bold"
+                      placeholder="Adventures"
+                      name="categoryName"
+                      value={categoryName}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="flex -mx-3">
+                <div className="w-1/3 px-3 mb-5">
+                  <label form="" className="text-xs font-semibold px-1">
+                    Location <span className="text-accent-red-100">*</span>
+                  </label>
+                  <div className="flex">
+                    <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                      <i className="mdi mdi-account-outline text-gray-400 text-lg"></i>
+                    </div>
+                    <input
+                      type="tel"
+                      className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 font-bold"
+                      placeholder="Galle"
+                      name="location"
+                      value={location}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                </div>
+                <div className="w-1/3 px-3 mb-5">
+                  <label form="" className="text-xs font-semibold px-1">
+                    Contact No <span className="text-accent-red-100">*</span>
+                  </label>
+                  <div className="flex">
+                    <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                      <i className="mdi mdi-account-outline text-gray-400 text-lg"></i>
+                    </div>
+                    <input
+                      type="tel"
+                      className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 font-bold"
+                      placeholder="07771123456"
+                      name="contact"
+                      value={contact}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                </div>
+                <div className="w-1/2 px-3 mb-5">
+                  <label form="" className="text-xs font-semibold px-1">
+                    Duration <span className="text-accent-red-100">*</span>
+                  </label>
+                  <div className="flex">
+                    <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                      <i className="mdi mdi-account-outline text-gray-400 text-lg"></i>
+                    </div>
+                    <input
+                      type="text"
+                      className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 font-bold"
+                      placeholder="8:00 A.M - 4.00 P.M"
+                      name="timeId"
+                      value={timeId}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                </div>
+                <div className="w-1/2 px-3 mb-5">
+                  <label form="" className="text-xs font-semibold px-1">
+                    Image <span className="text-accent-red-100">*</span>
+                  </label>
+                  <div className="flex">
+                    <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                      <i className="mdi mdi-account-outline text-gray-400 text-lg"></i>
+                    </div>
+                    <input
+                      type="file"
+                      className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 font-bold"
+                      placeholder="file"
+                      name="imageId"
+                      value={imageId}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="flex -mx-3">
+                <div className="w-1/2 px-3 mb-5">
+                  <label form="" className="text-xs font-semibold px-1">
+                    Description <span className="text-accent-red-100">*</span>
+                  </label>
+                  <div className="flex">
+                    <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                      <i className="mdi mdi-account-outline text-gray-400 text-lg"></i>
+                    </div>
+                    <input
+                      type="text"
+                      className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 font-bold"
+                      placeholder="Smith"
+                      name="description"
+                      value={description}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                </div>
 
-                  <div className="w-1/2 px-3 mb-5">
-                    <label form="" className="text-xs font-semibold px-1">
-                      Tags <span className="text-accent-red-100">*</span>
-                    </label>
-                    <div className="flex">
-                      <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
-                        <i className="mdi mdi-account-outline text-gray-400 text-lg"></i>
-                      </div>
-                      <input
-                        type="text"
-                        className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 font-bold"
-                        placeholder="Crazy,Fanticy"
-                        name="tags"
-                        value={tags}
-                        onChange={handleInputChange}
-                      />
+                <div className="w-1/2 px-3 mb-5">
+                  <label form="" className="text-xs font-semibold px-1">
+                    Tags <span className="text-accent-red-100">*</span>
+                  </label>
+                  <div className="flex">
+                    <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                      <i className="mdi mdi-account-outline text-gray-400 text-lg"></i>
                     </div>
+                    <input
+                      type="text"
+                      className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 font-bold"
+                      placeholder="Crazy,Fanticy"
+                      name="tags"
+                      value={tags}
+                      onChange={handleInputChange}
+                    />
                   </div>
                 </div>
-                <div className="flex mx-4">
-                  <div className="flex justify-between gap-2">
-                    <button
-                      className="block w-full max-w-xs mx-auto bg-accent-green-200 hover:bg-accent-green-50 focus:bg-accent-green-100 text-white rounded-lg px-8  m-3 py-3  font-semibold"
-                      type="submit"
-                      onClick={handleSave}
-                    >
-                      Save
-                    </button>
+              </div>
+              <div className="flex mx-4">
+                <div className="flex justify-between gap-2">
+                  <button
+                    className="block w-full max-w-xs mx-auto bg-accent-green-200 hover:bg-accent-green-50 focus:bg-accent-green-100 text-white rounded-lg px-8  m-3 py-3  font-semibold"
+                    type="submit"
+                    onClick={handleSave}
+                  >
+                    Save
+                  </button>
 
-                    <button
-                      className="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-8  m-3 py-3  font-semibold"
-                      type="submit"
-                      onClick={handleUpdate}
-                    >
-                      Update
-                    </button>
-                  </div>
+                  <button
+                    className="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-8  m-3 py-3  font-semibold"
+                    type="submit"
+                    onClick={handleUpdate}
+                  >
+                    Update
+                  </button>
                 </div>
-              
+              </div>
             </div>
           </div>
         </div>
@@ -369,6 +390,16 @@ export default function PostManage() {
                       }}
                     >
                       Category
+                    </TableCell>
+                    <TableCell
+                      align="center"
+                      style={{
+                        fontWeight: "bolder",
+                        fontFamily: "Poppins",
+                        fontSize: "16px",
+                      }}
+                    >
+                      Location
                     </TableCell>
                     <TableCell
                       align="center"
