@@ -24,6 +24,7 @@ type PlaceDetails = {
   description: string;
   location: string;
   imageId: string;
+  imageUrl: string;
   date: Date;
   timeId: string;
   timeRange: string;
@@ -34,10 +35,11 @@ type PlaceDetails = {
 };
 export default function PostManage() {
   const [placesList, setPlacesList] = useState<PlaceDetails[]>([]);
+
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const [location, setLocation] = useState<string>("");
-  const [imageId, setImageId] = useState<string>("");
+  const [imageId, setImageId] = useState<string>();
   const [date, setDate] = useState<string>("");
   const [timeId, setTimeId] = useState<string>("");
   const [cost, setCost] = useState<number>(0);
@@ -45,6 +47,7 @@ export default function PostManage() {
   const [tags, setTags] = useState<string>("");
   const [categoryName, setCategoryName] = useState<string>("");
   const [searchKey, setSearchKey] = useState<string>("");
+  const [rowId, setRowId] = useState<string>("");
 
   useEffect(() => {
     getAllPlaces();
@@ -113,6 +116,7 @@ export default function PostManage() {
         console.log(res);
         let place: PlaceDetails[] = [...placesList];
         place.push(res.data.responseData);
+        getAllPlaces();
         alert("Add New Place Successfully.");
       })
       .catch((error) => {
@@ -138,16 +142,17 @@ export default function PostManage() {
     };
 
     api
-      .put("place", newPlace)
+      .put(`place/${rowId}`, newPlace)
       .then((res) => {
         console.log(res);
         let place: PlaceDetails[] = [...placesList];
         place.push(res.data.responseData);
-        alert("Add New Place Successfully.");
+        getAllPlaces();
+        alert("Update Successfully.");
       })
       .catch((error) => {
         console.log(error);
-        alert("Add New Place  Unsuccessfully.");
+        alert("Update Unsuccessfully.");
       });
   };
 
@@ -165,28 +170,24 @@ export default function PostManage() {
   };
 
   const handlUpdateSelectedRows = (id: string) => {
-    api
-      .get(`user/${id}`)
-      .then((res) => {
-        const placeData = res.data.responseData;
-        setPlacesList(placeData);
-        console.log(placesList);
+    let placeId = id;
+    setRowId(id);
+    const filteredData = placesList.filter((place) => place._id === placeId);
 
-        setTitle(placeData.title);
-        setDescription(placeData.description);
-        setLocation(placeData.location);
-        setImageId(placeData.imageUrl);
-        setDate(placeData.date);
-        setTimeId(placeData.timeRange);
-        setCost(placeData.cost);
-        setContact(placeData.contact);
-        setTags(placeData.tags);
-        setCategoryName(placeData.categoryName);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    filteredData.forEach((place) => {
+      setTitle(place.title);
+      setDescription(place.description);
+      setLocation(place.location);
+      // setImageId(place.imageUrl);
+      setTags(place.tags.join(", "));
+      setTimeId(place.timeRange);
+      setCost(place.cost);
+      setContact(place.contact);
+      // setDate(place.date.toISOString());
+      setCategoryName(place.categoryName);
+    });
   };
+
   const handleSearch = () => {};
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {};
   return (
@@ -587,4 +588,7 @@ export default function PostManage() {
       <Footer />
     </>
   );
+}
+function moment(arg0: string) {
+  throw new Error("Function not implemented.");
 }
