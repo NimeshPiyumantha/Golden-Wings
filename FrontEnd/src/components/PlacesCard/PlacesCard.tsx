@@ -21,7 +21,7 @@ export default function Places() {
         <div className="bg-accent-white-50 flex-wrap rounded-lg shadow-lg">
           <div className="justify-center p-4 flex gap-3 flex-wrap">
             <div>
-              <FormControl sx={{ m: 1, minWidth: 120 }}>
+              <FormControl sx={{ m: 1, minWidth: 150 }}>
                 <InputLabel id="demo-simple-select-helper-label">
                   Age
                 </InputLabel>
@@ -40,12 +40,16 @@ export default function Places() {
                   <MenuItem value={30}>Thirty</MenuItem>
                 </Select>
               </FormControl>
-              <FormControl sx={{ m: 1, minWidth: 120 }}>
+              <FormControl sx={{ m: 1, minWidth: 150 }}>
+                <InputLabel id="demo-simple-select-helper-label">
+                  Age
+                </InputLabel>
                 <Select
+                  labelId="demo-simple-select-helper-label"
+                  id="demo-simple-select-helper"
                   value={age}
+                  label="Age"
                   onChange={handleChange}
-                  displayEmpty
-                  inputProps={{ "aria-label": "Without label" }}
                 >
                   <MenuItem value="">
                     <em>None</em>
