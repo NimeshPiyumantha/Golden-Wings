@@ -130,7 +130,7 @@ export const Profile = () => {
                     </div>
                     <input
                       type="text"
-                      className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+                      className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 font-bold"
                       placeholder="John"
                       required
                       name="fristName"
