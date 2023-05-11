@@ -16,8 +16,21 @@ import {
 import DeleteIcon from "@mui/icons-material/Delete";
 import SearchIcon from "@mui/icons-material/Search";
 
-
+type placeDetails = {
+  _id: string;
+  title: string;
+  description: string;
+  imageId: string;
+  date: Date;
+  timeId: string;
+  cost: number;
+  contact: number;
+  tags: string[];
+  categoryName: string;
+};
 export default function PostManage() {
+
+
 
   return (
     <>
