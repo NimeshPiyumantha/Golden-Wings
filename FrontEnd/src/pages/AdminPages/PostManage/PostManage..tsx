@@ -236,7 +236,13 @@ export default function PostManage() {
                     </div>
                   </div>
                 </div>
-                
+                <div className="flex mx-4">
+                  <div className="flex justify-between gap-2">
+                  
+
+                   
+                  </div>
+                </div>
               </form>
             </div>
           </div>
