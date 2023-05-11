@@ -40,7 +40,7 @@ export default function Places() {
                   <MenuItem value={30}>Thirty</MenuItem>
                 </Select>
               </FormControl>
-              <FormControl sx={{ m: 1, minWidth: 150 }}>
+               <FormControl sx={{ m: 1, minWidth: 150 }}>
                 <InputLabel id="demo-simple-select-helper-label">
                   Age
                 </InputLabel>
