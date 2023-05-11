@@ -125,13 +125,6 @@ export default function PostManage() {
     const { name, value } = event.target;
   };
 
-  const filteredData = placesList.map((row, index) => {
-    // do something with the date components
-    // ...
-
-    return row; // return the processed row
-  });
-
   const handleDeleteSelectedRows = (Id: string) => {
     api
       .delete(`place/${Id}`)
@@ -144,7 +137,8 @@ export default function PostManage() {
         alert("Delete Unsuccessfully.");
       });
   };
-  const handlUpdateSelectedRows = (userId: string) => {};
+
+  const handlUpdateSelectedRows = (id: string) => {};
   const handleSearch = () => {};
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {};
   return (
