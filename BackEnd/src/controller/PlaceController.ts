@@ -168,7 +168,9 @@ export default class PlaceController {
   ): Promise<Response> => {
     try {
       const { id } = req.params;
-      let place = await Place.findById(id);
+      const place = await Place.find({
+        $or: [{ _id: id }, { location: id }, { categoryId: id },{categoryName:id}],
+      });
       return res.status(200).json({ responseData: place });
     } catch (error: unknown) {
       if (error instanceof Error) {

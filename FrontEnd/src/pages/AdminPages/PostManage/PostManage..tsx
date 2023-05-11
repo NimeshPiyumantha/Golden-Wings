@@ -188,8 +188,22 @@ export default function PostManage() {
     });
   };
 
-  const handleSearch = () => {};
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {};
+  const handleSearch = () => {
+    api
+      .get(`place/search/${searchKey}`)
+      .then((res) => {
+        setPlacesList(res.data.responseData);
+      })
+      .catch((error) => {
+        console.log(error);
+        getAllPlaces();
+      });
+  };
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      handleSearch();
+    }
+  };
   return (
     <>
       <AdminHeader />
@@ -439,6 +453,16 @@ export default function PostManage() {
               >
                 <TableHead style={{ backgroundColor: "#bdc3c7" }}>
                   <TableRow>
+                  <TableCell
+                      align="center"
+                      style={{
+                        fontWeight: "bolder",
+                        fontFamily: "Poppins",
+                        fontSize: "16px",
+                      }}
+                    >
+                      Id
+                    </TableCell>
                     <TableCell
                       align="center"
                       style={{
@@ -552,6 +576,7 @@ export default function PostManage() {
                     const day = dateObj.getUTCDate();
                     return (
                       <TableRow key={row._id}>
+                        <TableCell align="center">{row._id}</TableCell>
                         <TableCell align="center">{row.title}</TableCell>
                         <TableCell align="center">{row.cost}</TableCell>
                         <TableCell align="center">
