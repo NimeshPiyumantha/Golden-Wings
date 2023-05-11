@@ -614,6 +614,3 @@ export default function PostManage() {
     </>
   );
 }
-function moment(arg0: string) {
-  throw new Error("Function not implemented.");
-}
