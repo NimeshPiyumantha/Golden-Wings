@@ -29,7 +29,17 @@ type placeDetails = {
   categoryName: string;
 };
 export default function PostManage() {
-
+  const [placesList, setPlacesList] = useState<placeDetails[]>([]);
+  const [title, setTitle] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
+  const [imageId, setImageId] = useState<string>("");
+  const [date, setDate] = useState<string>("");
+  const [timeId, setTimeId] = useState<string>("");
+  const [cost, setCost] = useState<number>(0);
+  const [contactNo, setContactNo] = useState<number>(0);
+  const [tags, setTags] = useState<string>("");
+  const [categoryName, setCategoryName] = useState<string>("");
+  const [searchKey, setSearchKey] = useState<string>("");
 
 
   return (
