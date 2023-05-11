@@ -132,7 +132,18 @@ export default function PostManage() {
     return row; // return the processed row
   });
 
-  const handleDeleteSelectedRows = (userId: string) => {};
+  const handleDeleteSelectedRows = (Id: string) => {
+    api
+      .delete(`place/${Id}`)
+      .then((res) => {
+        getAllPlaces();
+        alert("Delete Successfully.");
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("Delete Unsuccessfully.");
+      });
+  };
   const handlUpdateSelectedRows = (userId: string) => {};
   const handleSearch = () => {};
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {};
