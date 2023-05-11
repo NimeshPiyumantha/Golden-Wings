@@ -54,7 +54,7 @@ export default function PostManage() {
   };
 
   const handleDeleteSelectedRows = (userId: string) => {};
-
+  const handleSearch = () => {};
  
   return (
     <>
