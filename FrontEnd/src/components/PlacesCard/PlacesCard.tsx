@@ -6,7 +6,8 @@ import {
   SelectChangeEvent,
 } from "@mui/material";
 import Cards from "../Cards";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import api from "../../axios";
 
 type PlaceDetails = {
   _id: string;
@@ -25,6 +26,21 @@ type PlaceDetails = {
 };
 export default function Places() {
   const [placesList, setPlacesList] = useState<PlaceDetails[]>([]);
+
+  useEffect(() => {
+    getAllPlaces();
+  }, []);
+
+  const getAllPlaces = () => {
+    api
+      .get("place")
+      .then((res) => {
+        setPlacesList(res.data.responseData);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const [age, setAge] = useState<string>("");
 
