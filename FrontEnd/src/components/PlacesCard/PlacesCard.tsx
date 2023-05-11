@@ -1,5 +1,3 @@
-import Header from "../Header";
-import Footer from "../Footer";
 import Cards from "../Cards";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
@@ -73,9 +71,6 @@ export default function Places() {
 
       <div className="container my-5 mx-auto px-4 md:px-12 mt-3">
         <div className="flex flex-wrap -mx-1 lg:-mx-4">
-          <Cards />
-          <Cards />
-          <Cards />
           <Cards />
         </div>
       </div>
