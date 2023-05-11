@@ -53,7 +53,7 @@ export default function PostManage() {
     const { name, value } = event.target;
   };
 
-
+  const handleDeleteSelectedRows = (userId: string) => {};
 
  
   return (
