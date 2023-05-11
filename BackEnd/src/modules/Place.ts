@@ -4,6 +4,7 @@ export interface IPlace extends Document {
   title: string;
   description: string;
   imageId: string;
+  imageUrl: string;
   date: Date;
   timeId: string;
   cost: number;
@@ -25,6 +26,10 @@ const PlaceSchema = new Schema(
       required: true,
     },
     imageId: {
+      type: String,
+      required: true,
+    },
+    imageUrl: {
       type: String,
       required: true,
     },

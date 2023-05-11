@@ -3,6 +3,7 @@ import { Document, Schema, model } from "mongoose";
 export interface IPost extends Document {
   userId: string;
   imageId: string;
+  imageUrl: string;
   date: Date;
   title: string;
   description: string;
@@ -19,6 +20,10 @@ const PostSchema = new Schema(
       required: true,
     },
     imageId: {
+      type: String,
+      required: true,
+    },
+    imageUrl: {
       type: String,
       required: true,
     },
