@@ -118,144 +118,143 @@ export const Profile = () => {
             <div className="text-center mb-10">
               <h1 className="font-bold text-3xl text-gray-900">Profile</h1>
             </div>
-            <form>
-              <div className="flex -mx-3 ">
-                <div className="w-1/2 px-3 mb-5">
-                  <label form="" className="text-xs font-semibold px-1">
-                    First name <span className="text-accent-red-100">*</span>
-                  </label>
-                  <div className="flex">
-                    <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
-                      <i className="mdi mdi-account-outline text-gray-400 text-lg"></i>
-                    </div>
-                    <input
-                      type="text"
-                      className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 font-bold"
-                      placeholder="John"
-                      required
-                      name="fristName"
-                      value={fristName}
-                      onChange={handleInputChange}
-                    />
-                  </div>
-                </div>
-                <div className="w-1/2 px-3 mb-5">
-                  <label form="" className="text-xs font-semibold px-1">
-                    Last name <span className="text-accent-red-100">*</span>
-                  </label>
-                  <div className="flex">
-                    <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
-                      <i className="mdi mdi-account-outline text-gray-400 text-lg"></i>
-                    </div>
-                    <input
-                      type="text"
-                      className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 font-bold"
-                      placeholder="Smith"
-                      required
-                      name="lastName"
-                      value={lastName}
-                      onChange={handleInputChange}
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="flex -mx-3">
-                <div className="w-1/2 px-3 mb-5">
-                  <label form="" className="text-xs font-semibold px-1">
-                    Address <span className="text-accent-red-100">*</span>
-                  </label>
-                  <div className="flex">
-                    <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
-                      <i className="mdi mdi-account-outline text-gray-400 text-lg"></i>
-                    </div>
-                    <input
-                      type="text"
-                      className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 font-bold"
-                      placeholder="Colombo"
-                      required
-                      name="address"
-                      value={address}
-                      onChange={handleInputChange}
-                    />
-                  </div>
-                </div>
-                <div className="w-1/2 px-3 mb-5">
-                  <label form="" className="text-xs font-semibold px-1">
-                    Contact <span className="text-accent-red-100">*</span>
-                  </label>
-                  <div className="flex">
-                    <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
-                      <i className="mdi mdi-account-outline text-gray-400 text-lg"></i>
-                    </div>
-                    <input
-                      type="tel"
-                      className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 font-bold"
-                      placeholder="0777123456"
-                      name="contactNo"
-                      value={contactNo}
-                      onChange={handleInputChange}
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="flex -mx-3">
-                <div className="w-1/2 px-3 mb-5">
-                  <label form="" className="text-xs font-semibold px-1">
-                    Email <span className="text-accent-red-100">*</span>
-                  </label>
-                  <div className="flex">
-                    <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
-                      <i className="mdi mdi-account-outline text-gray-400 text-lg"></i>
-                    </div>
-                    <input
-                      type="email"
-                      className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 font-bold"
-                      placeholder="yourmail@gmail.com"
-                      name="email"
-                      value={email}
-                      onChange={handleInputChange}
-                    />
-                  </div>
-                </div>
-                <div className="w-1/2 px-3 mb-5">
-                  <label form="" className="text-xs font-semibold px-1">
-                    Password <span className="text-accent-red-100">*</span>
-                  </label>
-                  <div className="flex">
-                    <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
-                      <i className="mdi mdi-account-outline text-gray-400 text-lg"></i>
-                    </div>
-                    <input
-                      type="password"
-                      className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 font-bold"
-                      placeholder="**********"
-                      name="password"
-                      value={password}
-                      onChange={handleInputChange}
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="flex mx-4">
-                <div className="flex justify-between gap-2">
-                  <button
-                    className="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-8  m-3 py-3  font-semibold"
-                    type="submit"
-                    onClick={handleUpdate}
-                  >
-                    Update
-                  </button>
 
-                  <button
-                    className="block w-full max-w-xs mx-auto bg-accent-red-50 hover:bg-accent-red-100 focus:bg-accent-red-200 text-white rounded-lg px-8 py-3 m-3 font-semibold"
-                    type="button"
-                    onClick={handleDelete}
-                  >
-                    Delete
-                  </button>
+            <div className="flex -mx-3 ">
+              <div className="w-1/2 px-3 mb-5">
+                <label form="" className="text-xs font-semibold px-1">
+                  First name <span className="text-accent-red-100">*</span>
+                </label>
+                <div className="flex">
+                  <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                    <i className="mdi mdi-account-outline text-gray-400 text-lg"></i>
+                  </div>
+                  <input
+                    type="text"
+                    className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 font-bold"
+                    placeholder="John"
+                    required
+                    name="fristName"
+                    value={fristName}
+                    onChange={handleInputChange}
+                  />
                 </div>
               </div>
-            </form>
+              <div className="w-1/2 px-3 mb-5">
+                <label form="" className="text-xs font-semibold px-1">
+                  Last name <span className="text-accent-red-100">*</span>
+                </label>
+                <div className="flex">
+                  <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                    <i className="mdi mdi-account-outline text-gray-400 text-lg"></i>
+                  </div>
+                  <input
+                    type="text"
+                    className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 font-bold"
+                    placeholder="Smith"
+                    required
+                    name="lastName"
+                    value={lastName}
+                    onChange={handleInputChange}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="flex -mx-3">
+              <div className="w-1/2 px-3 mb-5">
+                <label form="" className="text-xs font-semibold px-1">
+                  Address <span className="text-accent-red-100">*</span>
+                </label>
+                <div className="flex">
+                  <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                    <i className="mdi mdi-account-outline text-gray-400 text-lg"></i>
+                  </div>
+                  <input
+                    type="text"
+                    className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 font-bold"
+                    placeholder="Colombo"
+                    required
+                    name="address"
+                    value={address}
+                    onChange={handleInputChange}
+                  />
+                </div>
+              </div>
+              <div className="w-1/2 px-3 mb-5">
+                <label form="" className="text-xs font-semibold px-1">
+                  Contact <span className="text-accent-red-100">*</span>
+                </label>
+                <div className="flex">
+                  <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                    <i className="mdi mdi-account-outline text-gray-400 text-lg"></i>
+                  </div>
+                  <input
+                    type="tel"
+                    className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 font-bold"
+                    placeholder="0777123456"
+                    name="contactNo"
+                    value={contactNo}
+                    onChange={handleInputChange}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="flex -mx-3">
+              <div className="w-1/2 px-3 mb-5">
+                <label form="" className="text-xs font-semibold px-1">
+                  Email <span className="text-accent-red-100">*</span>
+                </label>
+                <div className="flex">
+                  <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                    <i className="mdi mdi-account-outline text-gray-400 text-lg"></i>
+                  </div>
+                  <input
+                    type="email"
+                    className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 font-bold"
+                    placeholder="yourmail@gmail.com"
+                    name="email"
+                    value={email}
+                    onChange={handleInputChange}
+                  />
+                </div>
+              </div>
+              <div className="w-1/2 px-3 mb-5">
+                <label form="" className="text-xs font-semibold px-1">
+                  Password <span className="text-accent-red-100">*</span>
+                </label>
+                <div className="flex">
+                  <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                    <i className="mdi mdi-account-outline text-gray-400 text-lg"></i>
+                  </div>
+                  <input
+                    type="password"
+                    className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 font-bold"
+                    placeholder="**********"
+                    name="password"
+                    value={password}
+                    onChange={handleInputChange}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="flex mx-4">
+              <div className="flex justify-between gap-2">
+                <button
+                  className="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-8  m-3 py-3  font-semibold"
+                  type="submit"
+                  onClick={handleUpdate}
+                >
+                  Update
+                </button>
+
+                <button
+                  className="block w-full max-w-xs mx-auto bg-accent-red-50 hover:bg-accent-red-100 focus:bg-accent-red-200 text-white rounded-lg px-8 py-3 m-3 font-semibold"
+                  type="button"
+                  onClick={handleDelete}
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

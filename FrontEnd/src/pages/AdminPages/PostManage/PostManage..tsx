@@ -105,7 +105,7 @@ export default function PostManage() {
         <div className="bg-gray-100  text-gray-500 rounded-3xl shadow-xl w-4/5 md:3/4 sm:1/2 xl:1/2 overflow-hidden">
           <div className="md:flex w-full">
             <div className="w-full  py-8 px-5 md:px-10">
-              <form>
+              
                 <div className="flex -mx-3 ">
                   <div className="w-1/3 px-3 mb-5">
                     <label form="" className="text-xs font-semibold px-1">
@@ -119,7 +119,6 @@ export default function PostManage() {
                         type="text"
                         className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 font-bold"
                         placeholder="Adventure of Hill"
-                        required
                         name="title"
                         value={title}
                         onChange={handleInputChange}
@@ -156,7 +155,6 @@ export default function PostManage() {
                         type="date"
                         className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 font-bold"
                         placeholder="Colombo"
-                        required
                         name="date"
                         value={date}
                         onChange={handleInputChange}
@@ -251,7 +249,6 @@ export default function PostManage() {
                         type="text"
                         className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 font-bold"
                         placeholder="Smith"
-                        required
                         name="description"
                         value={description}
                         onChange={handleInputChange}
@@ -290,14 +287,14 @@ export default function PostManage() {
 
                     <button
                       className="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-8  m-3 py-3  font-semibold"
-                      type="button"
+                      type="submit"
                       onClick={handleUpdate}
                     >
                       Update
                     </button>
                   </div>
                 </div>
-              </form>
+              
             </div>
           </div>
         </div>
