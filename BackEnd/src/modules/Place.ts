@@ -3,6 +3,7 @@ import { Document, Schema, model } from "mongoose";
 export interface IPlace extends Document {
   title: string;
   description: string;
+  location: string;
   imageId: string;
   imageUrl: string;
   date: Date;
@@ -23,6 +24,10 @@ const PlaceSchema = new Schema(
       required: true,
     },
     description: {
+      type: String,
+      required: true,
+    },
+    location: {
       type: String,
       required: true,
     },
