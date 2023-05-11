@@ -108,7 +108,7 @@ export default function AdminHeader() {
                 }
               >
                 <Typography textAlign="center" pt={1} pr={2} pl={2}>
-                  POST
+                  Places
                 </Typography>
               </NavLink>
 
@@ -221,7 +221,7 @@ export default function AdminHeader() {
                   display: "block",
                 }}
               >
-                <h4>Post</h4>
+                <h4>Places</h4>
               </Button>
             </NavLink>
 
