@@ -164,7 +164,29 @@ export default function PostManage() {
       });
   };
 
-  const handlUpdateSelectedRows = (id: string) => {};
+  const handlUpdateSelectedRows = (id: string) => {
+    api
+      .get(`user/${id}`)
+      .then((res) => {
+        const placeData = res.data.responseData;
+        setPlacesList(placeData);
+        console.log(placesList);
+
+        setTitle(placeData.title);
+        setDescription(placeData.description);
+        setLocation(placeData.location);
+        setImageId(placeData.imageUrl);
+        setDate(placeData.date);
+        setTimeId(placeData.timeRange);
+        setCost(placeData.cost);
+        setContact(placeData.contact);
+        setTags(placeData.tags);
+        setCategoryName(placeData.categoryName);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   const handleSearch = () => {};
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {};
   return (

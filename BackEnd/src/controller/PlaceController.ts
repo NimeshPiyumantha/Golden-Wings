@@ -161,4 +161,21 @@ export default class PlaceController {
       }
     }
   };
+
+  searchPlace: RequestHandler = async (
+    req: Request,
+    res: Response
+  ): Promise<Response> => {
+    try {
+      const { id } = req.params;
+      let place = await Place.findById(id);
+      return res.status(200).json({ responseData: place });
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        return res.status(500).json({ message: error.message });
+      } else {
+        return res.status(500).json({ message: "Unknown error occured." });
+      }
+    }
+  };
 }
