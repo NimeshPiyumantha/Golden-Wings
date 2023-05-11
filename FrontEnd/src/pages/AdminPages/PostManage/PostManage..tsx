@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AdminHeader from "../../../components/AdminHeader";
 import Footer from "../../../components/Footer";
 import api from "../../../axios";
@@ -44,6 +44,21 @@ export default function PostManage() {
   const [categoryName, setCategoryName] = useState<string>("");
   const [searchKey, setSearchKey] = useState<string>("");
 
+  useEffect(() => {
+    getAllPlaces();
+  }, []);
+
+  const getAllPlaces = () => {
+    api
+      .get("place")
+      .then((res) => {
+        setPlacesList(res.data.responseData);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   const handleInputChange = (event: any) => {
     const { name, value } = event.target;
     name === "title"
@@ -72,7 +87,7 @@ export default function PostManage() {
       return tags.split(",").map((tag) => tag.trim());
     }
     return [];
-  }; 
+  };
 
   const handleSave = (event: any) => {
     const { name, value } = event.target;
@@ -288,7 +303,8 @@ export default function PostManage() {
 
                 <div className="w-1/2 px-3 mb-5">
                   <label form="" className="text-xs font-semibold px-1">
-                    Tags <span className="text-accent-red-100">*</span> (Comma separated tags)
+                    Tags <span className="text-accent-red-100">*</span> (Comma
+                    separated tags)
                   </label>
                   <div className="flex">
                     <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
