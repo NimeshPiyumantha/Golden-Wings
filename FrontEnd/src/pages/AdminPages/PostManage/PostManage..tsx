@@ -45,6 +45,11 @@ export default function PostManage() {
     const { name, value } = event.target;
   };
 
+  const handleSave = (event: any) => {
+    const { name, value } = event.target;
+  };
+
+
  
   return (
     <>
