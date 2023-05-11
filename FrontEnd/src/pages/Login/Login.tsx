@@ -8,7 +8,7 @@ import sigIn_bg from "../../assets/img/signIn-bg.jpg";
 import "./Login.css";
 import api from "../../axios";
 import { ChangeEvent, useState } from "react";
-import { MenuItem, Select } from "@mui/material";
+import { InputLabel, MenuItem, Select } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 type UserDetails = {
@@ -78,6 +78,7 @@ export default function Login() {
             <div className="px-8">
               <form onSubmit={handleSubmit}>
                 {/* <Box component="form" noValidate sx={{ mt: 1 }}> */}
+                <InputLabel id="roleId">Role Type</InputLabel>
                 <Select
                   required
                   fullWidth
