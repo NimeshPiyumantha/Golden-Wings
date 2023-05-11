@@ -55,17 +55,17 @@ export default class PlaceController {
         time = await time.save();
       }
 
-      const post = new Place(req.body);
+      const place = new Place(req.body);
 
       // set the category id here
-      post.categoryId = category._id.toString();
+      place.categoryId = category._id.toString();
       // set the image id here
-      post.imageId = images._id.toString();
+      place.imageId = images._id.toString();
       // set the time id here
-      post.timeId = time._id.toString();
+      place.timeId = time._id.toString();
 
       // save Post details
-      let newPost = await post.save();
+      let newPost = await place.save();
 
       // getting the tags array from request body
       const tags = req.body.tags;
