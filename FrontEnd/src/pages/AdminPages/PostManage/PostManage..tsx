@@ -238,7 +238,13 @@ export default function PostManage() {
                 </div>
                 <div className="flex mx-4">
                   <div className="flex justify-between gap-2">
-                  
+                    <button
+                      className="block w-full max-w-xs mx-auto bg-accent-green-200 hover:bg-accent-green-50 focus:bg-accent-green-100 text-white rounded-lg px-8  m-3 py-3  font-semibold"
+                      type="submit"
+                      onClick={handleSave}
+                    >
+                      Save
+                    </button>
 
                    
                   </div>
