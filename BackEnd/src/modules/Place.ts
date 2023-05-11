@@ -9,6 +9,7 @@ export interface IPlace extends Document {
   cost: number;
   contact: number;
   tags: string[];
+  categoryName: string;
   categoryId: string;
 }
 
@@ -45,6 +46,10 @@ const PlaceSchema = new Schema(
     },
     tags: {
       type: Array,
+      required: true,
+    },
+    categoryName: {
+      type: String,
       required: true,
     },
     categoryId: {

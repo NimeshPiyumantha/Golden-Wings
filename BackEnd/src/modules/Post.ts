@@ -7,6 +7,7 @@ export interface IPost extends Document {
   title: string;
   description: string;
   tags: string[];
+  categoryName: string;
   categoryId: string;
 }
 
@@ -35,6 +36,10 @@ const PostSchema = new Schema(
     },
     tags: {
       type: Array,
+      required: true,
+    },
+    categoryName: {
+      type: String,
       required: true,
     },
     categoryId: {
