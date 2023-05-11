@@ -99,7 +99,24 @@ export default function Places() {
 
       <div className="container my-5 mx-auto px-4 md:px-12 mt-3">
         <div className="flex flex-wrap -mx-1 lg:-mx-4">
-          <Cards />
+          {placesList.map((post) => (
+            <Cards
+              key={post._id}
+              _id={post._id}
+              title={post.title}
+              description={post.description}
+              date={post.date}
+              location={post.location}
+              imageId={post.imageId}
+              imageUrl={post.imageUrl}
+              timeId={post.timeId}
+              timeRange={post.timeRange}
+              cost={post.cost}
+              contact={post.contact}
+              tags={post.tags}
+              categoryName={post.categoryName}
+            />
+          ))}
         </div>
       </div>
     </>

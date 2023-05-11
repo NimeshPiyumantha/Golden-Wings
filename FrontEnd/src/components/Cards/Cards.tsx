@@ -1,6 +1,21 @@
 import image1 from "../../assets/img/1.jpg";
 
-export default function Cards() {
+type PlaceDetails = {
+  _id: string;
+  title: string;
+  description: string;
+  location: string;
+  imageId: string;
+  imageUrl: string;
+  date: Date;
+  timeId: string;
+  timeRange: string;
+  cost: number;
+  contact: number;
+  tags: string[];
+  categoryName: string;
+};
+export default function Cards(props: PlaceDetails) {
   return (
     <div className="my-1 px-1 w-full md:w-1/3 lg:my-4 lg:px-4 lg:w-1/4">
       <article className="overflow-hidden rounded-lg shadow-lg">
