@@ -1,70 +1,61 @@
+import {
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+  SelectChangeEvent,
+} from "@mui/material";
 import Cards from "../Cards";
-import TextField from "@mui/material/TextField";
-import Autocomplete from "@mui/material/Autocomplete";
-
-interface Location {
-  name: string;
-}
-
-interface Type {
-  name: string;
-}
-
-const type: readonly Type[] = [
-  { name: "Free" },
-  {
-    name: "Charge",
-  },
-];
-
-const location: readonly Location[] = [
-  { name: "AD" },
-  {
-    name: "AD",
-  },
-];
+import { useState } from "react";
 
 export default function Places() {
+  const [age, setAge] = useState<string>("");
+
+  const handleChange = (event: SelectChangeEvent) => {
+    setAge(event.target.value);
+  };
+
   return (
     <>
       <div className="mt-20 flex justify-center mr-20 ml-20 m-5 sm:p-3">
         <div className="bg-accent-white-50 flex-wrap rounded-lg shadow-lg">
           <div className="justify-center p-4 flex gap-3 flex-wrap">
-            <Autocomplete
-              id="LocationID"
-              sx={{ width: 250 }}
-              options={location}
-              autoHighlight
-              getOptionLabel={(option) => option.name}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  label="Choose a Location"
-                  inputProps={{
-                    ...params.inputProps,
-                    autoComplete: "new-password", // disable autocomplete and autofill
-                  }}
-                />
-              )}
-            />
-
-            <Autocomplete
-              id="typeID"
-              sx={{ width: 250 }}
-              options={type}
-              autoHighlight
-              getOptionLabel={(option) => option.name}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  label="Choose a Payement"
-                  inputProps={{
-                    ...params.inputProps,
-                    autoComplete: "new-password", // disable autocomplete and autofill
-                  }}
-                />
-              )}
-            />
+            <div>
+              <FormControl sx={{ m: 1, minWidth: 120 }}>
+                <InputLabel id="demo-simple-select-helper-label">
+                  Age
+                </InputLabel>
+                <Select
+                  labelId="demo-simple-select-helper-label"
+                  id="demo-simple-select-helper"
+                  value={age}
+                  label="Age"
+                  onChange={handleChange}
+                >
+                  <MenuItem value="">
+                    <em>None</em>
+                  </MenuItem>
+                  <MenuItem value={10}>Ten</MenuItem>
+                  <MenuItem value={20}>Twenty</MenuItem>
+                  <MenuItem value={30}>Thirty</MenuItem>
+                </Select>
+              </FormControl>
+              <FormControl sx={{ m: 1, minWidth: 120 }}>
+                <Select
+                  value={age}
+                  onChange={handleChange}
+                  displayEmpty
+                  inputProps={{ "aria-label": "Without label" }}
+                >
+                  <MenuItem value="">
+                    <em>None</em>
+                  </MenuItem>
+                  <MenuItem value={10}>Ten</MenuItem>
+                  <MenuItem value={20}>Twenty</MenuItem>
+                  <MenuItem value={30}>Thirty</MenuItem>
+                </Select>
+              </FormControl>
+            </div>
           </div>
         </div>
       </div>
