@@ -43,6 +43,23 @@ export default function PostManage() {
 
   const handleInputChange = (event: any) => {
     const { name, value } = event.target;
+    name === "title"
+      ? setTitle(value)
+      : name === "description"
+      ? setDescription(value)
+      : name === "imageId"
+      ? setImageId(value)
+      : name === "date"
+      ? setDate(value)
+      : name === "timeId"
+      ? setTimeId(value)
+      : name === "cost"
+      ? setCost(value)
+      : name === "contactNo"
+      ? setContactNo(value)
+      : name === "tags"
+      ? setTags(value)
+      : name === "categoryName" && setCategoryName(value);
   };
 
   const handleSave = (event: any) => {
