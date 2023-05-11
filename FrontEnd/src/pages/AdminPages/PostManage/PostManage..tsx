@@ -67,8 +67,16 @@ export default function PostManage() {
       : name === "categoryName" && setCategoryName(value);
   };
 
+  const convertTagStringToArray = (tags: string): string[] => {
+    if (tags !== "") {
+      return tags.split(",").map((tag) => tag.trim());
+    }
+    return [];
+  }; 
+
   const handleSave = (event: any) => {
     const { name, value } = event.target;
+    let tagsArray = convertTagStringToArray(tags);
     let newPlace = {
       title: title,
       description: description,
@@ -78,7 +86,7 @@ export default function PostManage() {
       timeRange: timeId,
       cost: cost,
       contact: contact,
-      tags: tags,
+      tags: tagsArray,
       categoryName: categoryName,
     };
 
@@ -280,7 +288,7 @@ export default function PostManage() {
 
                 <div className="w-1/2 px-3 mb-5">
                   <label form="" className="text-xs font-semibold px-1">
-                    Tags <span className="text-accent-red-100">*</span>
+                    Tags <span className="text-accent-red-100">*</span> (Comma separated tags)
                   </label>
                   <div className="flex">
                     <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
