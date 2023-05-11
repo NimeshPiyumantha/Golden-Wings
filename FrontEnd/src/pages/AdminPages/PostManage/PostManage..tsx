@@ -37,7 +37,7 @@ export default function PostManage() {
   const [date, setDate] = useState<string>("");
   const [timeId, setTimeId] = useState<string>("");
   const [cost, setCost] = useState<number>(0);
-  const [contactNo, setContactNo] = useState<number>(0);
+  const [contact, setContact] = useState<number>(0);
   const [tags, setTags] = useState<string>("");
   const [categoryName, setCategoryName] = useState<string>("");
   const [searchKey, setSearchKey] = useState<string>("");
@@ -56,8 +56,8 @@ export default function PostManage() {
       ? setTimeId(value)
       : name === "cost"
       ? setCost(value)
-      : name === "contactNo"
-      ? setContactNo(value)
+      : name === "contact"
+      ? setContact(value)
       : name === "tags"
       ? setTags(value)
       : name === "categoryName" && setCategoryName(value);
@@ -72,7 +72,7 @@ export default function PostManage() {
       date: date,
       timeId: timeId,
       cost: cost,
-      contact: contactNo,
+      contact: contact,
       tags: tags,
       categoryName: categoryName,
     };
@@ -193,8 +193,8 @@ export default function PostManage() {
                         type="tel"
                         className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 font-bold"
                         placeholder="07771123456"
-                        name="contactNO"
-                        value={contactNo}
+                        name="contact"
+                        value={contact}
                         onChange={handleInputChange}
                       />
                     </div>
