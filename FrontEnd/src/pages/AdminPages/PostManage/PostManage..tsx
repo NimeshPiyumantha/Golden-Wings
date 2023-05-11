@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import AdminHeader from "../../../components/AdminHeader";
 import Footer from "../../../components/Footer";
+import api from "../../../axios";
 import {
   TextField,
   InputAdornment,
@@ -16,7 +17,7 @@ import {
 import DeleteIcon from "@mui/icons-material/Delete";
 import SearchIcon from "@mui/icons-material/Search";
 
-type placeDetails = {
+type PlaceDetails = {
   _id: string;
   title: string;
   description: string;
@@ -29,7 +30,7 @@ type placeDetails = {
   categoryName: string;
 };
 export default function PostManage() {
-  const [placesList, setPlacesList] = useState<placeDetails[]>([]);
+  const [placesList, setPlacesList] = useState<PlaceDetails[]>([]);
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const [imageId, setImageId] = useState<string>("");
@@ -64,6 +65,30 @@ export default function PostManage() {
 
   const handleSave = (event: any) => {
     const { name, value } = event.target;
+    let newPlace = {
+      title: title,
+      description: description,
+      imageId: imageId,
+      date: date,
+      timeId: timeId,
+      cost: cost,
+      contact: contactNo,
+      tags: tags,
+      categoryName: categoryName,
+    };
+
+    api
+      .post("place", newPlace)
+      .then((res) => {
+        console.log(res);
+        let place: PlaceDetails[] = [...placesList];
+        place.push(res.data.responseData);
+        alert("Add New Place Successfully.");
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("Add New Place  Unsuccessfully.");
+      });
   };
 
   const handleUpdate = (event: any) => {
