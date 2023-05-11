@@ -123,6 +123,32 @@ export default function PostManage() {
 
   const handleUpdate = (event: any) => {
     const { name, value } = event.target;
+    let tagsArray = convertTagStringToArray(tags);
+    let newPlace = {
+      title: title,
+      description: description,
+      location: location,
+      imageUrl: imageId,
+      date: date,
+      timeRange: timeId,
+      cost: cost,
+      contact: contact,
+      tags: tagsArray,
+      categoryName: categoryName,
+    };
+
+    api
+      .put("place", newPlace)
+      .then((res) => {
+        console.log(res);
+        let place: PlaceDetails[] = [...placesList];
+        place.push(res.data.responseData);
+        alert("Add New Place Successfully.");
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("Add New Place  Unsuccessfully.");
+      });
   };
 
   const handleDeleteSelectedRows = (Id: string) => {
