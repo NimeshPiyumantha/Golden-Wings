@@ -8,7 +8,24 @@ import {
 import Cards from "../Cards";
 import { useState } from "react";
 
+type PlaceDetails = {
+  _id: string;
+  title: string;
+  description: string;
+  location: string;
+  imageId: string;
+  imageUrl: string;
+  date: Date;
+  timeId: string;
+  timeRange: string;
+  cost: number;
+  contact: number;
+  tags: string[];
+  categoryName: string;
+};
 export default function Places() {
+  const [placesList, setPlacesList] = useState<PlaceDetails[]>([]);
+
   const [age, setAge] = useState<string>("");
 
   const handleChange = (event: SelectChangeEvent) => {
@@ -40,7 +57,7 @@ export default function Places() {
                   <MenuItem value={30}>Thirty</MenuItem>
                 </Select>
               </FormControl>
-               <FormControl sx={{ m: 1, minWidth: 150 }}>
+              <FormControl sx={{ m: 1, minWidth: 150 }}>
                 <InputLabel id="demo-simple-select-helper-label">
                   Age
                 </InputLabel>
