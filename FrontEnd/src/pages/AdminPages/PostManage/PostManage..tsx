@@ -246,7 +246,13 @@ export default function PostManage() {
                       Save
                     </button>
 
-                   
+                    <button
+                      className="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-8  m-3 py-3  font-semibold"
+                      type="button"
+                      onClick={handleUpdate}
+                    >
+                      Update
+                    </button>
                   </div>
                 </div>
               </form>
