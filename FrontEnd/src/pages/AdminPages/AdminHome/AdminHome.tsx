@@ -1,7 +1,6 @@
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Grid from "@mui/material/Unstable_Grid2";
 import Box from "@mui/material/Box";
-import SettingsIcon from "@mui/icons-material/Settings";
 import AdminHeader from "../../../components/AdminHeader";
 import Footer from "../../../components/Footer";
 
