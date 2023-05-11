@@ -140,7 +140,62 @@ export default function PostManage() {
                     </div>
                   </div>
                 </div>
-
+                <div className="flex -mx-3">
+                  <div className="w-1/3 px-3 mb-5">
+                    <label form="" className="text-xs font-semibold px-1">
+                      Contact No <span className="text-accent-red-100">*</span>
+                    </label>
+                    <div className="flex">
+                      <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                        <i className="mdi mdi-account-outline text-gray-400 text-lg"></i>
+                      </div>
+                      <input
+                        type="tel"
+                        className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 font-bold"
+                        placeholder="07771123456"
+                        name="contactNO"
+                        value={contactNo}
+                        onChange={handleInputChange}
+                      />
+                    </div>
+                  </div>
+                  <div className="w-1/2 px-3 mb-5">
+                    <label form="" className="text-xs font-semibold px-1">
+                      Duration <span className="text-accent-red-100">*</span>
+                    </label>
+                    <div className="flex">
+                      <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                        <i className="mdi mdi-account-outline text-gray-400 text-lg"></i>
+                      </div>
+                      <input
+                        type="text"
+                        className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 font-bold"
+                        placeholder="8:00 A.M - 4.00 P.M"
+                        name="timeId"
+                        value={timeId}
+                        onChange={handleInputChange}
+                      />
+                    </div>
+                  </div>
+                  <div className="w-1/2 px-3 mb-5">
+                    <label form="" className="text-xs font-semibold px-1">
+                      Image <span className="text-accent-red-100">*</span>
+                    </label>
+                    <div className="flex">
+                      <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                        <i className="mdi mdi-account-outline text-gray-400 text-lg"></i>
+                      </div>
+                      <input
+                        type="file"
+                        className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 font-bold"
+                        placeholder="file"
+                        name="imageId"
+                        value={imageId}
+                        onChange={handleInputChange}
+                      />
+                    </div>
+                  </div>
+                </div>
              
                 
               </form>
