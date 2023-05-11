@@ -11,7 +11,7 @@ import UserProfile from "../../pages/UserPages/UserProfile";
 import UserHome from "../../pages/UserPages/UserHome";
 import UserPlaces from "../../pages/UserPages/UserPlaces";
 import UserGallery from "../../pages/UserPages/UserGallery";
-import PostManage from "../../pages/AdminPages/PostManage";
+import PostManage from "../../pages/AdminPages/PlaceManage";
 import UserManage from "../../pages/AdminPages/UserManage";
 import AdminHome from "../../pages/AdminPages/AdminHome";
 import BlogManage from "../../pages/AdminPages/BlogManage";
