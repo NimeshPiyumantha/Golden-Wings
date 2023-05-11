@@ -169,7 +169,12 @@ export default class PlaceController {
     try {
       const { id } = req.params;
       const place = await Place.find({
-        $or: [{ _id: id }, { location: id }, { categoryId: id },{categoryName:id}],
+        $or: [
+          { _id: id },
+          { location: id },
+          { categoryId: id },
+          { categoryName: id },
+        ],
       });
       return res.status(200).json({ responseData: place });
     } catch (error: unknown) {
