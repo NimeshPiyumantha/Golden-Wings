@@ -63,7 +63,87 @@ export default function PostManage() {
         <div className="bg-gray-100  text-gray-500 rounded-3xl shadow-xl w-4/5 md:3/4 sm:1/2 xl:1/2 overflow-hidden">
           <div className="md:flex w-full">
             <div className="w-full  py-8 px-5 md:px-10">
+              <form>
+                <div className="flex -mx-3 ">
+                  <div className="w-1/3 px-3 mb-5">
+                    <label form="" className="text-xs font-semibold px-1">
+                      Title <span className="text-accent-red-100">*</span>
+                    </label>
+                    <div className="flex">
+                      <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                        <i className="mdi mdi-account-outline text-gray-400 text-lg"></i>
+                      </div>
+                      <input
+                        type="text"
+                        className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 font-bold"
+                        placeholder="Adventure of Hill"
+                        required
+                        name="title"
+                        value={title}
+                        onChange={handleInputChange}
+                      />
+                    </div>
+                  </div>
+                  <div className="w-1/3 px-3 mb-5">
+                    <label form="" className="text-xs font-semibold px-1">
+                      Cost <span className="text-accent-red-100">*</span>
+                    </label>
+                    <div className="flex">
+                      <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                        <i className="mdi mdi-account-outline text-gray-400 text-lg"></i>
+                      </div>
+                      <input
+                        type="number"
+                        className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 font-bold"
+                        placeholder="2500"
+                        name="cost"
+                        value={cost}
+                        onChange={handleInputChange}
+                      />
+                    </div>
+                  </div>
+                  <div className="w-1/3 px-3 mb-5">
+                    <label form="" className="text-xs font-semibold px-1">
+                      Date <span className="text-accent-red-100">*</span>
+                    </label>
+                    <div className="flex">
+                      <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                        <i className="mdi mdi-account-outline text-gray-400 text-lg"></i>
+                      </div>
+                      <input
+                        type="date"
+                        className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 font-bold"
+                        placeholder="Colombo"
+                        required
+                        name="date"
+                        value={date}
+                        onChange={handleInputChange}
+                      />
+                    </div>
+                  </div>
+                  <div className="w-1/3 px-3 mb-5">
+                    <label form="" className="text-xs font-semibold px-1">
+                      Category <span className="text-accent-red-100">*</span>
+                    </label>
+                    <div className="flex">
+                      <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                        <i className="mdi mdi-account-outline text-gray-400 text-lg"></i>
+                      </div>
+                      <input
+                        type="text"
+                        className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 font-bold"
+                        placeholder="Adventures"
+                        name="categoryName"
+                        value={categoryName}
+                        onChange={handleInputChange}
+                      />
+                    </div>
+                  </div>
+                </div>
+
              
+                
+              </form>
             </div>
           </div>
         </div>
