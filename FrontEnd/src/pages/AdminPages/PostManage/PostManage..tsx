@@ -55,7 +55,7 @@ export default function PostManage() {
 
   const handleDeleteSelectedRows = (userId: string) => {};
   const handleSearch = () => {};
- 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {};
   return (
     <>
       <AdminHeader />
