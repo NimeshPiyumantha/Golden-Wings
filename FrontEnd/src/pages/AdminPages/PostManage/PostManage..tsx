@@ -68,9 +68,9 @@ export default function PostManage() {
     let newPlace = {
       title: title,
       description: description,
-      imageId: imageId,
+      imageUrl: imageId,
       date: date,
-      timeId: timeId,
+      timeRange: timeId,
       cost: cost,
       contact: contact,
       tags: tags,
