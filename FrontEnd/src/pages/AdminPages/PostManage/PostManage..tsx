@@ -16,6 +16,7 @@ import {
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SearchIcon from "@mui/icons-material/Search";
+import EditIcon from "@mui/icons-material/Edit";
 
 type PlaceDetails = {
   _id: string;
@@ -25,6 +26,7 @@ type PlaceDetails = {
   imageId: string;
   date: Date;
   timeId: string;
+  timeRange: string;
   cost: number;
   contact: number;
   tags: string[];
@@ -123,7 +125,15 @@ export default function PostManage() {
     const { name, value } = event.target;
   };
 
+  const filteredData = placesList.map((row, index) => {
+    // do something with the date components
+    // ...
+
+    return row; // return the processed row
+  });
+
   const handleDeleteSelectedRows = (userId: string) => {};
+  const handlUpdateSelectedRows = (userId: string) => {};
   const handleSearch = () => {};
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {};
   return (
@@ -479,23 +489,42 @@ export default function PostManage() {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {/* {filteredData.map((row, index) => (
-                  <TableRow key={row._id}>
-                    <TableCell align="center">{row.fristName}</TableCell>
-                    <TableCell align="center">{row.lastName}</TableCell>
-                    <TableCell align="center">{row.address}</TableCell>
-                    <TableCell align="center">{row.contactNo}</TableCell>
-                    <TableCell align="center">{row.email}</TableCell>
-                    <TableCell align="center">{row.password}</TableCell>
-                    <TableCell align="center">
-                      <IconButton
-                        onClick={() => handleDeleteSelectedRows(row._id)}
-                      >
-                        <DeleteIcon sx={{ color: "red" }} />
-                      </IconButton>
-                    </TableCell>
-                  </TableRow>
-                ))} */}
+                  {placesList.map((row, index) => {
+                    const dateString = row.date;
+                    const dateObj = new Date(dateString);
+
+                    const year = dateObj.getUTCFullYear();
+                    const month = dateObj.getUTCMonth() + 1; // months are zero-indexed, so add 1
+                    const day = dateObj.getUTCDate();
+                    return (
+                      <TableRow key={row._id}>
+                        <TableCell align="center">{row.title}</TableCell>
+                        <TableCell align="center">{row.cost}</TableCell>
+                        <TableCell align="center">
+                          {year}/{month}/{day}
+                        </TableCell>
+                        <TableCell align="center">{row.categoryName}</TableCell>
+                        <TableCell align="center">{row.location}</TableCell>
+                        <TableCell align="center">{row.contact}</TableCell>
+                        <TableCell align="center">{row.timeRange}</TableCell>
+                        <TableCell align="center">{row.imageId}</TableCell>
+                        <TableCell align="center">{row.description}</TableCell>
+                        <TableCell align="center">{row.tags}</TableCell>
+                        <TableCell align="center">
+                          <IconButton
+                            onClick={() => handlUpdateSelectedRows(row._id)}
+                          >
+                            <EditIcon sx={{ color: "blue" }} />
+                          </IconButton>
+                          <IconButton
+                            onClick={() => handleDeleteSelectedRows(row._id)}
+                          >
+                            <DeleteIcon sx={{ color: "red" }} />
+                          </IconButton>
+                        </TableCell>
+                      </TableRow>
+                    );
+                  })}
                 </TableBody>
               </Table>
             </TableContainer>
