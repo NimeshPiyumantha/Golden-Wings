@@ -453,7 +453,7 @@ export default function PostManage() {
               >
                 <TableHead style={{ backgroundColor: "#bdc3c7" }}>
                   <TableRow>
-                  <TableCell
+                    <TableCell
                       align="center"
                       style={{
                         fontWeight: "bolder",
