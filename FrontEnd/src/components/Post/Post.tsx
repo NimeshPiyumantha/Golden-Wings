@@ -191,10 +191,10 @@ export default function Post(props: PostDetails) {
         alt=""
       />
       <div className="flex flex-col justify-between p-4 leading-normal">
-        <h5 className="mb-2 text-2xl font-bold tracking-tight text-accent-white-100 dark:text-white">
+        <h4 className="mb-2 text-2xl font-bold tracking-tight text-accent-white-100 dark:text-white">
           {props.title}
-        </h5>
-        <h5 className="mb-2 text-2xl font-bold tracking-tight text-accent-white-100 dark:text-white">
+        </h4>
+        <h5 className="mb-2 text-1xl font-bold tracking-tight text-accent-white-50 dark:text-accent-white-50">
           {props.categoryName}
         </h5>
         <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
