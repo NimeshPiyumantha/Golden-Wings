@@ -104,7 +104,6 @@ export default function Post(props: PostDetails) {
     api
     .delete(`post/${id}`)
     .then((res) => {
-      getAllPost();
       alert("Delete Successfully.");
     })
     .catch((error) => {
