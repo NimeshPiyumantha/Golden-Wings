@@ -83,6 +83,15 @@ export default function Post(props: PostDetails) {
     });
   };
 
+  function clearTextFileds() {
+    setImageUrl("");
+    setDate("");
+    setTitle("");
+    setDescription("");
+    setTagString("");
+    setCategoryName("");
+    setOpen(false);
+  }
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     name === "userId"
@@ -102,14 +111,14 @@ export default function Post(props: PostDetails) {
 
   const handleDeleteSelectedPost = (id: string) => {
     api
-    .delete(`post/${id}`)
-    .then((res) => {
-      alert("Delete Successfully.");
-    })
-    .catch((error) => {
-      console.log(error);
-      alert("Delete Unsuccessfully.");
-    });
+      .delete(`post/${id}`)
+      .then((res) => {
+        alert("Delete Successfully.");
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("Delete Unsuccessfully.");
+      });
   };
 
   const updatePost = (id: string) => {
@@ -129,6 +138,7 @@ export default function Post(props: PostDetails) {
         console.log(res);
         let post: PostDetails[] = [...postList, res.data.responseData];
         setPostList(post);
+        clearTextFileds();
         alert("Update Post");
       })
       .catch((error) => {
