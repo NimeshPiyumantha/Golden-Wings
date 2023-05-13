@@ -180,6 +180,16 @@ export default function Post(props: PostDetails) {
     return [];
   };
 
+  const dateString = props.date;
+  const dateObj = new Date(dateString);
+
+  // Extract the year, month, and day components of the date
+  const year = dateObj.getUTCFullYear();
+  const month = dateObj.getUTCMonth() + 1; // months are zero-indexed, so add 1
+  const day = dateObj.getUTCDate();
+
+  // Interpolate the components into a formatted string
+
   return (
     <a
       href="#"
@@ -199,6 +209,13 @@ export default function Post(props: PostDetails) {
         </h5>
         <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
           {props.description}
+        </p>
+        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex flex-row-reverse mx-5">
+          {
+            // Create a new Date object from the date prop
+
+            `${year}/${month}/${day}`
+          }
         </p>
         <span className="w-full mt-3 flex space-x-2">
           {props.tags &&
