@@ -111,6 +111,29 @@ export default class PostController {
     }
   };
 
+  updateImage: RequestHandler = async (
+    req: Request,
+    res: Response
+  ): Promise<Response> => {
+    try {
+      const { id } = req.params;
+      let post = new Post(await Post.findById(id));
+      let updatedImage = await Image.findByIdAndUpdate(post.imageId, req.body, {
+        new: true,
+      });
+      return res.status(200).json({
+        message: "Image updated.",
+        responseData: updatedImage,
+      });
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        return res.status(500).json({ message: error.message });
+      } else {
+        return res.status(500).json({ message: "Unknown error occured." });
+      }
+    }
+  };
+
   deletePost: RequestHandler = async (
     req: Request,
     res: Response
