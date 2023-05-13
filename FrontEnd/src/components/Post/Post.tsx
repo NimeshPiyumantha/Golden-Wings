@@ -1,6 +1,15 @@
-import image1 from "../../assets/img/2.jpg";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
 import Tag from "../Tag";
 import api from "../../axios";
+import {
+  IconButton,
+  Modal,
+  Backdrop,
+  Fade,
+  Box,
+  TextField,
+} from "@mui/material";
 
 type PostDetails = {
   _id: string;
@@ -23,7 +32,7 @@ export default function Post(props: PostDetails) {
     >
       <img
         className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
-        src={image1}
+        src={props.imageUrl}
         alt=""
       />
       <div className="flex flex-col justify-between p-4 leading-normal">
@@ -42,6 +51,123 @@ export default function Post(props: PostDetails) {
               <Tag key={index} text={tagText} />
             ))}
         </span>
+        <div>
+          <IconButton onClick={handleOpen}>
+            <EditIcon sx={{ color: "blue" }} />
+          </IconButton>
+          <Modal
+            aria-labelledby="transition-modal-title"
+            aria-describedby="transition-modal-description"
+            open={open}
+            onClose={handleClose}
+            closeAfterTransition
+            slots={{ backdrop: Backdrop }}
+            slotProps={{
+              backdrop: {
+                timeout: 500,
+              },
+            }}
+          >
+            <Fade in={open}>
+              <Box sx={style}>
+                <div className="modal-content">
+                  <div className="-mx-3 md:flex mb-4">
+                    <div className="md:w-1/2 px-2 mb-6 md:mb-0">
+                      <TextField
+                        type="file"
+                        variant="outlined"
+                        name="imageUrl"
+                        onChange={convertToBase64}
+                        fullWidth={true}
+                        required
+                      />
+                    </div>
+                    <div className="md:w-1/2 px-3">
+                      <TextField
+                        type="date"
+                        variant="outlined"
+                        name="date"
+                        onChange={handleInputChange}
+                        fullWidth={true}
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div className="-mx-3 md:flex mb-4">
+                    <div className="md:w-1/2 px-3 mb-6 md:mb-0">
+                      <TextField
+                        label="Post Title"
+                        type="text"
+                        variant="outlined"
+                        name="title"
+                        placeholder="Enter post title"
+                        onChange={handleInputChange}
+                        fullWidth={true}
+                        required
+                      />
+                    </div>
+                    <div className="md:w-1/2 px-3">
+                      <TextField
+                        label="Category"
+                        type="text"
+                        variant="outlined"
+                        name="categoryName"
+                        placeholder="Enter Category Name"
+                        onChange={handleInputChange}
+                        fullWidth={true}
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div className="-mx-3 md:flex mb-4">
+                    <div className="md:w-full px-3 mb-6 md:mb-0">
+                      <TextField
+                        label="Post Description"
+                        type="text"
+                        variant="outlined"
+                        name="description"
+                        placeholder="Enter post description"
+                        onChange={handleInputChange}
+                        fullWidth={true}
+                        multiline
+                        minRows={5}
+                        maxRows={Infinity}
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div className="-mx-3 md:flex mb-4">
+                    <div className="md:w-full px-3 mb-6 md:mb-0">
+                      <TextField
+                        label="Tags (Comma separated tags)"
+                        type="text"
+                        variant="outlined"
+                        name="tagString"
+                        placeholder="Enter comma separated tags"
+                        onChange={handleInputChange}
+                        fullWidth={true}
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div className="-mx-3 md:flex mb-4">
+                    <div className="md:w-full px-3 mb-6 md:mb-0">
+                      <button
+                        className="p-2 mt-2 pr-3 pl-3 bg-accent-green-200 text-white rounded"
+                        onClick={() => updatePost(props._id)}
+                      >
+                        <h6>Publish Post</h6>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </Box>
+            </Fade>
+          </Modal>
+          <IconButton onClick={() => handleDeleteSelectedPost(props._id)}>
+            <DeleteIcon sx={{ color: "red" }} />
+          </IconButton>
+        </div>
       </div>
     </a>
   );
