@@ -105,7 +105,18 @@ export default function Post(props: PostDetails) {
       });
   };
 
-  
+  function convertToBase64(e: any) {
+    console.log(e);
+    var reader = new FileReader();
+    reader.readAsDataURL(e.target.files[0]);
+    reader.onload = () => {
+      console.log(reader.result);
+      setImageUrl(reader.result);
+    };
+    reader.onerror = (error) => {
+      console.log("errar :", error);
+    };
+  }
 
   return (
     <a
