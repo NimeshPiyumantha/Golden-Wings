@@ -206,7 +206,10 @@ export default function Post(props: PostDetails) {
               <Tag key={index} text={tagText} />
             ))}
         </span>
-        <div>
+        <div className="flex flex-row-reverse mx-5">
+          <IconButton onClick={() => handleDeleteSelectedPost(props._id)}>
+            <DeleteIcon sx={{ color: "red" }} />
+          </IconButton>
           <IconButton onClick={() => handlUpdateSelectedRows(props._id)}>
             <EditIcon sx={{ color: "blue" }} />
           </IconButton>
@@ -323,9 +326,6 @@ export default function Post(props: PostDetails) {
               </Box>
             </Fade>
           </Modal>
-          <IconButton onClick={() => handleDeleteSelectedPost(props._id)}>
-            <DeleteIcon sx={{ color: "red" }} />
-          </IconButton>
         </div>
       </div>
     </a>
