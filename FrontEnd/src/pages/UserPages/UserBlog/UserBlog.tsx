@@ -35,6 +35,7 @@ export default function UserBlog() {
   const [tagString, setTagString] = useState<string>("");
   const [categoryName, setCategoryName] = useState<string>("");
   const [state, setState] = useState<State>({ isClickedCreateNewPost: false });
+  const id = localStorage.getItem("id");
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -58,7 +59,7 @@ export default function UserBlog() {
 
     let tagsArray = convertTagStringToArray(tagString);
     let newPost = {
-      userId: "64560da147a6ec3aea427d68",
+      userId: id,
       imageUrl: imageUrl,
       date: date,
       title: title,
