@@ -125,7 +125,6 @@ export default function Post(props: PostDetails) {
     return [];
   };
 
-  
   return (
     <a
       href="#"
