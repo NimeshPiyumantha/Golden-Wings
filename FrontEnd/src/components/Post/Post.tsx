@@ -10,6 +10,7 @@ import {
   Box,
   TextField,
 } from "@mui/material";
+import { useState } from "react";
 
 type PostDetails = {
   _id: string;
