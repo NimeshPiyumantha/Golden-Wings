@@ -15,19 +15,21 @@ type State = {
 type PostDetails = {
   _id: string;
   userId: string;
+  imageId: string;
   imageUrl: string;
   date: Date;
   title: string;
   description: string;
   tags: string[];
   categoryName: string;
+  categoryId: string;
 };
 
 export default function UserBlog() {
   const [postList, setPostList] = useState<PostDetails[]>([]);
   const [userId, setUserId] = useState<string>("");
   const [imageUrl, setImageUrl] = useState<string>("");
-  const [date, setDate] = useState<Date>(new Date("2023-05-07T12:00:00"));
+  const [date, setDate] = useState<string>("");
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const [tagString, setTagString] = useState<string>("");
@@ -41,7 +43,7 @@ export default function UserBlog() {
       : name === "imageUrl"
       ? setImageUrl(value)
       : name === "date"
-      ? setDate(new Date(value))
+      ? setDate(value)
       : name === "title"
       ? setTitle(value)
       : name === "description"
