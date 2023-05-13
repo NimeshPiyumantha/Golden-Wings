@@ -19,8 +19,8 @@ export default class PostRoutes {
     // PUT /api/v1/post/:id
     this.router.put("/:id", this.postController.updatePost);
 
-      // PUT /api/v1/post/:id
-      this.router.put("/image/:id", this.postController.updateImage);
+    // PUT /api/v1/post/:id
+    this.router.put("/image/:id", this.postController.updateImage);
 
     // DELETE /api/v1/post/:id
     this.router.delete("/:id", this.postController.deletePost);
