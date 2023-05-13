@@ -65,7 +65,9 @@ export default function Post(props: PostDetails) {
       ? setTagString(value)
       : name === "categoryName" && setCategoryName(value);
   };
-  
+
+  const handleDeleteSelectedPost = (id: string) => {};
+
   return (
     <a
       href="#"
