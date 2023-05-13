@@ -47,6 +47,10 @@ export default function Post(props: PostDetails) {
     p: 4,
   };
 
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   return (
     <a
       href="#"
