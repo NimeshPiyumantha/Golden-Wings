@@ -11,7 +11,6 @@ import {
   TextField,
 } from "@mui/material";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 type PostDetails = {
   _id: string;
@@ -56,6 +55,8 @@ export default function Post(props: PostDetails) {
     const { name, value } = event.target;
     name === "userId"
       ? setUserId(value)
+      : name === "imageUrl"
+      ? setImageUrl(value)
       : name === "date"
       ? setDate(value)
       : name === "title"
@@ -179,6 +180,7 @@ export default function Post(props: PostDetails) {
                         type="file"
                         variant="outlined"
                         name="imageUrl"
+                        // value="imageUrl"
                         onChange={convertToBase64}
                         fullWidth={true}
                         required
@@ -189,6 +191,7 @@ export default function Post(props: PostDetails) {
                         type="date"
                         variant="outlined"
                         name="date"
+                        value="date"
                         onChange={handleInputChange}
                         fullWidth={true}
                         required
@@ -202,6 +205,7 @@ export default function Post(props: PostDetails) {
                         type="text"
                         variant="outlined"
                         name="title"
+                        value="title"
                         placeholder="Enter post title"
                         onChange={handleInputChange}
                         fullWidth={true}
@@ -214,6 +218,7 @@ export default function Post(props: PostDetails) {
                         type="text"
                         variant="outlined"
                         name="categoryName"
+                        value="categoryName"
                         placeholder="Enter Category Name"
                         onChange={handleInputChange}
                         fullWidth={true}
@@ -228,6 +233,7 @@ export default function Post(props: PostDetails) {
                         type="text"
                         variant="outlined"
                         name="description"
+                        value="description"
                         placeholder="Enter post description"
                         onChange={handleInputChange}
                         fullWidth={true}
@@ -245,6 +251,7 @@ export default function Post(props: PostDetails) {
                         type="text"
                         variant="outlined"
                         name="tagString"
+                        value="tagString"
                         placeholder="Enter comma separated tags"
                         onChange={handleInputChange}
                         fullWidth={true}
