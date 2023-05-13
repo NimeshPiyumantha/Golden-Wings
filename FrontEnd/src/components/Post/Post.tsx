@@ -25,7 +25,14 @@ type PostDetails = {
 };
 
 export default function Post(props: PostDetails) {
-
+  const [postList, setPostList] = useState<PostDetails[]>([]);
+  const [userId, setUserId] = useState<string>("");
+  const [imageUrl, setImageUrl] = useState<any>();
+  const [date, setDate] = useState<string>("");
+  const [title, setTitle] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
+  const [tagString, setTagString] = useState<string>("");
+  const [categoryName, setCategoryName] = useState<string>("");
 
   const style = {
     position: "absolute" as "absolute",
@@ -38,7 +45,7 @@ export default function Post(props: PostDetails) {
     boxShadow: 24,
     p: 4,
   };
-  
+
   return (
     <a
       href="#"
