@@ -1,16 +1,20 @@
 import image1 from "../../assets/img/2.jpg";
-import Tag from "../Tag"
+import Tag from "../Tag";
+import api from "../../axios";
 
 type PostDetails = {
   _id: string;
   userId: string;
+  imageId: string;
   imageUrl: string;
   date: Date;
   title: string;
   description: string;
   tags: string[];
   categoryName: string;
+  categoryId: string;
 };
+
 export default function Post(props: PostDetails) {
   return (
     <a
