@@ -68,6 +68,45 @@ export default function Post(props: PostDetails) {
 
   const handleDeleteSelectedPost = (id: string) => {};
 
+  const updatePost = (id: string) => {
+    let tagsArray = convertTagStringToArray(tagString);
+    let updatePost = {
+      imageUrl: imageUrl,
+      date: date,
+      title: title,
+      description: description,
+      tags: tagsArray,
+      categoryName: categoryName,
+    };
+
+    api
+      .put(`post/${id}`, updatePost)
+      .then((res) => {
+        console.log(res);
+        let post: PostDetails[] = [...postList, res.data.responseData];
+        setPostList(post);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    let updateImage = {
+      imageUrl: imageUrl,
+    };
+    api
+      .put(`post/image/${id}`, updateImage)
+      .then((res) => {
+        console.log(res);
+        let post: PostDetails[] = [...postList, res.data.responseData];
+        setPostList(post);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  
+
   return (
     <a
       href="#"
