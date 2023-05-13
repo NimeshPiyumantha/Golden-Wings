@@ -247,12 +247,14 @@ export default function UserBlog() {
             key={post._id}
             _id={post._id}
             userId={post._id}
+            imageId={post.imageId}
             imageUrl={post.imageUrl}
             date={post.date}
             title={post.title}
             description={post.description}
             tags={post.tags}
             categoryName={post.categoryName}
+            categoryId={post.categoryId}
           />
         ))}
       </div>
