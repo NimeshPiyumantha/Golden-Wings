@@ -10,7 +10,7 @@ import {
   Box,
   TextField,
 } from "@mui/material";
-import { useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 
 type PostDetails = {
   _id: string;
@@ -27,6 +27,7 @@ type PostDetails = {
 
 export default function Post(props: PostDetails) {
   const [postList, setPostList] = useState<PostDetails[]>([]);
+  const [postArray, setPostArray] = useState<PostDetails[]>([]);
   const [userId, setUserId] = useState<string>("");
   const [imageUrl, setImageUrl] = useState<any>();
   const [date, setDate] = useState<string>("");
@@ -48,10 +49,41 @@ export default function Post(props: PostDetails) {
   };
 
   const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
+  // const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const handleInputChange = (event: any) => {
+  useEffect(() => {
+    getAllPost();
+  }, []);
+
+  const getAllPost = () => {
+    api
+      .get("post")
+      .then((res) => {
+        setPostArray(res.data.responseData);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const handlUpdateSelectedRows = (id: string) => {
+    setOpen(true);
+
+    const filteredData = postArray.filter((post) => post._id === id);
+    console.log(postArray);
+    console.log(filteredData);
+    filteredData.forEach((post) => {
+      // setImageUrl(post.imageUrl);
+      // setDate(post.date.toISOString());
+      setTitle(post.title);
+      setDescription(post.description);
+      setTagString(post.tags.join(", "));
+      setCategoryName(post.categoryName);
+    });
+  };
+
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     name === "userId"
       ? setUserId(value)
@@ -155,7 +187,7 @@ export default function Post(props: PostDetails) {
             ))}
         </span>
         <div>
-          <IconButton onClick={handleOpen}>
+          <IconButton onClick={() => handlUpdateSelectedRows(props._id)}>
             <EditIcon sx={{ color: "blue" }} />
           </IconButton>
           <Modal
@@ -180,7 +212,7 @@ export default function Post(props: PostDetails) {
                         type="file"
                         variant="outlined"
                         name="imageUrl"
-                        // value="imageUrl"
+                        // value={imageUrl}
                         onChange={convertToBase64}
                         fullWidth={true}
                         required
@@ -191,7 +223,7 @@ export default function Post(props: PostDetails) {
                         type="date"
                         variant="outlined"
                         name="date"
-                        value="date"
+                        // value={date}
                         onChange={handleInputChange}
                         fullWidth={true}
                         required
@@ -205,8 +237,7 @@ export default function Post(props: PostDetails) {
                         type="text"
                         variant="outlined"
                         name="title"
-                        value="title"
-                        placeholder="Enter post title"
+                        value={title}
                         onChange={handleInputChange}
                         fullWidth={true}
                         required
@@ -218,8 +249,7 @@ export default function Post(props: PostDetails) {
                         type="text"
                         variant="outlined"
                         name="categoryName"
-                        value="categoryName"
-                        placeholder="Enter Category Name"
+                        value={categoryName}
                         onChange={handleInputChange}
                         fullWidth={true}
                         required
@@ -233,7 +263,7 @@ export default function Post(props: PostDetails) {
                         type="text"
                         variant="outlined"
                         name="description"
-                        value="description"
+                        value={description}
                         placeholder="Enter post description"
                         onChange={handleInputChange}
                         fullWidth={true}
@@ -251,7 +281,7 @@ export default function Post(props: PostDetails) {
                         type="text"
                         variant="outlined"
                         name="tagString"
-                        value="tagString"
+                        value={tagString}
                         placeholder="Enter comma separated tags"
                         onChange={handleInputChange}
                         fullWidth={true}
