@@ -118,6 +118,14 @@ export default function Post(props: PostDetails) {
     };
   }
 
+  const convertTagStringToArray = (tagString: string): string[] => {
+    if (tagString !== "") {
+      return tagString.split(",").map((tag) => tag.trim());
+    }
+    return [];
+  };
+
+  
   return (
     <a
       href="#"
