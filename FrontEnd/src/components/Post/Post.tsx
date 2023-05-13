@@ -100,7 +100,18 @@ export default function Post(props: PostDetails) {
       : name === "categoryName" && setCategoryName(value);
   };
 
-  const handleDeleteSelectedPost = (id: string) => {};
+  const handleDeleteSelectedPost = (id: string) => {
+    api
+    .delete(`post/${id}`)
+    .then((res) => {
+      getAllPost();
+      alert("Delete Successfully.");
+    })
+    .catch((error) => {
+      console.log(error);
+      alert("Delete Unsuccessfully.");
+    });
+  };
 
   const updatePost = (id: string) => {
     let tagsArray = convertTagStringToArray(tagString);
