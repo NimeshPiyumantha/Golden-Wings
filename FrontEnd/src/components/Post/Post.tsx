@@ -11,6 +11,7 @@ import {
   TextField,
 } from "@mui/material";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 type PostDetails = {
   _id: string;
