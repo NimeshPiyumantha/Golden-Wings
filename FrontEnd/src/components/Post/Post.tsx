@@ -51,6 +51,21 @@ export default function Post(props: PostDetails) {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  const handleInputChange = (event: any) => {
+    const { name, value } = event.target;
+    name === "userId"
+      ? setUserId(value)
+      : name === "date"
+      ? setDate(value)
+      : name === "title"
+      ? setTitle(value)
+      : name === "description"
+      ? setDescription(value)
+      : name === "tagString"
+      ? setTagString(value)
+      : name === "categoryName" && setCategoryName(value);
+  };
+  
   return (
     <a
       href="#"
