@@ -1,6 +1,19 @@
 import { BlogCard } from "../BlogCard/BlogCard";
 
+type PostDetails = {
+  _id: string;
+  userId: string;
+  imageId: string;
+  imageUrl: string;
+  date: Date;
+  title: string;
+  description: string;
+  tags: string[];
+  categoryName: string;
+  categoryId: string;
+};
 export const Blog = () => {
+
   return (
     <section className="pt-20 pb-10 lg:pt-[80px] lg:pb-20 bg-accent-white-50">
       <div className="container mx-auto">
