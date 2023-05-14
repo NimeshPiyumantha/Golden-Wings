@@ -39,7 +39,7 @@ export default function PostManage() {
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const [location, setLocation] = useState<string>("");
-  const [imageId, setImageId] = useState<string>();
+  const [imageId, setImageId] = useState<any>();
   const [date, setDate] = useState<string>("");
   const [timeId, setTimeId] = useState<string>("");
   const [cost, setCost] = useState<number>(0);
@@ -63,6 +63,19 @@ export default function PostManage() {
         console.log(error);
       });
   };
+
+  function convertToBase64(e: any) {
+    console.log(e);
+    var reader = new FileReader();
+    reader.readAsDataURL(e.target.files[0]);
+    reader.onload = () => {
+      console.log(reader.result);
+      setImageId(reader.result);
+    };
+    reader.onerror = (error) => {
+      console.log("errar :", error);
+    };
+  } 
 
   const handleInputChange = (event: any) => {
     const { name, value } = event.target;
@@ -354,7 +367,7 @@ export default function PostManage() {
                       placeholder="file"
                       name="imageId"
                       value={imageId}
-                      onChange={handleInputChange}
+                      onChange={convertToBase64}
                     />
                   </div>
                 </div>
