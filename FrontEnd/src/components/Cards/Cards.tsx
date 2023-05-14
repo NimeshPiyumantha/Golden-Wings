@@ -23,7 +23,7 @@ export default function Cards(props: PlaceDetails) {
           <img
             alt="Placeholder"
             className="block w-auto h-auto items-center"
-            src={image1}
+            src={props.imageUrl}
           />
         </a>
 
