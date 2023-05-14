@@ -1,6 +1,6 @@
 import UsersHeader from "../../../components/UsersHeader";
 import Footer from "../../../components/Footer";
-import { Divider, TextField } from "@mui/material";
+import { Alert, Divider, TextField } from "@mui/material";
 import { ChangeEvent, useEffect, useState } from "react";
 import api from "../../../axios";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
@@ -44,7 +44,7 @@ export default function UserBlog() {
     setDescription("");
     setTagString("");
     setCategoryName("");
-    isClickedCreateNewPost: false
+    
   }
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -83,8 +83,9 @@ export default function UserBlog() {
       .then((res) => {
         console.log(res);
         let post: PostDetails[] = [...postList, res.data.responseData];
-        clearTextFileds();
         setPostList(post);
+        alert("Post Add Successfully.")
+        clearTextFileds();
       })
       .catch((error) => {
         console.log(error);
