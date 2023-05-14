@@ -8,6 +8,7 @@ import {
 import Cards from "../Cards";
 import { useEffect, useState } from "react";
 import api from "../../axios";
+import { type } from "os";
 
 type PlaceDetails = {
   _id: string;
@@ -24,8 +25,14 @@ type PlaceDetails = {
   tags: string[];
   categoryName: string;
 };
+
+type CategoryDetails = {
+  _id: string;
+  categoryName: string;
+};
 export default function Places() {
   const [placesList, setPlacesList] = useState<PlaceDetails[]>([]);
+  const [categoryList, setCategoryList] = useState<CategoryDetails[]>([]);
   const [cost, setCost] = useState<string>("");
   const [category, setCategory] = useState<string>("");
 
@@ -49,7 +56,7 @@ export default function Places() {
     api
       .get("category")
       .then((res) => {
-        setPlacesList(res.data.responseData);
+        setCategoryList(res.data.responseData);
       })
       .catch((error) => {
         console.log(error);
@@ -57,9 +64,17 @@ export default function Places() {
   };
 
   const handleChange = (event: SelectChangeEvent) => {
-    setCategory(event.target.value);
+    const { name, value } = event.target; // Define name and value variables
+  
+    // Update the category or cost state based on the name property of the Select component
+    if (name && name === "cost") {
+      setCost(value);
+    } else if (name && name === "category") {
+      setCategory(value);
+    }
   };
-
+  
+  
   return (
     <>
       <div className="mt-20 flex justify-center mr-20 ml-20 m-5 sm:p-3">
