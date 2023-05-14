@@ -28,7 +28,7 @@ type PostDetails = {
 export default function UserBlog() {
   const [postList, setPostList] = useState<PostDetails[]>([]);
   const [userId, setUserId] = useState<string>("");
-  const [imageUrl, setImageUrl] = useState<string>("");
+  const [imageUrl, setImageUrl] = useState<any>();
   const [date, setDate] = useState<string>("");
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
@@ -44,7 +44,7 @@ export default function UserBlog() {
     setDescription("");
     setTagString("");
     setCategoryName("");
-    
+    handleClickCreateNewPost();
   }
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -64,7 +64,20 @@ export default function UserBlog() {
       : name === "categoryName" && setCategoryName(value);
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  function convertToBase64(e: any) {
+    console.log(e);
+    var reader = new FileReader();
+    reader.readAsDataURL(e.target.files[0]);
+    reader.onload = () => {
+      console.log(reader.result);
+      setImageUrl(reader.result);
+    };
+    reader.onerror = (error) => {
+      console.log("errar :", error);
+    };
+  } 
+
+  const handleSubmit = (event: any) => {
     event.preventDefault();
 
     let tagsArray = convertTagStringToArray(tagString);
@@ -160,14 +173,14 @@ export default function UserBlog() {
                 <RemoveCircleIcon />
               </div>
               <div className="w-full cursor-pointer p-8 bg-accent-white-50 rounded text-slate-400 flex justify-center items-center space-x-3 border border-slate-400">
-                <form onSubmit={handleSubmit}>
+                <form>
                   <div className="-mx-3 md:flex mb-4">
                     <div className="md:w-1/2 px-2 mb-6 md:mb-0">
                       <TextField
                         type="file"
                         variant="outlined"
                         name="imageUrl"
-                        onChange={handleInputChange}
+                        onChange={convertToBase64}
                         fullWidth={true}
                         required
                       />
@@ -242,7 +255,7 @@ export default function UserBlog() {
                   </div>
                   <div className="-mx-3 md:flex mb-4">
                     <div className="md:w-full px-3 mb-6 md:mb-0">
-                      <button className="p-2 mt-2 pr-3 pl-3 bg-accent-green-200 text-white rounded">
+                      <button className="p-2 mt-2 pr-3 pl-3 bg-accent-green-200 text-white rounded" onClick={handleSubmit}>
                         <h6>Publish Post</h6>
                       </button>
                     </div>
