@@ -26,9 +26,12 @@ type PlaceDetails = {
 };
 export default function Places() {
   const [placesList, setPlacesList] = useState<PlaceDetails[]>([]);
+  const [cost, setCost] = useState<string>("");
+  const [category, setCategory] = useState<string>("");
 
   useEffect(() => {
     getAllPlaces();
+    getAllCategory();
   }, []);
 
   const getAllPlaces = () => {
@@ -42,10 +45,19 @@ export default function Places() {
       });
   };
 
-  const [age, setAge] = useState<string>("");
+  const getAllCategory = () => {
+    api
+      .get("category")
+      .then((res) => {
+        setPlacesList(res.data.responseData);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const handleChange = (event: SelectChangeEvent) => {
-    setAge(event.target.value);
+    setCategory(event.target.value);
   };
 
   return (
@@ -56,13 +68,14 @@ export default function Places() {
             <div>
               <FormControl sx={{ m: 1, minWidth: 150 }}>
                 <InputLabel id="demo-simple-select-helper-label">
-                  Age
+                  Cost
                 </InputLabel>
                 <Select
                   labelId="demo-simple-select-helper-label"
                   id="demo-simple-select-helper"
-                  value={age}
-                  label="Age"
+                  value={cost}
+                  name="cost"
+                  label="cost"
                   onChange={handleChange}
                 >
                   <MenuItem value="">
@@ -75,20 +88,16 @@ export default function Places() {
               </FormControl>
               <FormControl sx={{ m: 1, minWidth: 150 }}>
                 <InputLabel id="demo-simple-select-helper-label">
-                  Age
+                  Category
                 </InputLabel>
                 <Select
                   labelId="demo-simple-select-helper-label"
                   id="demo-simple-select-helper"
-                  value={age}
-                  label="Age"
+                  name="category"
+                  value={category}
+                  label="category"
                   onChange={handleChange}
                 >
-                  <MenuItem value="">
-                    <em>None</em>
-                  </MenuItem>
-                  <MenuItem value={10}>Ten</MenuItem>
-                  <MenuItem value={20}>Twenty</MenuItem>
                   <MenuItem value={30}>Thirty</MenuItem>
                 </Select>
               </FormControl>
