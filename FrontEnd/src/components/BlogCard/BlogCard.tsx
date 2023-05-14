@@ -25,6 +25,9 @@ export const BlogCard = (props: PostDetails) => {
   return (
     <div className="w-full px-4 md:w-1/2 lg:w-1/3" >
       <div className="mx-auto mb-10 max-w-[350px] shadow-lg p-4 rounded-lg border-red-950 border-2">
+      <h3 className="text-accent-green-200 hover:text-primary flex justify-center p-2 text-lg font-semibold sm:text-1xl lg:text-xl xl:text-1xl">
+            {props.categoryName}
+          </h3>
         <div className="mb-4 overflow-hidden rounded w-60 flex flex-row-reverse">
           <img src={props.imageUrl} alt="image" className="w-3/4" />
         </div>
