@@ -23,9 +23,9 @@ export const BlogCard = (props: PostDetails) => {
   const day = dateObj.getUTCDate();
 
   return (
-    <div className="w-full px-4 md:w-1/2 lg:w-1/3">
-      <div className="mx-auto mb-10 max-w-[385px] shadow-lg p-5 rounded-lg border-red-950 border-2">
-        <div className="mb-5 overflow-hidden rounded w-60 flex flex-row-reverse">
+    <div className="w-full px-4 md:w-1/2 lg:w-1/3" >
+      <div className="mx-auto mb-10 max-w-[350px] shadow-lg p-4 rounded-lg border-red-950 border-2">
+        <div className="mb-4 overflow-hidden rounded w-60 flex flex-row-reverse">
           <img src={props.imageUrl} alt="image" className="w-3/4" />
         </div>
         <div className="px-2">

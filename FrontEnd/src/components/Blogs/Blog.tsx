@@ -50,7 +50,7 @@ export const Blog = () => {
             </div>
           </div>
         </div>
-        <div className="-mx-4 flex flex-wrap">
+        <div className="-mx-4 p-2 flex flex-wrap">
           {postList.map((post) => (
             <BlogCard
               key={post._id}
