@@ -37,6 +37,16 @@ export default function UserBlog() {
   const [state, setState] = useState<State>({ isClickedCreateNewPost: false });
   const id = localStorage.getItem("id");
 
+  function clearTextFileds() {
+    setImageUrl("");
+    setDate("");
+    setTitle("");
+    setDescription("");
+    setTagString("");
+    setCategoryName("");
+    isClickedCreateNewPost: false
+  }
+
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     name === "userId"
@@ -73,6 +83,7 @@ export default function UserBlog() {
       .then((res) => {
         console.log(res);
         let post: PostDetails[] = [...postList, res.data.responseData];
+        clearTextFileds();
         setPostList(post);
       })
       .catch((error) => {
