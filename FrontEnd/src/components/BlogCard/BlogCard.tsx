@@ -1,27 +1,48 @@
-import React from "react";
+import Tag from "../Tag";
 
-export const BlogCard = () => {
+type PostDetails = {
+  _id: string;
+  userId: string;
+  imageId: string;
+  imageUrl: string;
+  date: Date;
+  title: string;
+  description: string;
+  tags: string[];
+  categoryName: string;
+  categoryId: string;
+};
+
+export const BlogCard = (props: PostDetails) => {
+  const dateString = props.date;
+  const dateObj = new Date(dateString);
+
+  // Extract the year, month, and day components of the date
+  const year = dateObj.getUTCFullYear();
+  const month = dateObj.getUTCMonth() + 1; // months are zero-indexed, so add 1
+  const day = dateObj.getUTCDate();
+
   return (
-    <div className="w-full px-4 md:w-1/2 lg:w-1/3 ">
-      <div className="mx-auto mb-10 max-w-[370px] shadow-lg p-5 rounded-lg">
-        <div className="mb-8 overflow-hidden rounded">
-          <img
-            src="https://cdn.tailgrids.com/2.0/image/application/images/blogs/blog-01/image-01.jpg"
-            alt="image"
-            className="w-full"
-          />
+    <div className="w-full px-4 md:w-1/2 lg:w-1/3">
+      <div className="mx-auto mb-10 max-w-[385px] shadow-lg p-5 rounded-lg border-red-950 border-2">
+        <div className="mb-5 overflow-hidden rounded w-60 flex flex-row-reverse">
+          <img src={props.imageUrl} alt="image" className="w-3/4" />
         </div>
-        <div>
-          <span className="bg-primary mb-5 inline-block rounded px-4 text-center text-xs font-semibold leading-loose text-gray-400">
-            Dec 22, 2023
-          </span>
-          <h3 className="text-dark hover:text-primary mb-4 inline-block text-xl font-semibold sm:text-2xl lg:text-xl xl:text-2xl">
-            Meet AutoManage, the best AI management tools
+        <div className="px-2">
+          <h3 className="text-dark hover:text-primary  inline-block text-lg font-semibold sm:text-1xl lg:text-xl xl:text-1xl">
+            {props.title}
           </h3>
-          <p className="text-body-color text-base">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry.
-          </p>
+          <h6 className="bg-primary mb-2 inline-block rounded px-4 text-center text-sm font-semibold  text-gray-400">
+            {year}/{month}/{day}
+          </h6>
+          <p className="text-body-color text-sm">{props.description}</p>
+          <span className="w-full mt-2 flex">
+            <h1 className="py-1 font-bold">Tags :</h1>
+            {props.tags &&
+              props.tags.map((tagText, index) => (
+                <Tag key={index} text={tagText} />
+              ))}
+          </span>
         </div>
       </div>
     </div>
