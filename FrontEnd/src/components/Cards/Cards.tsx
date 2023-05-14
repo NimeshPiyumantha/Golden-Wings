@@ -23,15 +23,28 @@ export default function Cards(props: PlaceDetails) {
         <div className="mb-4 overflow-hidden rounded w-60 flex flex-row-reverse">
           <img src={props.imageUrl} alt="image" className="w-3/4" />
         </div>
+
         <div className="m-5 mx-5 flex flex-col space-y-1">
-        <h3 className="text-accent-green-50 font-Poppins font-bold text-sm">Location : <span className="text-gray-500 ml-1"> {props.location}</span></h3>
-        <h3 className="text-accent-green-50 font-Poppins font-bold text-sm">Cost : <span className="text-gray-500 ml-1"> {props.cost}</span></h3>
-        <h3 className="text-accent-green-50 font-Poppins font-bold text-sm">Contact : <span className="text-gray-500 ml-1"> {props.contact}</span></h3>
-        <h3 className="text-accent-green-50 font-Poppins font-bold text-sm">Time Range : <span className="text-gray-500 ml-1"> {props.timeRange}</span></h3>
-        <h3 className="text-accent-green-50 font-Poppins font-bold text-sm">Category : <span className="text-gray-500 ml-1"> {props.categoryName}</span></h3>
-        
+          <h3 className="text-accent-green-50 font-Poppins font-bold text-sm">
+            Location :{" "}
+            <span className="text-gray-500 ml-1"> {props.location}</span>
+          </h3>
+          <h3 className="text-accent-green-50 font-Poppins font-bold text-sm">
+            Cost : <span className="text-gray-500 ml-1"> {props.cost}</span>
+          </h3>
+          <h3 className="text-accent-green-50 font-Poppins font-bold text-sm">
+            Contact :{" "}
+            <span className="text-gray-500 ml-1"> {props.contact}</span>
+          </h3>
+          <h3 className="text-accent-green-50 font-Poppins font-bold text-sm">
+            Time Range :{" "}
+            <span className="text-gray-500 ml-1"> {props.timeRange}</span>
+          </h3>
+          <h3 className="text-accent-green-50 font-Poppins font-bold text-sm">
+            Category :{" "}
+            <span className="text-gray-500 ml-1"> {props.categoryName}</span>
+          </h3>
         </div>
-       
       </article>
     </div>
   );
