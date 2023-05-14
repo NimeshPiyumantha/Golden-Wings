@@ -12,10 +12,10 @@ export default function Form() {
           </div>
         </div>
 
-        <div className="flex flex-wrap">
-          <div className="grow-0 shrink-0 basis-auto mb-12 lg:mb-0 w-full lg:w-5/12 px-3 lg:px-6">
+        <div className="flex flex-wrap ">
+          <div className="grow-0 shrink-0 basis-auto mb-12 lg:mb-0 w-full lg:w-5/12 px-3 lg:px-6 shadow-lg p-3 rounded-lg">
             <form>
-              <div className="form-group mb-6">
+              <div className="form-group mb-6 shadow-lg">
                 <input
                   type="text"
                   className="form-control block
@@ -37,7 +37,7 @@ export default function Form() {
                   required
                 />
               </div>
-              <div className="form-group mb-6">
+              <div className="form-group mb-6 shadow-lg">
                 <input
                   type="email"
                   className="form-control block
@@ -59,7 +59,7 @@ export default function Form() {
                   required
                 />
               </div>
-              <div className="form-group mb-6">
+              <div className="form-group mb-6 shadow-lg">
                 <textarea
                   className="
                 form-control
