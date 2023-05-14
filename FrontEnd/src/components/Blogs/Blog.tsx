@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BlogCard } from "../BlogCard/BlogCard";
+import api from "../../axios";
 
 type PostDetails = {
   _id: string;
@@ -13,8 +14,25 @@ type PostDetails = {
   categoryName: string;
   categoryId: string;
 };
+
 export const Blog = () => {
   const [postList, setPostList] = useState<PostDetails[]>([]);
+
+  useEffect(() => {
+    getAllPost();
+  }, []);
+  
+  const getAllPost = () => {
+    api
+      .get("post")
+      .then((res) => {
+        setPostList(res.data.responseData);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  
   return (
     <section className="pt-20 pb-10 lg:pt-[80px] lg:pb-20 bg-accent-white-50">
       <div className="container mx-auto">
