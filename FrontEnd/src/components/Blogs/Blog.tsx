@@ -1,4 +1,4 @@
-import React from "react";
+import { BlogCard } from "../BlogCard/BlogCard";
 
 export const Blog = () => {
   return (
@@ -19,7 +19,7 @@ export const Blog = () => {
           </div>
         </div>
         <div className="-mx-4 flex flex-wrap">
-         
+          <BlogCard />
         </div>
       </div>
     </section>
