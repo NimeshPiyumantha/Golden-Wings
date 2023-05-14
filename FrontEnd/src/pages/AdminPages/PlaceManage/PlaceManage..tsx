@@ -75,7 +75,7 @@ export default function PostManage() {
     reader.onerror = (error) => {
       console.log("errar :", error);
     };
-  } 
+  }
 
   const handleInputChange = (event: any) => {
     const { name, value } = event.target;
@@ -131,6 +131,7 @@ export default function PostManage() {
         place.push(res.data.responseData);
         getAllPlaces();
         alert("Add New Place Successfully.");
+        ClearTextFileds();
       })
       .catch((error) => {
         console.log(error);
@@ -162,6 +163,7 @@ export default function PostManage() {
         place.push(res.data.responseData);
         getAllPlaces();
         alert("Update Successfully.");
+        ClearTextFileds();
       })
       .catch((error) => {
         console.log(error);
@@ -200,6 +202,19 @@ export default function PostManage() {
       setCategoryName(place.categoryName);
     });
   };
+
+  function ClearTextFileds() {
+    setTitle("");
+    setDescription("");
+    setLocation("");
+    setImageId("");
+    setTags("");
+    setTimeId("");
+    setCost(0);
+    setContact(0);
+    setDate("");
+    setCategoryName("");
+  }
 
   const handleSearch = () => {
     api
