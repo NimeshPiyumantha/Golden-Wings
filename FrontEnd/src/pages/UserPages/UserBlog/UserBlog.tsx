@@ -75,7 +75,7 @@ export default function UserBlog() {
     reader.onerror = (error) => {
       console.log("errar :", error);
     };
-  } 
+  }
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
@@ -97,7 +97,7 @@ export default function UserBlog() {
         console.log(res);
         let post: PostDetails[] = [...postList, res.data.responseData];
         setPostList(post);
-        alert("Post Add Successfully.")
+        alert("Post Add Successfully.");
         clearTextFileds();
       })
       .catch((error) => {
@@ -255,7 +255,10 @@ export default function UserBlog() {
                   </div>
                   <div className="-mx-3 md:flex mb-4">
                     <div className="md:w-full px-3 mb-6 md:mb-0">
-                      <button className="p-2 mt-2 pr-3 pl-3 bg-accent-green-200 text-white rounded" onClick={handleSubmit}>
+                      <button
+                        className="p-2 mt-2 pr-3 pl-3 bg-accent-green-200 text-white rounded"
+                        onClick={handleSubmit}
+                      >
                         <h6>Publish Post</h6>
                       </button>
                     </div>

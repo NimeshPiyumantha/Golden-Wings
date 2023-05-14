@@ -1,3 +1,4 @@
+import { Blog } from "../../components/Blogs/Blog";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import Collection from "../Gallery/Collection";
@@ -9,6 +10,7 @@ export default function Home() {
       <Header />
       <Hero />
       <Collection/>
+      <Blog/>
       <Footer/>
     </>
   );
