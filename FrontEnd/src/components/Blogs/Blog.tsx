@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { BlogCard } from "../BlogCard/BlogCard";
 
 type PostDetails = {
@@ -13,7 +14,7 @@ type PostDetails = {
   categoryId: string;
 };
 export const Blog = () => {
-
+  const [postList, setPostList] = useState<PostDetails[]>([]);
   return (
     <section className="pt-20 pb-10 lg:pt-[80px] lg:pb-20 bg-accent-white-50">
       <div className="container mx-auto">
