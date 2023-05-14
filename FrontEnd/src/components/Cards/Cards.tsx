@@ -15,7 +15,7 @@ type PlaceDetails = {
 };
 export default function Cards(props: PlaceDetails) {
   return (
-    <div className="my-1 px-1 w-full md:w-1/3 lg:my-4 lg:px-4 lg:w-1/4">
+    <div className="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
       <article className="overflow-hidden rounded-lg shadow-lg border-2">
         <h3 className="text-accent-red-100 hover:text-primary flex justify-center p-2 text-lg font-semibold sm:text-1xl lg:text-xl xl:text-1xl">
           {props.title}

@@ -4,11 +4,12 @@ import {
   Select,
   MenuItem,
   SelectChangeEvent,
+  Button,
 } from "@mui/material";
 import Cards from "../Cards";
 import { useEffect, useState } from "react";
 import api from "../../axios";
-import { type } from "os";
+import SearchIcon from '@mui/icons-material/Search';
 
 type PlaceDetails = {
   _id: string;
@@ -65,7 +66,7 @@ export default function Places() {
 
   const handleChange = (event: SelectChangeEvent) => {
     const { name, value } = event.target; // Define name and value variables
-  
+
     // Update the category or cost state based on the name property of the Select component
     if (name && name === "cost") {
       setCost(value);
@@ -73,8 +74,11 @@ export default function Places() {
       setCategory(value);
     }
   };
-  
-  
+
+  function search(event: any) {
+    
+  }
+
   return (
     <>
       <div className="mt-20 flex justify-center mr-20 ml-20 m-5 sm:p-3">
@@ -108,10 +112,17 @@ export default function Places() {
                   value={category}
                   label="category"
                   onChange={handleChange}
-                >{categoryList.map((row, index) => (
-                  <MenuItem value={row._id}>{row.categoryName}</MenuItem>
+                >
+                  {categoryList.map((row, index) => (
+                    <MenuItem value={row._id}>{row.categoryName}</MenuItem>
                   ))}
                 </Select>
+              </FormControl>
+              <FormControl sx={{ m: 2, minWidth: 150 }}>
+                <Button color="secondary" variant="contained" onClick={search} className="text-lg">
+                  Search 
+                  <SearchIcon className="ml-3"/>
+                </Button>
               </FormControl>
             </div>
           </div>
