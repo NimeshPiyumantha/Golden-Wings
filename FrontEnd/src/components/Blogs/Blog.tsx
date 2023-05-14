@@ -21,7 +21,7 @@ export const Blog = () => {
   useEffect(() => {
     getAllPost();
   }, []);
-  
+
   const getAllPost = () => {
     api
       .get("post")
@@ -32,7 +32,7 @@ export const Blog = () => {
         console.log(error);
       });
   };
-  
+
   return (
     <section className="pt-20 pb-10 lg:pt-[80px] lg:pb-20 bg-accent-white-50">
       <div className="container mx-auto">
@@ -51,7 +51,21 @@ export const Blog = () => {
           </div>
         </div>
         <div className="-mx-4 flex flex-wrap">
-          <BlogCard />
+          {postList.map((post) => (
+            <BlogCard
+              key={post._id}
+              _id={post._id}
+              userId={post._id}
+              imageId={post.imageId}
+              imageUrl={post.imageUrl}
+              date={post.date}
+              title={post.title}
+              description={post.description}
+              tags={post.tags}
+              categoryName={post.categoryName}
+              categoryId={post.categoryId}
+            />
+          ))}
         </div>
       </div>
     </section>
