@@ -93,12 +93,8 @@ export default function Places() {
                   label="cost"
                   onChange={handleChange}
                 >
-                  <MenuItem value="">
-                    <em>None</em>
-                  </MenuItem>
-                  <MenuItem value={10}>Ten</MenuItem>
-                  <MenuItem value={20}>Twenty</MenuItem>
-                  <MenuItem value={30}>Thirty</MenuItem>
+                  <MenuItem value={"free"}>Free</MenuItem>
+                  <MenuItem value={"pay"}>Pay</MenuItem>
                 </Select>
               </FormControl>
               <FormControl sx={{ m: 1, minWidth: 150 }}>
@@ -112,8 +108,9 @@ export default function Places() {
                   value={category}
                   label="category"
                   onChange={handleChange}
-                >
-                  <MenuItem value={30}>Thirty</MenuItem>
+                >{categoryList.map((row, index) => (
+                  <MenuItem value={row._id}>{row.categoryName}</MenuItem>
+                  ))}
                 </Select>
               </FormControl>
             </div>
