@@ -43,11 +43,12 @@ export default function Cards(props: PlaceDetails) {
             Time Range :{" "}
             <span className="text-gray-500 ml-1"> {props.timeRange}</span>
           </h3>
-          
+
           <h3 className="text-accent-green-50 font-Poppins font-bold text-sm">
             Category :{" "}
             <span className="text-gray-500 ml-1"> {props.categoryName}</span>
           </h3>
+          
         </div>
       </article>
     </div>
