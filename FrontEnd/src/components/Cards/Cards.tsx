@@ -29,17 +29,21 @@ export default function Cards(props: PlaceDetails) {
             Location :{" "}
             <span className="text-gray-500 ml-1"> {props.location}</span>
           </h3>
+
           <h3 className="text-accent-green-50 font-Poppins font-bold text-sm">
             Cost : <span className="text-gray-500 ml-1"> {props.cost}</span>
           </h3>
+
           <h3 className="text-accent-green-50 font-Poppins font-bold text-sm">
             Contact :{" "}
             <span className="text-gray-500 ml-1"> {props.contact}</span>
           </h3>
+
           <h3 className="text-accent-green-50 font-Poppins font-bold text-sm">
             Time Range :{" "}
             <span className="text-gray-500 ml-1"> {props.timeRange}</span>
           </h3>
+          
           <h3 className="text-accent-green-50 font-Poppins font-bold text-sm">
             Category :{" "}
             <span className="text-gray-500 ml-1"> {props.categoryName}</span>
