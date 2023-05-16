@@ -24,7 +24,7 @@ type PostDetails = {
   tags: string[];
   categoryName: string;
   categoryId: string;
-  updateList: any;
+  // updateList: any;
 };
 
 export default function Post(props: PostDetails) {
@@ -152,7 +152,7 @@ export default function Post(props: PostDetails) {
           icon: "success",
           title: "Update Successfully",
         });
-        props.updateList();
+       
       })
       .catch((error) => {
         console.log(error);
