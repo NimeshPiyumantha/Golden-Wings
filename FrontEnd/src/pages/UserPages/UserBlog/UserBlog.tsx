@@ -8,6 +8,7 @@ import PostAddIcon from "@mui/icons-material/PostAdd";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import Post from "../../../components/Post/Post";
 import { Toast } from "../../../util/save_update_delete_success";
+import Post2 from "../../../components/Post2";
 
 type State = {
   isClickedCreateNewPost: boolean;
@@ -52,6 +53,10 @@ export default function UserBlog() {
         console.log(error);
       });
   };
+
+  const filteredData = postList.filter((post) => post.userId === id);
+
+  const filteredData2 = postList.filter((post) => post.userId !== id);
 
   function clearTextFileds() {
     setImageUrl("");
@@ -276,10 +281,29 @@ export default function UserBlog() {
             </>
           )}
         </div>
+        <h1 className="font-Ubuntu font-bold text-2xl text-center text-accent-green-50 pt-6">My Post</h1> 
         <Divider className="!my-5" />
 
-        {postList.map((post) => (
+        {filteredData.map((post) => (
           <Post
+            key={post._id}
+            _id={post._id}
+            userId={post._id}
+            imageId={post.imageId}
+            imageUrl={post.imageUrl}
+            date={post.date}
+            title={post.title}
+            description={post.description}
+            tags={post.tags}
+            categoryName={post.categoryName}
+            categoryId={post.categoryId}
+            // updateList={getAllPost()}
+          />
+        ))}
+        <h1 className="font-Ubuntu font-bold text-2xl text-center text-accent-red-50 pt-6">Other Post</h1> 
+        <Divider className="!my-5" />
+        {filteredData2.map((post) => (
+          <Post2
             key={post._id}
             _id={post._id}
             userId={post._id}
