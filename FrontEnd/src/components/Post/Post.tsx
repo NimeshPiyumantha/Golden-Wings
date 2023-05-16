@@ -142,7 +142,6 @@ export default function Post(props: PostDetails) {
         setPostList(post);
         clearTextFileds();
 
-        alert("Update Post");
         const Toast = Swal.mixin({
           toast: true,
           position: "bottom-end",
