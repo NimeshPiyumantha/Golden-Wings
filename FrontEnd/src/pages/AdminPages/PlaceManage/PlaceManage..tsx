@@ -17,6 +17,7 @@ import {
 import DeleteIcon from "@mui/icons-material/Delete";
 import SearchIcon from "@mui/icons-material/Search";
 import EditIcon from "@mui/icons-material/Edit";
+import { Toast } from "../../../util/save_update_delete_success";
 
 type PlaceDetails = {
   _id: string;
@@ -130,12 +131,18 @@ export default function PostManage() {
         let place: PlaceDetails[] = [...placesList];
         place.push(res.data.responseData);
         getAllPlaces();
-        alert("Add New Place Successfully.");
+        Toast.fire({
+          icon: "success",
+          title: "Save Successfully",
+        });
         ClearTextFileds();
       })
       .catch((error) => {
         console.log(error);
-        alert("Add New Place  Unsuccessfully.");
+        Toast.fire({
+          icon: "error",
+          title: "Save UnSuccessfully",
+        });
       });
   };
 
@@ -162,12 +169,18 @@ export default function PostManage() {
         let place: PlaceDetails[] = [...placesList];
         place.push(res.data.responseData);
         getAllPlaces();
-        alert("Update Successfully.");
+        Toast.fire({
+          icon: "success",
+          title: "Update Successfully",
+        });
         ClearTextFileds();
       })
       .catch((error) => {
         console.log(error);
-        alert("Update Unsuccessfully.");
+        Toast.fire({
+          icon: "success",
+          title: "Update UnSuccessfully",
+        });
       });
   };
 

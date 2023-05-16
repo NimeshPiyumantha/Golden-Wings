@@ -16,6 +16,7 @@ import {
   TextField,
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { Toast } from "../../../util/save_update_delete_success";
 
 type PostDetails = {
   _id: string;
@@ -51,11 +52,17 @@ export default function BlogManage() {
       .delete(`post/${postId}`)
       .then((res) => {
         getAllPost();
-        alert("Delete Successfully.");
+        Toast.fire({
+          icon: "success",
+          title: "Delete Successfully",
+        });
       })
       .catch((error) => {
         console.log(error);
-        alert("Delete Unsuccessfully.");
+        Toast.fire({
+          icon: "success",
+          title: "Delete UnSuccessfully",
+        });
       });
   };
 
