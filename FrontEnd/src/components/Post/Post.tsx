@@ -23,6 +23,7 @@ type PostDetails = {
   tags: string[];
   categoryName: string;
   categoryId: string;
+  updateList: any;
 };
 
 export default function Post(props: PostDetails) {
@@ -140,6 +141,7 @@ export default function Post(props: PostDetails) {
         setPostList(post);
         clearTextFileds();
         alert("Update Post");
+        props.updateList();
       })
       .catch((error) => {
         console.log(error);

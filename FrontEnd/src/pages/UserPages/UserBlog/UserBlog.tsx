@@ -283,6 +283,7 @@ export default function UserBlog() {
             tags={post.tags}
             categoryName={post.categoryName}
             categoryId={post.categoryId}
+            updateList={getAllPost()}
           />
         ))}
       </div>
