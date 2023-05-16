@@ -40,10 +40,10 @@ export default function Post(props: PostDetails) {
 
   const style = {
     position: "absolute" as "absolute",
-    top: "50%",
+    top: "54%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: 500,
+    width: "70%",
     bgcolor: "background.paper",
     border: "2px solid #000",
     boxShadow: 24,
