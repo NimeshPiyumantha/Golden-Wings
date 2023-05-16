@@ -152,7 +152,6 @@ export default function Post(props: PostDetails) {
           icon: "success",
           title: "Update Successfully",
         });
-       
       })
       .catch((error) => {
         console.log(error);
@@ -204,10 +203,7 @@ export default function Post(props: PostDetails) {
   // Interpolate the components into a formatted string
 
   return (
-    <a
-      href="#"
-      className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-6xl m-3 hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
-    >
+    <a className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-6xl m-3 hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
       <img
         className="object-cover w-full rounded-t-lg h-auto md:h-auto md:w-48 md:rounded-none md:rounded-l-lg m-2"
         src={props.imageUrl}
