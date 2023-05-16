@@ -153,11 +153,24 @@ export default function Post(props: PostDetails) {
         let post: PostDetails[] = [...postList, res.data.responseData];
         setPostList(post);
         clearTextFileds();
-        alert("Update Post");
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Update Successfully.",
+          showConfirmButton: false,
+          timer: 1500,
+        });
         props.updateList();
       })
       .catch((error) => {
         console.log(error);
+        Swal.fire({
+          position: "top-end",
+          icon: "error",
+          title: "Update Unsuccessfully.",
+          showConfirmButton: false,
+          timer: 1500,
+        });
       });
 
     let updateImage = {
