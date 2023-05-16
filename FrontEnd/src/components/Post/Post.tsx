@@ -11,6 +11,7 @@ import {
   TextField,
 } from "@mui/material";
 import { ChangeEvent, useEffect, useState } from "react";
+import Swal from "sweetalert2";
 
 type PostDetails = {
   _id: string;
@@ -140,7 +141,24 @@ export default function Post(props: PostDetails) {
         let post: PostDetails[] = [...postList, res.data.responseData];
         setPostList(post);
         clearTextFileds();
+
         alert("Update Post");
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "bottom-end",
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener("mouseenter", Swal.stopTimer);
+            toast.addEventListener("mouseleave", Swal.resumeTimer);
+          },
+        });
+
+        Toast.fire({
+          icon: "success",
+          title: "Update Successfully",
+        });
         props.updateList();
       })
       .catch((error) => {
