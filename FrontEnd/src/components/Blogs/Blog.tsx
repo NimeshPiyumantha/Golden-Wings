@@ -15,7 +15,7 @@ type PostDetails = {
   categoryId: string;
 };
 
-export const Blog = () => {
+export default function Blog() {
   const [postList, setPostList] = useState<PostDetails[]>([]);
 
   useEffect(() => {
@@ -70,4 +70,4 @@ export const Blog = () => {
       </div>
     </section>
   );
-};
+}
