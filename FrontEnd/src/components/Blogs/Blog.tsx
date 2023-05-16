@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { BlogCard } from "../BlogCard/BlogCard";
 import api from "../../axios";
+import BlogCard from "../BlogCard";
 
 type PostDetails = {
   _id: string;
