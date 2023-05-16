@@ -11,7 +11,6 @@ import {
   TextField,
 } from "@mui/material";
 import { ChangeEvent, useEffect, useState } from "react";
-import Swal from "sweetalert2";
 
 type PostDetails = {
   _id: string;
@@ -115,23 +114,11 @@ export default function Post(props: PostDetails) {
     api
       .delete(`post/${id}`)
       .then((res) => {
-        Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: "Delete Successfully.",
-          showConfirmButton: false,
-          timer: 1500,
-        });
+        alert("Delete Successfully.");
       })
       .catch((error) => {
         console.log(error);
-        Swal.fire({
-          position: "top-end",
-          icon: "error",
-          title: "Delete Unsuccessfully.",
-          showConfirmButton: false,
-          timer: 1500,
-        });
+        alert("Delete Unsuccessfully.");
       });
   };
 
@@ -153,24 +140,11 @@ export default function Post(props: PostDetails) {
         let post: PostDetails[] = [...postList, res.data.responseData];
         setPostList(post);
         clearTextFileds();
-        Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: "Update Successfully.",
-          showConfirmButton: false,
-          timer: 1500,
-        });
+        alert("Update Post");
         props.updateList();
       })
       .catch((error) => {
         console.log(error);
-        Swal.fire({
-          position: "top-end",
-          icon: "error",
-          title: "Update Unsuccessfully.",
-          showConfirmButton: false,
-          timer: 1500,
-        });
       });
 
     let updateImage = {
