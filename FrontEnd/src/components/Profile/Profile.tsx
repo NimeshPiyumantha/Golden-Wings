@@ -1,5 +1,6 @@
 import api from "../../axios";
 import { ChangeEvent, useEffect, useState } from "react";
+import { Toast } from "../../util/save_update_delete_success";
 
 type UserDetails = {
   _id: string;
@@ -90,11 +91,17 @@ export const Profile = () => {
         console.log(res);
         let user: UserDetails[] = [...userList];
         user.push(res.data.responseData);
-        alert("Update Successfully.");
+        Toast.fire({
+          icon: "success",
+          title: "Update Successfully",
+        });
       })
       .catch((error) => {
         console.log(error);
-        alert("Update Unsuccessfully.");
+        Toast.fire({
+          icon: "error",
+          title: "Update UnSuccessfully",
+        });
       });
   };
 
@@ -102,11 +109,17 @@ export const Profile = () => {
     api
       .delete(`user/${id}`)
       .then((res) => {
-        alert("Delete Successfully.");
+        Toast.fire({
+          icon: "success",
+          title: "Delete Successfully",
+        });
       })
       .catch((error) => {
         console.log(error);
-        alert("Delete Unsuccessfully.");
+        Toast.fire({
+          icon: "error",
+          title: "Delete UnSuccessfully",
+        });
       });
   }
 

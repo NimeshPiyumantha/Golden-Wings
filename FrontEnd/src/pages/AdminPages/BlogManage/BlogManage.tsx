@@ -60,7 +60,7 @@ export default function BlogManage() {
       .catch((error) => {
         console.log(error);
         Toast.fire({
-          icon: "success",
+          icon: "error",
           title: "Delete UnSuccessfully",
         });
       });
