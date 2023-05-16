@@ -7,6 +7,7 @@ import AddCircleIcon from "@mui/icons-material/AddCircle";
 import PostAddIcon from "@mui/icons-material/PostAdd";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import Post from "../../../components/Post/Post";
+import { Toast } from "../../../util/save_update_delete_success";
 
 type State = {
   isClickedCreateNewPost: boolean;
@@ -97,11 +98,18 @@ export default function UserBlog() {
         console.log(res);
         let post: PostDetails[] = [...postList, res.data.responseData];
         setPostList(post);
-        alert("Post Add Successfully.");
+        Toast.fire({
+          icon: "success",
+          title: "Save Successfully",
+        });
         clearTextFileds();
       })
       .catch((error) => {
         console.log(error);
+        Toast.fire({
+          icon: "error",
+          title: "Save UnSuccessfully",
+        });
       });
   };
 
