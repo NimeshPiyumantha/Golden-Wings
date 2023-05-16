@@ -11,7 +11,7 @@ import {
   TextField,
 } from "@mui/material";
 import { ChangeEvent, useEffect, useState } from "react";
-import Swal from "sweetalert2";
+import { Toast } from "../../util/save_update_delete_success";
 
 type PostDetails = {
   _id: string;
@@ -115,11 +115,17 @@ export default function Post(props: PostDetails) {
     api
       .delete(`post/${id}`)
       .then((res) => {
-        alert("Delete Successfully.");
+        Toast.fire({
+          icon: "success",
+          title: "Delete Successfully",
+        });
       })
       .catch((error) => {
         console.log(error);
-        alert("Delete Unsuccessfully.");
+        Toast.fire({
+          icon: "success",
+          title: "Delete Successfully",
+        });
       });
   };
 
@@ -142,18 +148,6 @@ export default function Post(props: PostDetails) {
         setPostList(post);
         clearTextFileds();
 
-        const Toast = Swal.mixin({
-          toast: true,
-          position: "bottom-end",
-          showConfirmButton: false,
-          timer: 3000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.addEventListener("mouseenter", Swal.stopTimer);
-            toast.addEventListener("mouseleave", Swal.resumeTimer);
-          },
-        });
-
         Toast.fire({
           icon: "success",
           title: "Update Successfully",
@@ -162,6 +156,10 @@ export default function Post(props: PostDetails) {
       })
       .catch((error) => {
         console.log(error);
+        Toast.fire({
+          icon: "error",
+          title: "Update UnSuccessfully",
+        });
       });
 
     let updateImage = {
