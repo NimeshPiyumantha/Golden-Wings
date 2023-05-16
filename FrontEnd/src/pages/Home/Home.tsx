@@ -11,9 +11,6 @@ export default function Home() {
     <>
       <Header />
       <Hero />
-      <Collection/>
-      <Blog/>
-      <Form/>
       <Footer/>
     </>
   );
