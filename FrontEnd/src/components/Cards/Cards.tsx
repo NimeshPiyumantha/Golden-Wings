@@ -20,7 +20,7 @@ export default function Cards(props: PlaceDetails) {
         <h3 className="text-accent-red-100 hover:text-primary flex justify-center p-2 text-lg font-semibold sm:text-1xl lg:text-xl xl:text-1xl">
           {props.title}
         </h3>
-        <div className="mb-4 overflow-hidden rounded w-60 flex flex-row-reverse">
+        <div className="mb-4 overflow-hidden rounded flex justify-around">
           <img src={props.imageUrl} alt="image" className="w-3/4" />
         </div>
 
