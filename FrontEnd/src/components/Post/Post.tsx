@@ -156,10 +156,6 @@ export default function Post(props: PostDetails) {
       })
       .catch((error) => {
         console.log(error);
-        Toast.fire({
-          icon: "error",
-          title: "Update UnSuccessfully",
-        });
       });
 
     let updateImage = {

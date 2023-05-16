@@ -16,6 +16,7 @@ import {
   TextField,
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { Toast } from "../../../util/save_update_delete_success";
 
 type UserDetails = {
   _id: string;
@@ -56,11 +57,17 @@ export default function UserManage() {
       .delete(`user/${userId}`)
       .then((res) => {
         getAllUsers();
-        alert("Delete Successfully.");
+        Toast.fire({
+          icon: "success",
+          title: "Delete Successfully",
+        });
       })
       .catch((error) => {
         console.log(error);
-        alert("Delete Unsuccessfully.");
+        Toast.fire({
+          icon: "error",
+          title: "Delete UnSuccessfully",
+        });
       });
   };
 
