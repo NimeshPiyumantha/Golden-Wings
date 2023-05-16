@@ -38,6 +38,21 @@ export default function UserBlog() {
   const [state, setState] = useState<State>({ isClickedCreateNewPost: false });
   const id = localStorage.getItem("id");
 
+  useEffect(() => {
+    getAllPost();
+  }, []);
+
+  const getAllPost = () => {
+    api
+      .get("post")
+      .then((res) => {
+        setPostList(res.data.responseData);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   function clearTextFileds() {
     setImageUrl("");
     setDate("");
@@ -125,21 +140,6 @@ export default function UserBlog() {
       ...state,
       isClickedCreateNewPost: !state.isClickedCreateNewPost,
     }));
-  };
-
-  useEffect(() => {
-    getAllPost();
-  }, []);
-
-  const getAllPost = () => {
-    api
-      .get("post")
-      .then((res) => {
-        setPostList(res.data.responseData);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
   };
 
   return (
