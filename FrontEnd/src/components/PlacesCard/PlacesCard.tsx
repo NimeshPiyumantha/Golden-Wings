@@ -9,7 +9,7 @@ import {
 import Cards from "../Cards";
 import { useEffect, useState } from "react";
 import api from "../../axios";
-import SearchIcon from '@mui/icons-material/Search';
+import SearchIcon from "@mui/icons-material/Search";
 
 type PlaceDetails = {
   _id: string;
@@ -31,11 +31,17 @@ type CategoryDetails = {
   _id: string;
   categoryName: string;
 };
+
+type LocaionDetails = {
+  _id: string;
+  location: string;
+};
 export default function Places() {
   const [placesList, setPlacesList] = useState<PlaceDetails[]>([]);
   const [categoryList, setCategoryList] = useState<CategoryDetails[]>([]);
-  const [cost, setCost] = useState<string>("");
-  const [category, setCategory] = useState<string>("");
+  const [locationList, setLocationList] = useState<LocaionDetails[]>([]);
+  const [location, setLocation] = useState<string>("");
+  const [categoryName, setCategory] = useState<string>("");
 
   useEffect(() => {
     getAllPlaces();
@@ -47,6 +53,7 @@ export default function Places() {
       .get("place")
       .then((res) => {
         setPlacesList(res.data.responseData);
+        setLocationList(res.data.responseData);
       })
       .catch((error) => {
         console.log(error);
@@ -68,15 +75,21 @@ export default function Places() {
     const { name, value } = event.target; // Define name and value variables
 
     // Update the category or cost state based on the name property of the Select component
-    if (name && name === "cost") {
-      setCost(value);
-    } else if (name && name === "category") {
+    if (name && name === "location") {
+      setLocation(value);
+    } else if (name && name === "categoryName") {
       setCategory(value);
     }
   };
-
+console.log(placesList)
+console.log(location)
+console.log(categoryName)
   function search(event: any) {
-    
+    const filteredData = placesList.filter(
+      (place) =>  place.categoryName === categoryName
+    );
+    console.log(filteredData);
+    setPlacesList(filteredData);
   }
 
   return (
@@ -87,18 +100,19 @@ export default function Places() {
             <div>
               <FormControl sx={{ m: 1, minWidth: 150 }}>
                 <InputLabel id="demo-simple-select-helper-label">
-                  Cost
+                  Location
                 </InputLabel>
                 <Select
                   labelId="demo-simple-select-helper-label"
                   id="demo-simple-select-helper"
-                  value={cost}
-                  name="cost"
-                  label="cost"
+                  name="location"
+                  label="location"
+                  value={location}
                   onChange={handleChange}
                 >
-                  <MenuItem value={"free"}>Free</MenuItem>
-                  <MenuItem value={"pay"}>Pay</MenuItem>
+                  {locationList.map((row, index) => (
+                    <MenuItem value={row._id}>{row.location}</MenuItem>
+                  ))}
                 </Select>
               </FormControl>
               <FormControl sx={{ m: 1, minWidth: 150 }}>
@@ -108,8 +122,8 @@ export default function Places() {
                 <Select
                   labelId="demo-simple-select-helper-label"
                   id="demo-simple-select-helper"
-                  name="category"
-                  value={category}
+                  name="categoryName"
+                  value={categoryName}
                   label="category"
                   onChange={handleChange}
                 >
@@ -119,9 +133,14 @@ export default function Places() {
                 </Select>
               </FormControl>
               <FormControl sx={{ m: 2, minWidth: 150 }}>
-                <Button color="secondary" variant="contained" onClick={search} className="text-lg">
-                  Search 
-                  <SearchIcon className="ml-3"/>
+                <Button
+                  color="secondary"
+                  variant="contained"
+                  onClick={search}
+                  className="text-lg"
+                >
+                  Search
+                  <SearchIcon className="ml-3" />
                 </Button>
               </FormControl>
             </div>
