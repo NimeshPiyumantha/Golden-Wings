@@ -11,7 +11,6 @@ type PostDetails = {
   tags: string[];
   categoryName: string;
   categoryId: string;
-  // updateList: any;
 };
 
 export default function Post(props: PostDetails) {
