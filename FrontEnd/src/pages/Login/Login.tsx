@@ -10,6 +10,7 @@ import api from "../../axios";
 import { ChangeEvent, useState } from "react";
 import { InputLabel, MenuItem, Select } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { Toast } from "../../util/save_update_delete_success";
 
 type UserDetails = {
   _id: string;
@@ -42,15 +43,25 @@ export default function Login() {
         // alert(localStorage.getItem("id"));
         if (res.data.responseData.roleId === "6455cd8b0a57e1ba94c0eba2") {
           navigate("/u", { replace: false });
-          alert("User Login Successfully..");
+          Toast.fire({
+            icon: "success",
+            title: "User Login Successfully",
+          });
         }
         if (res.data.responseData.roleId === "6455d4640a57e1ba94c0eba7") {
           navigate("/a", { replace: false });
-          alert("Admin Login Successfully..");
+          Toast.fire({
+            icon: "success",
+            title: "Admin Login Successfully",
+          });
         }
       })
       .catch((error) => {
         console.log(error);
+        Toast.fire({
+          icon: "error",
+          title: "Login UnSuccessfully",
+        });
       });
   };
 
