@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import signUp_bg from "../../assets/img/signUp-bg.jpg";
 import api from "../../axios";
 import { ChangeEvent, useState } from "react";
+import { Toast } from "../../util/save_update_delete_success";
 
 type UserDetails = {
   _id: string;
@@ -60,11 +61,17 @@ export default function Register() {
         let user: UserDetails[] = [...userList];
         user.push(res.data.responseData);
         setUserList(user);
-        alert("Register Successfully.");
+        Toast.fire({
+          icon: "success",
+          title: "Register Successfully",
+        });
       })
       .catch((error) => {
         console.log(error);
-        alert("Register Unsuccessfully.");
+        Toast.fire({
+          icon: "error",
+          title: "Register UnSuccessfully",
+        });
       });
   };
 
