@@ -178,7 +178,7 @@ export default function PostManage() {
       .catch((error) => {
         console.log(error);
         Toast.fire({
-          icon: "success",
+          icon: "error",
           title: "Update UnSuccessfully",
         });
       });
@@ -189,11 +189,17 @@ export default function PostManage() {
       .delete(`place/${Id}`)
       .then((res) => {
         getAllPlaces();
-        alert("Delete Successfully.");
+        Toast.fire({
+          icon: "success",
+          title: "Delete Successfully",
+        });
       })
       .catch((error) => {
         console.log(error);
-        alert("Delete Unsuccessfully.");
+        Toast.fire({
+          icon: "error",
+          title: "Delete UnSuccessfully",
+        });
       });
   };
 
