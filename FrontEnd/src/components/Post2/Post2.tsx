@@ -1,17 +1,4 @@
-import DeleteIcon from "@mui/icons-material/Delete";
-import EditIcon from "@mui/icons-material/Edit";
 import Tag from "../Tag";
-import api from "../../axios";
-import {
-  IconButton,
-  Modal,
-  Backdrop,
-  Fade,
-  Box,
-  TextField,
-} from "@mui/material";
-import { ChangeEvent, useEffect, useState } from "react";
-import { Toast } from "../../util/save_update_delete_success";
 
 type PostDetails = {
   _id: string;
