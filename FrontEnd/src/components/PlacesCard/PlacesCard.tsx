@@ -81,12 +81,12 @@ export default function Places() {
       setCategory(value);
     }
   };
-console.log(placesList)
-console.log(location)
-console.log(categoryName)
+  console.log(placesList);
+  console.log(location);
+  console.log(categoryName);
   function search(event: any) {
     const filteredData = placesList.filter(
-      (place) =>  place.categoryName === categoryName
+      (place) => place.categoryName === categoryName
     );
     console.log(filteredData);
     setPlacesList(filteredData);
