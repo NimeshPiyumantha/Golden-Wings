@@ -25,6 +25,7 @@ type PlaceDetails = {
   contact: number;
   tags: string[];
   categoryName: string;
+  categoryId: string;
 };
 
 type CategoryDetails = {
@@ -33,7 +34,6 @@ type CategoryDetails = {
 };
 
 type LocaionDetails = {
-  _id: string;
   location: string;
 };
 export default function Places() {
@@ -53,7 +53,6 @@ export default function Places() {
       .get("place")
       .then((res) => {
         setPlacesList(res.data.responseData);
-        setLocationList(res.data.responseData);
       })
       .catch((error) => {
         console.log(error);
@@ -81,14 +80,12 @@ export default function Places() {
       setCategory(value);
     }
   };
-  console.log(placesList);
-  console.log(location);
-  console.log(categoryName);
+;
   function search(event: any) {
     const filteredData = placesList.filter(
-      (place) => place.categoryName === categoryName
+      (place) => place.categoryId === categoryName
     );
-    console.log(filteredData);
+
     setPlacesList(filteredData);
   }
 
@@ -111,7 +108,7 @@ export default function Places() {
                   onChange={handleChange}
                 >
                   {locationList.map((row, index) => (
-                    <MenuItem value={row._id}>{row.location}</MenuItem>
+                    <MenuItem value={row.location}>{row.location}</MenuItem>
                   ))}
                 </Select>
               </FormControl>
