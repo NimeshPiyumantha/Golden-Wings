@@ -121,8 +121,8 @@ export default function Form() {
               </button>
             </form>
           </div>
-          <div className="grow-0 shrink-0 basis-auto w-full lg:w-7/12">
-            <div className="flex flex-wrap">
+          <div className="grow-0 shrink-0 basis-auto w-full lg:w-7/12 p-3  mt-5">
+            <div className="flex flex-wrap m-5">
               <div className="mb-12 grow-0 shrink-0 basis-auto w-full lg:w-6/12 px-3 lg:px-6">
                 <div className="flex items-start">
                   <div className="shrink-0">
