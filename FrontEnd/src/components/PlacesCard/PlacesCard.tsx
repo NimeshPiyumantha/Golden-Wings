@@ -38,6 +38,7 @@ type LocaionDetails = {
 };
 export default function Places() {
   const [placesList, setPlacesList] = useState<PlaceDetails[]>([]);
+  const [placesList2, setPlacesList2] = useState<PlaceDetails[]>([]);
   const [categoryList, setCategoryList] = useState<CategoryDetails[]>([]);
   const [locationList, setLocationList] = useState<LocaionDetails[]>([]);
   const [location, setLocation] = useState<string>("");
@@ -53,6 +54,8 @@ export default function Places() {
       .get("place")
       .then((res) => {
         setPlacesList(res.data.responseData);
+        setLocationList(res.data.responseData);
+        setPlacesList2(res.data.responseData);
       })
       .catch((error) => {
         console.log(error);
@@ -80,10 +83,9 @@ export default function Places() {
       setCategory(value);
     }
   };
-;
   function search(event: any) {
-    const filteredData = placesList.filter(
-      (place) => place.categoryId === categoryName
+    const filteredData = placesList2.filter(
+      (place) => place.categoryId === categoryName && place.location === location
     );
 
     setPlacesList(filteredData);
