@@ -120,6 +120,7 @@ export default function Form() {
                 Send
               </button>
             </form>
+            
           </div>
           <div className="grow-0 shrink-0 basis-auto w-full lg:w-7/12 p-3  mt-5">
             <div className="flex flex-wrap m-5">
