@@ -11,7 +11,6 @@ This is a RAD Course Work.(`MERN Stack Application`)
 - Mongo DB
 - Express js
 - Node js
-
 ### - Front End
 
 - React
