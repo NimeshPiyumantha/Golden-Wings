@@ -24,21 +24,56 @@ export default function Register() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
+  const [isValidFristName, setIsValidFirstName] = useState(false);
+  const [isValidLastName, setIsValidLastName] = useState(false);
+  const [isValidAddress, setIsValidAddress] = useState(false);
+  const [isValidContactNo, setIsValidContactNo] = useState(false);
+  const [isValidEmail, setIsValidEmail] = useState(false);
+  const [isValidPassword, setIsValidPassword] = useState(false);
+
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
-    name === "roleType"
-      ? setRoleType(value)
-      : name === "fristName"
-      ? setFirstName(value)
-      : name === "lastName"
-      ? setLastName(value)
-      : name === "address"
-      ? setAddress(value)
-      : name === "contactNo"
-      ? setContactNo(value)
-      : name === "email"
-      ? setEmail(value)
-      : name === "password" && setPassword(value);
+    // name === "roleType"
+    //   ? setRoleType(value)
+    //   : name === "fristName"
+    //   ? setFirstName(value)
+    //   : name === "lastName"
+    //   ? setLastName(value)
+    //   : name === "address"
+    //   ? setAddress(value)
+    //   : name === "conta"
+    //   ? setEmail(value)
+    //   : name === "passctNo"
+    //   ? setContactNo(value)
+    //   : name === "emailword" && setPassword(value);
+
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
+
+    if (name === "roleType") {
+      setRoleType(value);
+    } else if (name === "email") {
+      setuseremail(value);
+      setIsValidEmail(emailRegex.test(value));
+      setuseremail(value);
+    } else if (name === "password") {
+      setPassword(value);
+      setIsValidPassword(passwordRegex.test(value));
+    }else if (name === "email") {
+      setuseremail(value);
+      setIsValidEmail(emailRegex.test(value));
+      setuseremail(value);
+    } else if (name === "password") {
+      setPassword(value);
+      setIsValidPassword(passwordRegex.test(value));
+    }else if (name === "email") {
+      setuseremail(value);
+      setIsValidEmail(emailRegex.test(value));
+      setuseremail(value);
+    } else if (name === "password") {
+      setPassword(value);
+      setIsValidPassword(passwordRegex.test(value));
+    }
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
