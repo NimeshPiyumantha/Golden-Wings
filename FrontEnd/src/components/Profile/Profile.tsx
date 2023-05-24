@@ -2,6 +2,7 @@ import api from "../../axios";
 import { ChangeEvent, useEffect, useState } from "react";
 import { Toast } from "../../util/save_update_delete_success";
 import "./Profile.css";
+import { useNavigate } from "react-router-dom";
 
 type UserDetails = {
   _id: string;
@@ -25,6 +26,7 @@ export const Profile = () => {
   const [password, setPassword] = useState<string>("");
   const id = localStorage.getItem("id");
 
+  const navigate = useNavigate();
   const [isValidFristName, setIsValidFirstName] = useState(true);
   const [isValidLastName, setIsValidLastName] = useState(true);
   const [isValidAddress, setIsValidAddress] = useState(true);
@@ -148,6 +150,7 @@ export const Profile = () => {
           icon: "success",
           title: "Delete Successfully",
         });
+        navigate("/login", { replace: false });
       })
       .catch((error) => {
         console.log(error);
