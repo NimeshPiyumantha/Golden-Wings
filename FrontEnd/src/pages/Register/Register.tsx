@@ -3,6 +3,9 @@ import api from "../../axios";
 import { ChangeEvent, useState } from "react";
 import { Toast } from "../../util/save_update_delete_success";
 import "./Register.css";
+import { useNavigate } from "react-router-dom";
+import Link from "@mui/material/Link";
+import Grid from "@mui/material/Grid";
 
 type UserDetails = {
   _id: string;
@@ -24,6 +27,7 @@ export default function Register() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
+  const navigate = useNavigate();
   const [isValidFristName, setIsValidFirstName] = useState(false);
   const [isValidLastName, setIsValidLastName] = useState(false);
   const [isValidAddress, setIsValidAddress] = useState(false);
@@ -63,15 +67,6 @@ export default function Register() {
     }
   };
 
-  function ClearTextFileds() {
-    setFirstName("");
-    setLastName("");
-    setAddress("");
-    setContactNo("");
-    setEmail("");
-    setPassword("");
-  }
-
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -92,11 +87,11 @@ export default function Register() {
         let user: UserDetails[] = [...userList];
         user.push(res.data.responseData);
         setUserList(user);
+        navigate("/login", { replace: false });
         Toast.fire({
           icon: "success",
           title: "Register Successfully",
         });
-        ClearTextFileds();
       })
       .catch((error) => {
         console.log(error);
@@ -131,7 +126,9 @@ export default function Register() {
                     </div>
                     <input
                       type="text"
-                      className={`w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 ${isValidFristName ? "valid" : "invalid"}`}
+                      className={`w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 ${
+                        isValidFristName ? "valid" : "invalid"
+                      }`}
                       placeholder="John"
                       required
                       name="fristName"
@@ -149,7 +146,9 @@ export default function Register() {
                     </div>
                     <input
                       type="text"
-                      className={`w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 ${isValidLastName ? "valid" : "invalid"}`}
+                      className={`w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 ${
+                        isValidLastName ? "valid" : "invalid"
+                      }`}
                       placeholder="Smith"
                       required
                       name="lastName"
@@ -169,7 +168,9 @@ export default function Register() {
                     </div>
                     <input
                       type="text"
-                      className={`w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 ${isValidAddress ? "valid" : "invalid"}`}
+                      className={`w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 ${
+                        isValidAddress ? "valid" : "invalid"
+                      }`}
                       placeholder="Colombo"
                       required
                       name="address"
@@ -187,7 +188,9 @@ export default function Register() {
                     </div>
                     <input
                       type="tel"
-                      className={`w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 ${isValidContactNo ? "valid" : "invalid"}`}
+                      className={`w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 ${
+                        isValidContactNo ? "valid" : "invalid"
+                      }`}
                       placeholder="0777123456"
                       name="contactNo"
                       onChange={handleInputChange}
@@ -206,7 +209,9 @@ export default function Register() {
                     </div>
                     <input
                       type="email"
-                      className={`w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 ${isValidEmail ? "valid" : "invalid"}`}
+                      className={`w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 ${
+                        isValidEmail ? "valid" : "invalid"
+                      }`}
                       placeholder="yourmail@gmail.com"
                       name="email"
                       onChange={handleInputChange}
@@ -223,7 +228,9 @@ export default function Register() {
                     </div>
                     <input
                       type="password"
-                      className={`w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 ${isValidPassword ? "valid" : "invalid"}`}
+                      className={`w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 ${
+                        isValidPassword ? "valid" : "invalid"
+                      }`}
                       placeholder="**********"
                       name="password"
                       onChange={handleInputChange}
@@ -241,6 +248,11 @@ export default function Register() {
                   </button>
                 </div>
               </div>
+              <Grid item xs>
+                <Link href="/login" variant="body2">
+                  Back
+                </Link>
+              </Grid>
             </form>
           </div>
         </div>
