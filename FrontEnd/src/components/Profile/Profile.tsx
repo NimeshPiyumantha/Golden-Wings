@@ -1,6 +1,7 @@
 import api from "../../axios";
 import { ChangeEvent, useEffect, useState } from "react";
 import { Toast } from "../../util/save_update_delete_success";
+import "./Profile.css";
 
 type UserDetails = {
   _id: string;
@@ -23,6 +24,13 @@ export const Profile = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const id = localStorage.getItem("id");
+
+  const [isValidFristName, setIsValidFirstName] = useState(false);
+  const [isValidLastName, setIsValidLastName] = useState(false);
+  const [isValidAddress, setIsValidAddress] = useState(false);
+  const [isValidContactNo, setIsValidContactNo] = useState(false);
+  const [isValidEmail, setIsValidEmail] = useState(false);
+  const [isValidPassword, setIsValidPassword] = useState(false);
 
   useEffect(() => {
     if (userList.length > 0) {
@@ -62,17 +70,32 @@ export const Profile = () => {
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
-    name === "fristName"
-      ? setFirstName(value)
-      : name === "lastName"
-      ? setLastName(value)
-      : name === "address"
-      ? setAddress(value)
-      : name === "contactNo"
-      ? setContactNo(parseInt(value))
-      : name === "email"
-      ? setEmail(value)
-      : name === "password" && setPassword(value);
+
+    const nameRegex = /^[A-z ]{3,20}$/; // Regular expression for name validation (only alphabetic characters)
+    const addressRegex = /^[A-z0-9/ ]{4,30}$/; // Regular expression for address validation
+    const contactNoRegex = /^(07(0|1|2|4|5|6|7|8)[0-9]{7})$/; // Regular expression for 10-digit contact number validation
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; // Regular expression for email validation
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/; // Regular expression for password validation
+
+    if (name === "fristName") {
+      setFirstName(value);
+      setIsValidFirstName(nameRegex.test(value));
+    } else if (name === "lastName") {
+      setLastName(value);
+      setIsValidLastName(nameRegex.test(value));
+    } else if (name === "address") {
+      setAddress(value);
+      setIsValidAddress(addressRegex.test(value));
+    } else if (name === "contactNo") {
+      setContactNo(parseInt(value));
+      setIsValidContactNo(contactNoRegex.test(value));
+    } else if (name === "email") {
+      setEmail(value);
+      setIsValidEmail(emailRegex.test(value));
+    } else if (name === "password") {
+      setPassword(value);
+      setIsValidPassword(passwordRegex.test(value));
+    }
   };
 
   const handleUpdate = () => {
