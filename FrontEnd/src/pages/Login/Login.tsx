@@ -7,7 +7,7 @@ import Grid from "@mui/material/Grid";
 import sigIn_bg from "../../assets/img/signIn-bg.jpg";
 import "./Login.css";
 import api from "../../axios";
-import { ChangeEvent, useState } from "react";
+import {useState } from "react";
 import { InputLabel, MenuItem, Select } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { Toast } from "../../util/save_update_delete_success";
@@ -104,6 +104,7 @@ export default function Login() {
 
                 <TextField
                   margin="normal"
+                  variant="filled" 
                   required
                   fullWidth
                   id="email"
@@ -111,7 +112,6 @@ export default function Login() {
                   name="email"
                   autoComplete="email"
                   autoFocus
-                  variant="outlined"
                   onChange={handleInputChange}
                   InputProps={{
                     className: isValidEmail ? "valid" : "invalid",
@@ -122,7 +122,7 @@ export default function Login() {
                   autoFocus
                   required
                   fullWidth
-                  variant="outlined"
+                  variant="filled" 
                   name="password"
                   label="Password"
                   type="password"
