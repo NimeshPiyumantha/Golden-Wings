@@ -1,8 +1,8 @@
-import { NavLink } from "react-router-dom";
 import signUp_bg from "../../assets/img/signUp-bg.jpg";
 import api from "../../axios";
 import { ChangeEvent, useState } from "react";
 import { Toast } from "../../util/save_update_delete_success";
+import "./Register.css";
 
 type UserDetails = {
   _id: string;
@@ -33,43 +33,30 @@ export default function Register() {
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
-    // name === "roleType"
-    //   ? setRoleType(value)
-    //   : name === "fristName"
-    //   ? setFirstName(value)
-    //   : name === "lastName"
-    //   ? setLastName(value)
-    //   : name === "address"
-    //   ? setAddress(value)
-    //   : name === "conta"
-    //   ? setEmail(value)
-    //   : name === "passctNo"
-    //   ? setContactNo(value)
-    //   : name === "emailword" && setPassword(value);
 
-    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
+    const nameRegex = /^[A-z ]{3,20}$/; // Regular expression for name validation (only alphabetic characters)
+    const addressRegex = /^[A-z0-9/ ]{4,30}$/; // Regular expression for address validation
+    const contactNoRegex = /^(07(0|1|2|4|5|6|7|8)[0-9]{7})$/; // Regular expression for 10-digit contact number validation
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; // Regular expression for email validation
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/; // Regular expression for password validation
 
     if (name === "roleType") {
       setRoleType(value);
+    } else if (name === "fristName") {
+      setFirstName(value);
+      setIsValidFirstName(nameRegex.test(value));
+    } else if (name === "lastName") {
+      setLastName(value);
+      setIsValidLastName(nameRegex.test(value));
+    } else if (name === "address") {
+      setAddress(value);
+      setIsValidAddress(addressRegex.test(value));
+    } else if (name === "contactNo") {
+      setContactNo(value);
+      setIsValidContactNo(contactNoRegex.test(value));
     } else if (name === "email") {
-      setuseremail(value);
+      setEmail(value);
       setIsValidEmail(emailRegex.test(value));
-      setuseremail(value);
-    } else if (name === "password") {
-      setPassword(value);
-      setIsValidPassword(passwordRegex.test(value));
-    }else if (name === "email") {
-      setuseremail(value);
-      setIsValidEmail(emailRegex.test(value));
-      setuseremail(value);
-    } else if (name === "password") {
-      setPassword(value);
-      setIsValidPassword(passwordRegex.test(value));
-    }else if (name === "email") {
-      setuseremail(value);
-      setIsValidEmail(emailRegex.test(value));
-      setuseremail(value);
     } else if (name === "password") {
       setPassword(value);
       setIsValidPassword(passwordRegex.test(value));
@@ -134,7 +121,7 @@ export default function Register() {
                     </div>
                     <input
                       type="text"
-                      className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+                      className={`w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 ${isValidFristName ? "valid" : "invalid"}`}
                       placeholder="John"
                       required
                       name="fristName"
@@ -152,7 +139,7 @@ export default function Register() {
                     </div>
                     <input
                       type="text"
-                      className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+                      className={`w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 ${isValidLastName ? "valid" : "invalid"}`}
                       placeholder="Smith"
                       required
                       name="lastName"
@@ -172,7 +159,7 @@ export default function Register() {
                     </div>
                     <input
                       type="text"
-                      className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+                      className={`w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 ${isValidAddress ? "valid" : "invalid"}`}
                       placeholder="Colombo"
                       required
                       name="address"
@@ -190,7 +177,7 @@ export default function Register() {
                     </div>
                     <input
                       type="tel"
-                      className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+                      className={`w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 ${isValidContactNo ? "valid" : "invalid"}`}
                       placeholder="0777123456"
                       name="contactNo"
                       onChange={handleInputChange}
@@ -209,7 +196,7 @@ export default function Register() {
                     </div>
                     <input
                       type="email"
-                      className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+                      className={`w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 ${isValidEmail ? "valid" : "invalid"}`}
                       placeholder="yourmail@gmail.com"
                       name="email"
                       onChange={handleInputChange}
@@ -226,7 +213,7 @@ export default function Register() {
                     </div>
                     <input
                       type="password"
-                      className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+                      className={`w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 ${isValidPassword ? "valid" : "invalid"}`}
                       placeholder="**********"
                       name="password"
                       onChange={handleInputChange}
