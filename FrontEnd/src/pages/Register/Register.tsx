@@ -63,6 +63,15 @@ export default function Register() {
     }
   };
 
+  function ClearTextFileds() {
+    setFirstName("");
+    setLastName("");
+    setAddress("");
+    setContactNo("");
+    setEmail("");
+    setPassword("");
+  }
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -87,6 +96,7 @@ export default function Register() {
           icon: "success",
           title: "Register Successfully",
         });
+        ClearTextFileds();
       })
       .catch((error) => {
         console.log(error);
