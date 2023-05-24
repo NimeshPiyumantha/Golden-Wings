@@ -28,12 +28,12 @@ export default function Register() {
   const [password, setPassword] = useState<string>("");
 
   const navigate = useNavigate();
-  const [isValidFristName, setIsValidFirstName] = useState(false);
-  const [isValidLastName, setIsValidLastName] = useState(false);
-  const [isValidAddress, setIsValidAddress] = useState(false);
-  const [isValidContactNo, setIsValidContactNo] = useState(false);
-  const [isValidEmail, setIsValidEmail] = useState(false);
-  const [isValidPassword, setIsValidPassword] = useState(false);
+  const [isValidFristName, setIsValidFirstName] = useState(true);
+  const [isValidLastName, setIsValidLastName] = useState(true);
+  const [isValidAddress, setIsValidAddress] = useState(true);
+  const [isValidContactNo, setIsValidContactNo] = useState(true);
+  const [isValidEmail, setIsValidEmail] = useState(true);
+  const [isValidPassword, setIsValidPassword] = useState(true);
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;

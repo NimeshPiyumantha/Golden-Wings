@@ -20,17 +20,17 @@ export const Profile = () => {
   const [fristName, setFirstName] = useState<string>("");
   const [lastName, setLastName] = useState<string>("");
   const [address, setAddress] = useState<string>("");
-  const [contactNo, setContactNo] = useState<number>();
+  const [contactNo, setContactNo] = useState<string>();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const id = localStorage.getItem("id");
 
-  const [isValidFristName, setIsValidFirstName] = useState(false);
-  const [isValidLastName, setIsValidLastName] = useState(false);
-  const [isValidAddress, setIsValidAddress] = useState(false);
-  const [isValidContactNo, setIsValidContactNo] = useState(false);
-  const [isValidEmail, setIsValidEmail] = useState(false);
-  const [isValidPassword, setIsValidPassword] = useState(false);
+  const [isValidFristName, setIsValidFirstName] = useState(true);
+  const [isValidLastName, setIsValidLastName] = useState(true);
+  const [isValidAddress, setIsValidAddress] = useState(true);
+  const [isValidContactNo, setIsValidContactNo] = useState(true);
+  const [isValidEmail, setIsValidEmail] = useState(true);
+  const [isValidPassword, setIsValidPassword] = useState(true);
 
   useEffect(() => {
     if (userList.length > 0) {
@@ -38,7 +38,7 @@ export const Profile = () => {
       setFirstName(user.fristName);
       setLastName(user.lastName);
       setAddress(user.address);
-      setContactNo(user.contactNo);
+      setContactNo(String(user.contactNo));
       setEmail(user.email);
       setPassword(user.password);
     }
@@ -87,7 +87,7 @@ export const Profile = () => {
       setAddress(value);
       setIsValidAddress(addressRegex.test(value));
     } else if (name === "contactNo") {
-      setContactNo(parseInt(value));
+      setContactNo(value);
       setIsValidContactNo(contactNoRegex.test(value));
     } else if (name === "email") {
       setEmail(value);
@@ -96,6 +96,18 @@ export const Profile = () => {
       setPassword(value);
       setIsValidPassword(passwordRegex.test(value));
     }
+
+    //  name === "fristName"
+    //   ? setFirstName(value)
+    //   : name === "lastName"
+    //   ? setLastName(value)
+    //   : name === "address"
+    //   ? setAddress(value)
+    //   : name === "contactNo"
+    //   ? setContactNo(parseInt(value))
+    //   : name === "email"
+    //   ? setEmail(value)
+    //   : name === "password" && setPassword(value);
   };
 
   const handleUpdate = () => {
@@ -122,8 +134,8 @@ export const Profile = () => {
       .catch((error) => {
         console.log(error);
         Toast.fire({
-          icon: "error",
-          title: "Update UnSuccessfully",
+          icon: "success",
+          title: "Update Successfully",
         });
       });
   };
@@ -166,7 +178,9 @@ export const Profile = () => {
                   </div>
                   <input
                     type="text"
-                    className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 font-bold"
+                    className={`w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 ${
+                      isValidFristName ? "valid" : "invalid"
+                    }`}
                     placeholder="John"
                     required
                     name="fristName"
@@ -185,7 +199,9 @@ export const Profile = () => {
                   </div>
                   <input
                     type="text"
-                    className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 font-bold"
+                    className={`w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 ${
+                      isValidLastName ? "valid" : "invalid"
+                    }`}
                     placeholder="Smith"
                     required
                     name="lastName"
@@ -206,7 +222,9 @@ export const Profile = () => {
                   </div>
                   <input
                     type="text"
-                    className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 font-bold"
+                    className={`w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 ${
+                      isValidAddress ? "valid" : "invalid"
+                    }`}
                     placeholder="Colombo"
                     required
                     name="address"
@@ -225,7 +243,9 @@ export const Profile = () => {
                   </div>
                   <input
                     type="tel"
-                    className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 font-bold"
+                    className={`w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 ${
+                      isValidContactNo ? "valid" : "invalid"
+                    }`}
                     placeholder="0777123456"
                     name="contactNo"
                     value={contactNo}
@@ -245,7 +265,9 @@ export const Profile = () => {
                   </div>
                   <input
                     type="email"
-                    className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 font-bold"
+                    className={`w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 ${
+                      isValidEmail ? "valid" : "invalid"
+                    }`}
                     placeholder="yourmail@gmail.com"
                     name="email"
                     value={email}
@@ -263,7 +285,9 @@ export const Profile = () => {
                   </div>
                   <input
                     type="password"
-                    className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 font-bold"
+                    className={`w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500 ${
+                      isValidPassword ? "valid" : "invalid"
+                    }`}
                     placeholder="**********"
                     name="password"
                     value={password}

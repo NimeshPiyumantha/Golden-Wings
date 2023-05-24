@@ -7,7 +7,7 @@ import Grid from "@mui/material/Grid";
 import sigIn_bg from "../../assets/img/signIn-bg.jpg";
 import "./Login.css";
 import api from "../../axios";
-import {useState } from "react";
+import { useState } from "react";
 import { InputLabel, MenuItem, Select } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { Toast } from "../../util/save_update_delete_success";
@@ -15,9 +15,9 @@ import { Toast } from "../../util/save_update_delete_success";
 export default function Login() {
   const [roleId, setroleId] = useState<string>("");
   const [email, setuseremail] = useState<string>("");
-  const [isValidEmail, setIsValidEmail] = useState(false);
+  const [isValidEmail, setIsValidEmail] = useState(true);
   const [password, setPassword] = useState<string>("");
-  const [isValidPassword, setIsValidPassword] = useState(false);
+  const [isValidPassword, setIsValidPassword] = useState(true);
   const navigate = useNavigate();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -104,7 +104,7 @@ export default function Login() {
 
                 <TextField
                   margin="normal"
-                  variant="filled" 
+                  variant="filled"
                   required
                   fullWidth
                   id="email"
@@ -122,7 +122,7 @@ export default function Login() {
                   autoFocus
                   required
                   fullWidth
-                  variant="filled" 
+                  variant="filled"
                   name="password"
                   label="Password"
                   type="password"
