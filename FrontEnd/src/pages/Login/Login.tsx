@@ -12,21 +12,12 @@ import { InputLabel, MenuItem, Select } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { Toast } from "../../util/save_update_delete_success";
 
-type UserDetails = {
-  _id: string;
-  roleId: string;
-  fristName: string;
-  lastName: string;
-  address: string;
-  contactNo: number;
-  email: string;
-  password: string;
-};
 export default function Login() {
-  const [userList, setUserList] = useState<UserDetails[]>([]);
   const [roleId, setroleId] = useState<string>("");
   const [email, setuseremail] = useState<string>("");
+  const [isValidEmail, setIsValidEmail] = useState(false);
   const [password, setPassword] = useState<string>("");
+  const [isValidPassword, setIsValidPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -67,11 +58,18 @@ export default function Login() {
 
   const handleInputChange = (event: any) => {
     const { name, value } = event.target;
+
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
+
     name === "roleId"
       ? setroleId(value)
       : name === "email"
-      ? setuseremail(value)
-      : name === "password" && setPassword(value);
+      ? (setuseremail(value),
+        setIsValidEmail(emailRegex.test(value)),
+        setuseremail(value))
+      : name === "password" &&
+        (setPassword(value), setIsValidPassword(passwordRegex.test(value)));
   };
 
   return (
@@ -111,18 +109,27 @@ export default function Login() {
                   name="email"
                   autoComplete="email"
                   autoFocus
+                  variant="outlined"
                   onChange={handleInputChange}
+                  InputProps={{
+                    className: isValidEmail ? "valid" : "invalid",
+                  }}
                 />
                 <TextField
                   margin="normal"
+                  autoFocus
                   required
                   fullWidth
+                  variant="outlined"
                   name="password"
                   label="Password"
                   type="password"
                   id="password"
                   autoComplete="current-password"
                   onChange={handleInputChange}
+                  InputProps={{
+                    className: isValidPassword ? "valid" : "invalid",
+                  }}
                 />
                 <FormControlLabel
                   control={<Checkbox value="remember" color="primary" />}

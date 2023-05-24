@@ -6,3 +6,11 @@
 .MuiTextField{
   border-radius: 50px !important;
 }
+
+.valid {
+  border: 1px solid green;
+}
+
+.invalid {
+  border: 1px solid red;
+}
