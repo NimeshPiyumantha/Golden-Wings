@@ -62,14 +62,16 @@ export default function Login() {
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
 
-    name === "roleId"
-      ? setroleId(value)
-      : name === "email"
-      ? (setuseremail(value),
-        setIsValidEmail(emailRegex.test(value)),
-        setuseremail(value))
-      : name === "password" &&
-        (setPassword(value), setIsValidPassword(passwordRegex.test(value)));
+    if (name === "roleId") {
+      setroleId(value);
+    } else if (name === "email") {
+      setuseremail(value);
+      setIsValidEmail(emailRegex.test(value));
+      setuseremail(value);
+    } else if (name === "password") {
+      setPassword(value);
+      setIsValidPassword(passwordRegex.test(value));
+    }
   };
 
   return (
