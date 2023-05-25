@@ -12,8 +12,8 @@ import routes from "./Routes";
 const app = express();
 
 //bodyParser json object size change
-const bodyParser = require('body-parser');
-app.use(bodyParser.json({ limit: '10mb' }));
+const bodyParser = require("body-parser");
+app.use(bodyParser.json({ limit: "10mb" }));
 
 // allow CORS
 // app.use(cors());
