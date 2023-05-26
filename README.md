@@ -13,7 +13,6 @@ This is a RAD Course Work.(`MERN Stack Application`)
 - Node js
 
 ### - Front End
-
 - React
 - Tailwind CSS
 - Material-UI
