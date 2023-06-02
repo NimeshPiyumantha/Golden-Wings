@@ -19,7 +19,6 @@ This is a RAD Course Work.(`MERN Stack Application`)
 - Material-UI
 - TypeScript
 
-
 ##
 
 <div align="center">
