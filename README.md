@@ -18,6 +18,7 @@ This is a RAD Course Work.(`MERN Stack Application`)
 - Tailwind CSS
 - Material-UI
 - TypeScript
+
 ##
 
 <div align="center">
