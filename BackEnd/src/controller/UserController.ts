@@ -173,20 +173,4 @@ export default class UserController {
       }
     }
   };
-
-  getCount: RequestHandler = async (
-      req: Request,
-      res: Response
-  ): Promise<Response> => {
-    try {
-      const users :number = await User.find({roleId:"6455cd8b0a57e1ba94c0eba2"}).count();
-      return res.status(200).json({ responseData: users });
-    } catch (error: unknown) {
-      if (error instanceof Error) {
-        return res.status(500).json({ message: error.message });
-      } else {
-        return res.status(500).json({ message: "Unknown error occured." });
-      }
-    }
-  };
-}
+  }
