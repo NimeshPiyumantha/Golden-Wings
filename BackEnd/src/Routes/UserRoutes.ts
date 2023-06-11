@@ -30,6 +30,10 @@ export default class UserRoutes {
 
     // GET /api/v1/user/search/:id
     this.router.get("/search/:id", this.routerController.searchUserFirstName);
+
+    // GET /api/v1/user/getCount
+    this.router.get("/getCount", this.routerController.getCount);
+
   };
 
   public getRouter = (): Router => {
