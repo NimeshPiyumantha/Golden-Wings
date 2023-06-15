@@ -21,32 +21,46 @@ const theme = createTheme({
   },
 });
 
-let postCount: number = 0;
+let placeCount: number = 0;
 let blogCount: number = 0;
 let userCount: number = 0;
 
 export default function AdminHome() {
-  const [postListCount, setPostListCount] = useState<number>(0);
+  const [placeListCount, setPlaceListCount] = useState<number>(0);
+  const [blogListCount, setBlogListCount] = useState<number>(0);
 
   useEffect(() => {
-    getAllPost();
+    getAllPlace();
+    getAllBlog();
   }, []);
 
-  const getAllPost = () => {
+  const getAllPlace = () => {
     api
-      .get("post")
+      .get("place")
       .then((res) => {
         for (let i = 0; i < res.data.responseData.length; i++) {
-          postCount = postCount + 1;
+          placeCount = placeCount + 1;
         }
-        setPostListCount(postCount);
+        setPlaceListCount(placeCount);
       })
       .catch((error) => {
         console.log(error);
       });
   };
 
-  
+  const getAllBlog = () => {
+    api
+      .get("post")
+      .then((res) => {
+        for (let i = 0; i < res.data.responseData.length; i++) {
+          blogCount = blogCount + 1;
+        }
+        setBlogListCount(blogCount);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <>
@@ -121,7 +135,7 @@ export default function AdminHome() {
                         fontWeight: "medium",
                       }}
                     >
-                      0
+                      {placeListCount}
                     </Box>
                     <Box
                       id="txtItemsCountPracentage"
@@ -167,7 +181,7 @@ export default function AdminHome() {
                         fontWeight: "medium",
                       }}
                     >
-                      {postListCount}
+                      {blogListCount}
                     </Box>
                     <Box
                       sx={{
