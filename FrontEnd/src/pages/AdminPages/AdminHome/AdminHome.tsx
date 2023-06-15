@@ -3,6 +3,8 @@ import Grid from "@mui/material/Unstable_Grid2";
 import Box from "@mui/material/Box";
 import AdminHeader from "../../../components/AdminHeader";
 import Footer from "../../../components/Footer";
+import { useEffect, useState } from "react";
+import api from "../../../axios";
 
 const theme = createTheme({
   palette: {
@@ -18,13 +20,40 @@ const theme = createTheme({
     },
   },
 });
+
+let postCount: number = 0;
+let blogCount: number = 0;
+let userCount: number = 0;
+
 export default function AdminHome() {
+  const [postListCount, setPostListCount] = useState<number>(0);
+
+  useEffect(() => {
+    getAllPost();
+  }, []);
+
+  const getAllPost = () => {
+    api
+      .get("post")
+      .then((res) => {
+        for (let i = 0; i < res.data.responseData.length; i++) {
+          postCount = postCount + 1;
+        }
+        setPostListCount(postCount);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  
+
   return (
     <>
       <AdminHeader />
       <div className="flex justify-center mt-16 h-96">
         <div className="w-4/5 m-4">
-          <Box sx={{ width: "100%" }} >
+          <Box sx={{ width: "100%" }}>
             <Grid container margin={3} rowSpacing={2} columnSpacing={3}>
               <Grid lg={3} md={3} sm={6} xs={12}>
                 <ThemeProvider theme={theme}>
@@ -138,10 +167,9 @@ export default function AdminHome() {
                         fontWeight: "medium",
                       }}
                     >
-                      0
+                      {postListCount}
                     </Box>
                     <Box
-                      id="txtOrderCountPracentage"
                       sx={{
                         color: "success.dark",
                         display: "inline",
