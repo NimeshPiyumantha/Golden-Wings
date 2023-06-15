@@ -28,16 +28,19 @@ let userCount: number = 0;
 export default function AdminHome() {
   const [placeListCount, setPlaceListCount] = useState<number>(0);
   const [blogListCount, setBlogListCount] = useState<number>(0);
+  const [userListCount, setUserListCount] = useState<number>(0);
 
   useEffect(() => {
     getAllPlace();
     getAllBlog();
+    getAllUser();
   }, []);
 
   const getAllPlace = () => {
     api
       .get("place")
       .then((res) => {
+        placeCount=0;
         for (let i = 0; i < res.data.responseData.length; i++) {
           placeCount = placeCount + 1;
         }
@@ -52,10 +55,26 @@ export default function AdminHome() {
     api
       .get("post")
       .then((res) => {
+        blogCount=0;
         for (let i = 0; i < res.data.responseData.length; i++) {
           blogCount = blogCount + 1;
         }
         setBlogListCount(blogCount);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const getAllUser = () => {
+    api
+      .get("user")
+      .then((res) => {
+        userCount=0;
+        for (let i = 0; i < res.data.responseData.length; i++) {
+          userCount = userCount + 1;
+        }
+        setUserListCount(userCount);
       })
       .catch((error) => {
         console.log(error);
@@ -82,14 +101,13 @@ export default function AdminHome() {
                   >
                     <Box sx={{ color: "text.secondary" }}>Users Count</Box>
                     <Box
-                      id="txtCustomerCount"
                       sx={{
                         color: "text.primary",
                         fontSize: 34,
                         fontWeight: "medium",
                       }}
                     >
-                      0
+                      {userListCount}
                     </Box>
                     <Box
                       id="txtCustomerCountPracentage"
