@@ -23,7 +23,8 @@ export default function Collection() {
   return (
     <>
     <h2 className="pt-24 text-center bg-accent-white-50 text-3xl font-bold px-6 font-Poppins text-accent-green-200">Gallery</h2>
-    <div className="grid grid-cols-2 bg-accent-white-50 md:grid-cols-4 gap-4  p-10">
+    <div className="grid grid-cols-2 bg-accent-white-50 md:grid-cols-4 gap-4  p-20" data-aos="fade-down"
+              data-aos-delay="400">
       <div className="grid gap-4">
         <div>
           <img className="h-auto max-w-full rounded-lg" src={image5} alt="" />

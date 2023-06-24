@@ -12,6 +12,7 @@ export default function Home() {
     <>
       <Header />
       <Hero />
+      <h2 className="pt-24 text-center text-3xl font-bold px-6 font-Poppins text-accent-green-200">Places</h2>
       <PlacesCard/>
       <Collection/>
       <Form/>
