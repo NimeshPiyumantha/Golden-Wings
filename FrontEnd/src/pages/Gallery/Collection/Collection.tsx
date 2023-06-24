@@ -69,50 +69,6 @@ export default function Collection() {
           <img className="h-auto max-w-full rounded-lg" src={image17} alt="" />
         </div>
       </div>
-      <div className="grid gap-4">
-        <div>
-          <img className="h-auto max-w-full rounded-lg" src={image1} alt="" />
-        </div>
-        <div>
-          <img className="h-auto max-w-full rounded-lg" src={image2} alt="" />
-        </div>
-        <div>
-          <img className="h-auto max-w-full rounded-lg" src={image15} alt="" />
-        </div>
-      </div>
-      <div className="grid gap-4">
-        <div>
-          <img className="h-auto max-w-full rounded-lg" src={image11} alt="" />
-        </div>
-        <div>
-          <img className="h-auto max-w-full rounded-lg" src={image10} alt="" />
-        </div>
-        <div>
-          <img className="h-auto max-w-full rounded-lg" src={image14} alt="" />
-        </div>
-      </div>
-      <div className="grid gap-4">
-        <div>
-          <img className="h-auto max-w-full rounded-lg" src={image18} alt="" />
-        </div>
-        <div>
-          <img className="h-auto max-w-full rounded-lg" src={image20} alt="" />
-        </div>
-        <div>
-          <img className="h-auto max-w-full rounded-lg" src={image6} alt="" />
-        </div>
-      </div>
-      <div className="grid gap-4">
-        <div>
-          <img className="h-auto max-w-full rounded-lg" src={image19} alt="" />
-        </div>
-        <div>
-          <img className="h-auto max-w-full rounded-lg" src={image16} alt="" />
-        </div>
-        <div>
-          <img className="h-auto max-w-full rounded-lg" src={image17} alt="" />
-        </div>
-      </div>
     </div>
     </>
   );
