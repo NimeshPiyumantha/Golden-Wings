@@ -2,28 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer base {
   /* You can add more generic style here */
 
   /* h6 {
     @apply text-xl sm:text-2xl md:text-3xl borderlg:text-4xl font-bold font-Poppins text-red-400;
   } */
-  
-*::-webkit-scrollbar {
-  width: 12px;
-}
 
-*::-webkit-scrollbar-track {
-  background: whitesmoke;
-  border-radius: 5px;
-}
+  *::-webkit-scrollbar {
+    width: 12px;
+  }
 
-*::-webkit-scrollbar-thumb {
-  background-color: #1abc9c;
-  border-radius: 14px;
-  border: 2px solid black;
-}
+  *::-webkit-scrollbar-track {
+    background: whitesmoke;
+    border-radius: 5px;
+  }
 
-  
+  *::-webkit-scrollbar-thumb {
+    background-color: #1abc9c;
+    border-radius: 10px;
+  }
 }

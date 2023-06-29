@@ -95,7 +95,7 @@ export default function Places() {
   return (
     <>
       <div className="mt-20 flex justify-center mr-20 ml-20 m-5 sm:p-3">
-        <div className="bg-accent-white-50 flex-wrap rounded-lg shadow-lg">
+        <div className="bg-accent-white-50 flex-wrap rounded-lg shadow-xl">
           <div className="justify-center p-4 flex gap-3 flex-wrap">
             <div>
               <FormControl sx={{ m: 1, minWidth: 150 }}>

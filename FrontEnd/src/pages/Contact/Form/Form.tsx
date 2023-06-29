@@ -12,7 +12,7 @@ export default function Form() {
           </div>
         </div>
 
-        <div className="flex flex-wrap ">
+        <div className="flex flex-wrap">
           <div className="grow-0 shrink-0 basis-auto mb-12 lg:mb-0 w-full lg:w-5/12 px-3 lg:px-6 shadow-2xl p-3 rounded-lg">
             <form className="p-3">
               <div className="form-group mb-6 shadow-lg">

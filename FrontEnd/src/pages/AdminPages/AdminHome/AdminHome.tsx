@@ -40,7 +40,7 @@ export default function AdminHome() {
     api
       .get("place")
       .then((res) => {
-        placeCount=0;
+        placeCount = 0;
         for (let i = 0; i < res.data.responseData.length; i++) {
           placeCount = placeCount + 1;
         }
@@ -55,7 +55,7 @@ export default function AdminHome() {
     api
       .get("post")
       .then((res) => {
-        blogCount=0;
+        blogCount = 0;
         for (let i = 0; i < res.data.responseData.length; i++) {
           blogCount = blogCount + 1;
         }
@@ -70,7 +70,7 @@ export default function AdminHome() {
     api
       .get("user")
       .then((res) => {
-        userCount=0;
+        userCount = 0;
         for (let i = 0; i < res.data.responseData.length; i++) {
           userCount = userCount + 1;
         }
@@ -228,7 +228,9 @@ export default function AdminHome() {
           </Box>
         </div>
       </div>
-      <Footer />
+      <div className="mt-40">
+        <Footer />
+      </div>
     </>
   );
 }
