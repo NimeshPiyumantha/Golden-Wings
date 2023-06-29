@@ -9,6 +9,23 @@ import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import Post from "../../../components/Post/Post";
 import { Toast } from "../../../util/save_update_delete_success";
 import Post2 from "../../../components/Post2";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+
+const theme = createTheme({
+  components: {
+    MuiTextField: {
+      styleOverrides: {
+        root: {
+          "& .MuiOutlinedInput-root": {
+            borderRadius: "10px", // Define your own border radius
+            boxShadow:
+              " rgba(0, 0, 0, 0.3) 0px 15px 33px, rgba(0, 0, 0, 0.22) 0px 10px 12px", // Define your own box-shadow
+          },
+        },
+      },
+    },
+  },
+});
 
 type State = {
   isClickedCreateNewPost: boolean;
@@ -187,101 +204,105 @@ export default function UserBlog() {
               </div>
               <div className="w-full cursor-pointer p-8 bg-accent-white-50 rounded text-slate-400 flex justify-center items-center space-x-3 border border-slate-400">
                 <form>
-                  <div className="-mx-3 md:flex mb-4">
-                    <div className="md:w-1/2 px-2 mb-6 md:mb-0">
-                      <TextField
-                        type="file"
-                        variant="outlined"
-                        name="imageUrl"
-                        onChange={convertToBase64}
-                        fullWidth={true}
-                        required
-                      />
+                  <ThemeProvider theme={theme}>
+                    <div className="-mx-3 md:flex mb-4">
+                      <div className="md:w-1/2 px-2 mb-6 md:mb-0">
+                        <TextField
+                          type="file"
+                          variant="outlined"
+                          name="imageUrl"
+                          onChange={convertToBase64}
+                          fullWidth={true}
+                          required
+                        />
+                      </div>
+                      <div className="md:w-1/2 px-3">
+                        <TextField
+                          type="date"
+                          variant="outlined"
+                          name="date"
+                          onChange={handleInputChange}
+                          fullWidth={true}
+                          required
+                        />
+                      </div>
                     </div>
-                    <div className="md:w-1/2 px-3">
-                      <TextField
-                        type="date"
-                        variant="outlined"
-                        name="date"
-                        onChange={handleInputChange}
-                        fullWidth={true}
-                        required
-                      />
+                    <div className="-mx-3 md:flex mb-4">
+                      <div className="md:w-1/2 px-3 mb-6 md:mb-0">
+                        <TextField
+                          label="Post Title"
+                          type="text"
+                          variant="outlined"
+                          name="title"
+                          placeholder="Enter post title"
+                          onChange={handleInputChange}
+                          fullWidth={true}
+                          required
+                        />
+                      </div>
+                      <div className="md:w-1/2 px-3">
+                        <TextField
+                          label="Category"
+                          type="text"
+                          variant="outlined"
+                          name="categoryName"
+                          placeholder="Enter Category Name"
+                          onChange={handleInputChange}
+                          fullWidth={true}
+                          required
+                        />
+                      </div>
                     </div>
-                  </div>
-                  <div className="-mx-3 md:flex mb-4">
-                    <div className="md:w-1/2 px-3 mb-6 md:mb-0">
-                      <TextField
-                        label="Post Title"
-                        type="text"
-                        variant="outlined"
-                        name="title"
-                        placeholder="Enter post title"
-                        onChange={handleInputChange}
-                        fullWidth={true}
-                        required
-                      />
+                    <div className="-mx-3 md:flex mb-4">
+                      <div className="md:w-full px-3 mb-6 md:mb-0">
+                        <TextField
+                          label="Post Description"
+                          type="text"
+                          variant="outlined"
+                          name="description"
+                          placeholder="Enter post description"
+                          onChange={handleInputChange}
+                          fullWidth={true}
+                          multiline
+                          minRows={5}
+                          maxRows={Infinity}
+                          required
+                        />
+                      </div>
                     </div>
-                    <div className="md:w-1/2 px-3">
-                      <TextField
-                        label="Category"
-                        type="text"
-                        variant="outlined"
-                        name="categoryName"
-                        placeholder="Enter Category Name"
-                        onChange={handleInputChange}
-                        fullWidth={true}
-                        required
-                      />
+                    <div className="-mx-3 md:flex mb-4">
+                      <div className="md:w-full px-3 mb-6 md:mb-0">
+                        <TextField
+                          label="Tags (Comma separated tags)"
+                          type="text"
+                          variant="outlined"
+                          name="tagString"
+                          placeholder="Enter comma separated tags"
+                          onChange={handleInputChange}
+                          fullWidth={true}
+                          required
+                        />
+                      </div>
                     </div>
-                  </div>
-                  <div className="-mx-3 md:flex mb-4">
-                    <div className="md:w-full px-3 mb-6 md:mb-0">
-                      <TextField
-                        label="Post Description"
-                        type="text"
-                        variant="outlined"
-                        name="description"
-                        placeholder="Enter post description"
-                        onChange={handleInputChange}
-                        fullWidth={true}
-                        multiline
-                        minRows={5}
-                        maxRows={Infinity}
-                        required
-                      />
+                    <div className="-mx-3 md:flex mb-4">
+                      <div className="md:w-full px-3 mb-6 md:mb-0">
+                        <button
+                          className="p-2 mt-2 pr-3 pl-3 bg-accent-green-200 text-white rounded"
+                          onClick={handleSubmit}
+                        >
+                          <h6>Publish Post</h6>
+                        </button>
+                      </div>
                     </div>
-                  </div>
-                  <div className="-mx-3 md:flex mb-4">
-                    <div className="md:w-full px-3 mb-6 md:mb-0">
-                      <TextField
-                        label="Tags (Comma separated tags)"
-                        type="text"
-                        variant="outlined"
-                        name="tagString"
-                        placeholder="Enter comma separated tags"
-                        onChange={handleInputChange}
-                        fullWidth={true}
-                        required
-                      />
-                    </div>
-                  </div>
-                  <div className="-mx-3 md:flex mb-4">
-                    <div className="md:w-full px-3 mb-6 md:mb-0">
-                      <button
-                        className="p-2 mt-2 pr-3 pl-3 bg-accent-green-200 text-white rounded"
-                        onClick={handleSubmit}
-                      >
-                        <h6>Publish Post</h6>
-                      </button>
-                    </div>
-                  </div>
+                  </ThemeProvider>
                 </form>
               </div>
             </>
           )}
         </div>
-        <h1 className="font-Ubuntu font-bold text-2xl text-center text-accent-green-50 pt-6">My Post</h1> 
+        <h1 className="font-Ubuntu font-bold text-2xl text-center text-accent-green-50 pt-6">
+          My Post
+        </h1>
         <Divider className="!my-5" />
 
         {filteredData.map((post) => (
@@ -300,7 +321,9 @@ export default function UserBlog() {
             // updateList={getAllPost()}
           />
         ))}
-        <h1 className="font-Ubuntu font-bold text-2xl text-center text-accent-red-50 pt-6">Other Post</h1> 
+        <h1 className="font-Ubuntu font-bold text-2xl text-center text-accent-red-50 pt-6">
+          Other Post
+        </h1>
         <Divider className="!my-5" />
         {filteredData2.map((post) => (
           <Post2

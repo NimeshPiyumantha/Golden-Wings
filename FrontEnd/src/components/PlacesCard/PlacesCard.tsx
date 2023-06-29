@@ -85,7 +85,8 @@ export default function Places() {
   };
   function search(event: any) {
     const filteredData = placesList2.filter(
-      (place) => place.categoryId === categoryName && place.location === location
+      (place) =>
+        place.categoryId === categoryName && place.location === location
     );
 
     setPlacesList(filteredData);
@@ -101,6 +102,7 @@ export default function Places() {
                 <InputLabel id="demo-simple-select-helper-label">
                   Location
                 </InputLabel>
+
                 <Select
                   labelId="demo-simple-select-helper-label"
                   id="demo-simple-select-helper"
@@ -108,6 +110,11 @@ export default function Places() {
                   label="location"
                   value={location}
                   onChange={handleChange}
+                  style={{
+                    borderRadius: "15px",
+                    boxShadow:
+                      " rgba(0, 0, 0, 0.3) 0px 15px 33px, rgba(0, 0, 0, 0.22) 0px 10px 12px",
+                  }}
                 >
                   {locationList.map((row, index) => (
                     <MenuItem value={row.location}>{row.location}</MenuItem>
@@ -118,6 +125,7 @@ export default function Places() {
                 <InputLabel id="demo-simple-select-helper-label">
                   Category
                 </InputLabel>
+
                 <Select
                   labelId="demo-simple-select-helper-label"
                   id="demo-simple-select-helper"
@@ -125,18 +133,30 @@ export default function Places() {
                   value={categoryName}
                   label="category"
                   onChange={handleChange}
+                  style={{
+                    borderRadius: "15px",
+                    boxShadow:
+                      " rgba(0, 0, 0, 0.3) 0px 15px 33px, rgba(0, 0, 0, 0.22) 0px 10px 12px",
+                  }}
                 >
                   {categoryList.map((row, index) => (
                     <MenuItem value={row._id}>{row.categoryName}</MenuItem>
                   ))}
                 </Select>
               </FormControl>
-              <FormControl sx={{ m: 2, minWidth: 150 }}>
+              <FormControl sx={{ m: 1, minWidth: 150 }}>
                 <Button
                   color="secondary"
                   variant="contained"
                   onClick={search}
                   className="text-lg"
+                  style={{
+                    marginTop: "5px",
+                    padding: "8px",
+                    borderRadius: "15px",
+                    boxShadow:
+                      " rgba(0, 0, 0, 0.3) 0px 15px 33px, rgba(0, 0, 0, 0.22) 0px 10px 12px",
+                  }}
                 >
                   Search
                   <SearchIcon className="ml-3" />
